@@ -1,0 +1,5320 @@
+[
+  {
+    "code": "0",
+    "name": "Facilitating works (FW)",
+    "subCategories": [
+      {
+        "code": "0.1",
+        "name": "Toxic or hazardous contaminated material treatment",
+        "assets": [
+          {
+            "code": "0.1.1.1",
+            "name": "FW – Asbestos"
+          },
+          {
+            "code": "0.1.1.2",
+            "name": "FW – Toxic or hazardous insulations from existing services installations"
+          },
+          {
+            "code": "0.1.1.3",
+            "name": "FW – Control of chemical hazardous materials"
+          },
+          {
+            "code": "0.1.1.4",
+            "name": "FW – Safe disposal (included with items 1 to 3)"
+          },
+          {
+            "code": "0.1.2",
+            "name": "Contaminated land"
+          },
+          {
+            "code": "0.1.3.1",
+            "name": "Eradication of plant growth"
+          },
+          {
+            "code": "0.1.3.2",
+            "name": "FW – Eradication by chemical treatment"
+          }
+        ]
+      },
+      {
+        "code": "0.2",
+        "name": "Major demolition works",
+        "assets": [
+          {
+            "code": "0.2.1",
+            "name": "Demolition works"
+          },
+          {
+            "code": "0.2.2",
+            "name": "Soft strip works"
+          }
+        ]
+      },
+      {
+        "code": "0.3",
+        "name": "Temporary support to adjacent structures",
+        "assets": [
+          {
+            "code": "0.3.1",
+            "name": "Temporary support to adjacent structures"
+          }
+        ]
+      },
+      {
+        "code": "0.4",
+        "name": "Specialist groundworks",
+        "assets": [
+          {
+            "code": "0.4.1.1.1",
+            "name": "FW – Forming well points and well point equipment"
+          },
+          {
+            "code": "0.4.1.1.3",
+            "name": "FW – Drain tubes and ring mains"
+          },
+          {
+            "code": "0.4.1.1.4",
+            "name": "FW – Sumps"
+          },
+          {
+            "code": "0.4.1.1.5",
+            "name": "FW – Pumps"
+          },
+          {
+            "code": "0.4.2",
+            "name": "Soil stabilisation measures"
+          },
+          {
+            "code": "0.4.3.1.1",
+            "name": "FW – Gas venting measures"
+          },
+          {
+            "code": "0.4.3.1.2",
+            "name": "FW – Radon sumps"
+          },
+          {
+            "code": "0.4.3.1.3",
+            "name": "FW – Vent pipes"
+          }
+        ]
+      },
+      {
+        "code": "0.5",
+        "name": "Temporary diversion works",
+        "assets": [
+          {
+            "code": "0.5.1",
+            "name": "Temporary diversion works"
+          },
+          {
+            "code": "0.5.2",
+            "name": "Temporary diversion to services"
+          },
+          {
+            "code": "0.5.3",
+            "name": "Temporary diversion of waterways"
+          }
+        ]
+      },
+      {
+        "code": "0.6",
+        "name": "Extraordinary site investigation works",
+        "assets": [
+          {
+            "code": "0.6.1",
+            "name": "Archaeological investigation"
+          },
+          {
+            "code": "0.6.2",
+            "name": "Reptile/wildlife mitigation measures"
+          },
+          {
+            "code": "0.6.3.1.1",
+            "name": "FW – Extraordinary site investigation measures"
+          },
+          {
+            "code": "0.6.3.2.2",
+            "name": "FW – Temporary screens, fences and barriers"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "1",
+    "name": "Substructure (SUB)",
+    "subCategories": [
+      {
+        "code": "1.1",
+        "name": "Substructure",
+        "assets": [
+          {
+            "code": "1.1.1",
+            "name": "Standard foundations"
+          },
+          {
+            "code": "1.1.1.1.15",
+            "name": "SUB – Filling cavities"
+          },
+          {
+            "code": "1.1.1.1.16",
+            "name": "SUB – Thermal insulation to cavities"
+          },
+          {
+            "code": "1.1.1.1.17",
+            "name": "SUB – Damp proofing courses"
+          },
+          {
+            "code": "1.1.2.14.1",
+            "name": "SUB – Monitoring subsidence"
+          },
+          {
+            "code": "1.1.3",
+            "name": "Lowest floor construction"
+          },
+          {
+            "code": "1.1.3.6.22",
+            "name": "SUB – Design joints to floor slabs"
+          },
+          {
+            "code": "1.1.3.8.29",
+            "name": "SUB – Floor outlets"
+          },
+          {
+            "code": "1.1.3.8.30",
+            "name": "SUB – Prefabricated floor channels"
+          },
+          {
+            "code": "1.1.3.9.28",
+            "name": "SUB – Internal manholes"
+          },
+          {
+            "code": "1.1.4",
+            "name": "Basement excavation"
+          },
+          {
+            "code": "1.1.5.1.19",
+            "name": "SUB – Instrumentation and monitoring"
+          },
+          {
+            "code": "1.1.5.1.7",
+            "name": "SUB – Waterproof tanking"
+          },
+          {
+            "code": "1.1.5.1.8",
+            "name": "SUB – Protective external tanking"
+          },
+          {
+            "code": "1.1.5.1.9",
+            "name": "SUB – Damp proofing and vapour barriers"
+          },
+          {
+            "code": "1.1.5.2.9",
+            "name": "SUB – Instrumentation and monitoring"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "2",
+    "name": "Superstructure",
+    "subCategories": [
+      {
+        "code": "2.1",
+        "name": "Frame",
+        "assets": [
+          {
+            "code": "2.1.1.1",
+            "name": "Frame – Structural steel"
+          },
+          {
+            "code": "2.1.1.2.6",
+            "name": "Frame – Fire protective coating"
+          },
+          {
+            "code": "2.1.2.1",
+            "name": "Frame – Space deck"
+          },
+          {
+            "code": "2.1.2.2.5",
+            "name": "Frame – Fire protective coating"
+          },
+          {
+            "code": "2.1.3.1",
+            "name": "Frame – Concrete casings"
+          },
+          {
+            "code": "2.1.4.1",
+            "name": "Frame – Concrete columns"
+          },
+          {
+            "code": "2.1.4.2",
+            "name": "Frame – Concrete beams"
+          },
+          {
+            "code": "2.1.4.3",
+            "name": "Frame – Concrete walls"
+          },
+          {
+            "code": "2.1.4.4",
+            "name": "Frame – Concrete forming openings"
+          },
+          {
+            "code": "2.1.4.5.9",
+            "name": "Frame – Designed joints"
+          },
+          {
+            "code": "2.1.5.1",
+            "name": "Frame – Timber"
+          },
+          {
+            "code": "2.1.5.1.8",
+            "name": "Frame – Treatment to timber"
+          },
+          {
+            "code": "2.1.5.1.9",
+            "name": "Frame – Site applied fire retarding paint"
+          },
+          {
+            "code": "2.1.6.1",
+            "name": "Frame – Specialist"
+          },
+          {
+            "code": "2.1.6.1.8",
+            "name": "Frame – Protective treatment"
+          }
+        ]
+      },
+      {
+        "code": "2.2",
+        "name": "Upper floors (UF)",
+        "assets": [
+          {
+            "code": "2.2.1.1",
+            "name": "UF – Concrete suspended floors"
+          },
+          {
+            "code": "2.2.1.3.6",
+            "name": "UF – Design joints"
+          },
+          {
+            "code": "2.2.1.5",
+            "name": "UF – Precast composite decking (concrete)"
+          },
+          {
+            "code": "2.2.1.5.11",
+            "name": "UF – Re-grouting joints"
+          },
+          {
+            "code": "2.2.1.6",
+            "name": "UF – Timber floors"
+          },
+          {
+            "code": "2.2.1.7",
+            "name": "UF – Structural screeds"
+          },
+          {
+            "code": "2.2.2.1",
+            "name": "UF – Balconies (purpose made)"
+          },
+          {
+            "code": "2.2.3.1",
+            "name": "UF – Rainwater downpipes"
+          },
+          {
+            "code": "2.2.3.2",
+            "name": "UF – Floor outlets"
+          }
+        ]
+      },
+      {
+        "code": "2.3",
+        "name": "Roof",
+        "assets": [
+          {
+            "code": "2.3.1.1",
+            "name": "Roof structure – pitched"
+          },
+          {
+            "code": "2.3.1.1.1",
+            "name": "Roof – Decks and slabs"
+          },
+          {
+            "code": "2.3.1.1.2",
+            "name": "Roof – Pitched structure"
+          },
+          {
+            "code": "2.3.1.1.18",
+            "name": "Roof – Thermal insulation (laid in roof space)"
+          },
+          {
+            "code": "2.3.1.4",
+            "name": "Roof structure – flat"
+          },
+          {
+            "code": "2.3.2.1.1",
+            "name": "Roof cladding/coverings system"
+          },
+          {
+            "code": "2.3.2.1.2",
+            "name": "Mastic asphalt – including underlay, flashings, etc. applicable to the roof covering system"
+          },
+          {
+            "code": "2.3.2.2.3",
+            "name": "Roof – Photovoltaic device"
+          },
+          {
+            "code": "2.3.2.2.6",
+            "name": "Roof – Thermal insulation"
+          },
+          {
+            "code": "2.3.2.2.7",
+            "name": "Roof – Surface treatment"
+          },
+          {
+            "code": "2.3.2.2.8",
+            "name": "Roof – Paving"
+          },
+          {
+            "code": "2.3.2.2.9",
+            "name": "Roof – Green and roof gardens"
+          },
+          {
+            "code": "2.3.2.2.10",
+            "name": "Roof – Planting to green roofs/roof garden"
+          },
+          {
+            "code": "2.3.2.3.1",
+            "name": "Roof – Eaves and verge treatment"
+          },
+          {
+            "code": "2.3.2.4",
+            "name": "Roof – Edge treatment to flat roofs"
+          },
+          {
+            "code": "2.3.2.5",
+            "name": "Roof – Flashings"
+          },
+          {
+            "code": "2.3.3.1.1",
+            "name": "Roof – Patent glazing"
+          },
+          {
+            "code": "2.3.3.1.2",
+            "name": "Roof – Glazed roofing system"
+          },
+          {
+            "code": "2.3.3.1.3",
+            "name": "Roof – Perspex roofing system"
+          },
+          {
+            "code": "2.3.3.1.4",
+            "name": "Roof – Components flashings"
+          },
+          {
+            "code": "2.3.4.1.1",
+            "name": "Roof – Gutters"
+          },
+          {
+            "code": "2.3.4.1.3",
+            "name": "Roof – Symphonic roof drainage"
+          },
+          {
+            "code": "2.3.4.1.4",
+            "name": "Roof – Rainwater heads"
+          },
+          {
+            "code": "2.3.4.1.5",
+            "name": "Roof – Painting and anti-corrosion treatments"
+          },
+          {
+            "code": "2.3.4.2.2",
+            "name": "Roof – Rainwater downpipes"
+          },
+          {
+            "code": "2.3.5.1.1",
+            "name": "Roof lights skylights and openings"
+          },
+          {
+            "code": "2.3.5.1.2",
+            "name": "Roof – Opening gear and frames, kerbs and glazing"
+          },
+          {
+            "code": "2.3.5.1.3",
+            "name": "Roof – Sun pipes and tubes"
+          },
+          {
+            "code": "2.3.5.1.4",
+            "name": "Roof – Pavement lights"
+          },
+          {
+            "code": "2.3.5.1.5",
+            "name": "Roof – Hatches"
+          },
+          {
+            "code": "2.3.5.1.6",
+            "name": "Roof – Access hatches"
+          },
+          {
+            "code": "2.3.5.1.7",
+            "name": "Roof – Smoke vents"
+          },
+          {
+            "code": "2.3.5.1.8",
+            "name": "Roof – Vents and roof cowls"
+          },
+          {
+            "code": "2.3.6.1.1",
+            "name": "Roof – Turrets"
+          },
+          {
+            "code": "2.3.6.1.2",
+            "name": "Roof – Wind vanes"
+          },
+          {
+            "code": "2.3.6.1.3",
+            "name": "Roof – Spires"
+          },
+          {
+            "code": "2.3.6.1.4",
+            "name": "Roof – False chimneys"
+          },
+          {
+            "code": "2.3.6.1.5",
+            "name": "Roof – Enclosure"
+          },
+          {
+            "code": "2.3.6.1.6",
+            "name": "Roof – Fall arrest systems"
+          },
+          {
+            "code": "2.3.6.1.7",
+            "name": "Roof – Access systems for cleaning roof"
+          },
+          {
+            "code": "2.3.6.1.8",
+            "name": "Roof – Edge protection"
+          },
+          {
+            "code": "2.3.6.1.9",
+            "name": "Roof – Balustrades, handrails to roof edges"
+          },
+          {
+            "code": "2.3.6.1.10",
+            "name": "Roof – Service walkways within roof voids"
+          }
+        ]
+      },
+      {
+        "code": "2.4",
+        "name": "Stairs and ramps",
+        "assets": [
+          {
+            "code": "2.4.1.1.1",
+            "name": "Stairs – Structures"
+          },
+          {
+            "code": "2.4.1.2.2",
+            "name": "Ramps – Access ramps"
+          },
+          {
+            "code": "2.4.2.1",
+            "name": "Stairs – Finishes – (state type e.g. timber, stone)"
+          },
+          {
+            "code": "2.4.2.2",
+            "name": "Ramps – Finishes – state type (e.g. timber, stone)"
+          },
+          {
+            "code": "2.4.3.1.1",
+            "name": "Stairs – Balustrades and handrails"
+          },
+          {
+            "code": "2.4.3.1.2",
+            "name": "Stairs – Balustrades and handrails to landings"
+          },
+          {
+            "code": "2.4.3.1.3",
+            "name": "Stairs – Balustrades/handrails to landings"
+          },
+          {
+            "code": "2.4.3.1.4",
+            "name": "Stairs – Applied coating and painting systems"
+          },
+          {
+            "code": "2.4.4.1.1",
+            "name": "Ladders – Fire escape"
+          },
+          {
+            "code": "2.4.4.1.2",
+            "name": "Ladders – Access"
+          },
+          {
+            "code": "2.4.4.1.3",
+            "name": "Ladders – Loft"
+          },
+          {
+            "code": "2.4.4.1.4",
+            "name": "Ladders – Applied coating and painting systems"
+          },
+          {
+            "code": "2.4.4.2.7",
+            "name": "Chutes – Fire escape"
+          },
+          {
+            "code": "2.4.4.3.7",
+            "name": "Slides – Fire escape"
+          }
+        ]
+      },
+      {
+        "code": "2.5",
+        "name": "External walls (EW)",
+        "assets": [
+          {
+            "code": "2.5.1.1.1",
+            "name": "EW – External enclosing walls (state type)"
+          },
+          {
+            "code": "2.5.1.1.3",
+            "name": "EW – Parapet walls"
+          },
+          {
+            "code": "2.5.1.1.5",
+            "name": "EW – Chimneys"
+          },
+          {
+            "code": "2.5.1.1.7",
+            "name": "EW – Curtain walling"
+          },
+          {
+            "code": "2.5.1.1.8",
+            "name": "EW – Structural glazing"
+          },
+          {
+            "code": "2.5.1.1.9",
+            "name": "EW – Profiled sheet cladding systems"
+          },
+          {
+            "code": "2.5.1.1.11",
+            "name": "EW – Opening vents"
+          },
+          {
+            "code": "2.5.1.1.12",
+            "name": "EW – Integral blind"
+          },
+          {
+            "code": "2.5.1.1.25",
+            "name": "EW – External decorations"
+          },
+          {
+            "code": "2.5.1.1.27",
+            "name": "EW – Planted 'green' walls"
+          },
+          {
+            "code": "2.5.2.6.10",
+            "name": "EW – Photovoltaic part of curtain walling"
+          },
+          {
+            "code": "2.5.2.1",
+            "name": "External walls – state type (e.g. brickwork; cladding)"
+          },
+          {
+            "code": "2.5.2.1.4",
+            "name": "EW – Parapet walls"
+          },
+          {
+            "code": "2.5.2.1.6",
+            "name": "EW – Chimneys"
+          },
+          {
+            "code": "2.5.2.1.8",
+            "name": "EW – Curtain walling"
+          },
+          {
+            "code": "2.5.2.1.9",
+            "name": "EW – Structural glazing"
+          },
+          {
+            "code": "2.5.2.6.22",
+            "name": "EW – External decorations"
+          },
+          {
+            "code": "2.5.3.1",
+            "name": "EW – Vertical solar/rain screening"
+          },
+          {
+            "code": "2.5.3.2.4",
+            "name": "EW – Brise soleil system"
+          },
+          {
+            "code": "2.5.4.1",
+            "name": "EW – External soffits"
+          },
+          {
+            "code": "2.5.4.2.6",
+            "name": "EW – Cornices"
+          },
+          {
+            "code": "2.5.4.3.7",
+            "name": "EW – Shadow gaps"
+          },
+          {
+            "code": "2.5.4.4.8",
+            "name": "EW – Access hatches"
+          },
+          {
+            "code": "2.5.4.5.5",
+            "name": "EW – Decorations"
+          },
+          {
+            "code": "2.5.5.1.1",
+            "name": "Walls – Low level or dwarf walls, balustrades, handrails and railing to external walkways"
+          },
+          {
+            "code": "2.5.5.2.2",
+            "name": "Walls – Forming planters"
+          },
+          {
+            "code": "2.5.5.3.3",
+            "name": "Walls – Combined balustrades and handrails"
+          },
+          {
+            "code": "2.5.5.4.4",
+            "name": "Walls – Handrails"
+          },
+          {
+            "code": "2.5.5.5.5",
+            "name": "Walls – Railings and barriers"
+          },
+          {
+            "code": "2.5.5.6.6",
+            "name": "Walls – Juliet balconies"
+          },
+          {
+            "code": "2.5.5.7.7",
+            "name": "Walls – Rainwater downpipes"
+          },
+          {
+            "code": "2.5.5.8.7",
+            "name": "Walls – Floor outlets"
+          },
+          {
+            "code": "2.5.6.1.1",
+            "name": "Walls – Window/facade cleaning cradles"
+          },
+          {
+            "code": "2.5.6.1.2",
+            "name": "Walls – Combined facade/roof cleaning system"
+          },
+          {
+            "code": "2.5.6.1.3",
+            "name": "Walls – Building maintenance units"
+          },
+          {
+            "code": "2.5.6.1.4",
+            "name": "Walls – Other facade access systems"
+          }
+        ]
+      },
+      {
+        "code": "2.6",
+        "name": "Windows and external doors",
+        "assets": [
+          {
+            "code": "2.6.1.1.1",
+            "name": "External windows"
+          },
+          {
+            "code": "2.6.1.1.2",
+            "name": "Windows – Ironmongery"
+          },
+          {
+            "code": "2.6.1.1.8",
+            "name": "Windows – Solar/rain screening over cladding system"
+          },
+          {
+            "code": "2.6.1.1.9",
+            "name": "Photovoltaic glazing (integral to window system)"
+          },
+          {
+            "code": "2.6.1.1.10",
+            "name": "Canopies"
+          },
+          {
+            "code": "2.6.1.1.11",
+            "name": "Windows – Protective film applied"
+          },
+          {
+            "code": "2.6.1.1.14",
+            "name": "Windows (external) – Painting and decorating"
+          },
+          {
+            "code": "2.6.1.2.3",
+            "name": "Windows – Louvres and panels"
+          },
+          {
+            "code": "2.6.1.3.4",
+            "name": "Shop fronts"
+          },
+          {
+            "code": "2.6.1.4.5",
+            "name": "RS – Roller shutters, sliding shutters, grilles"
+          },
+          {
+            "code": "2.6.1.4.6",
+            "name": "RS – Fly screens and storm windows"
+          },
+          {
+            "code": "2.6.1.4.7",
+            "name": "RS – Integral blinds to windows"
+          },
+          {
+            "code": "2.6.1.4.12",
+            "name": "RS – External blinds, shutters, etc."
+          },
+          {
+            "code": "2.6.2.1.1",
+            "name": "ED – Entrance doors, frames, linings, doorsets"
+          },
+          {
+            "code": "2.6.2.1.2",
+            "name": "ED – Entrance screens and doors, inc frames"
+          },
+          {
+            "code": "2.6.2.1.4",
+            "name": "ED – Patio doors"
+          },
+          {
+            "code": "2.6.2.1.8",
+            "name": "ED – Manual and automatic doors"
+          },
+          {
+            "code": "2.6.2.1.11",
+            "name": "ED – Fanlights and side panels integral to doors"
+          },
+          {
+            "code": "2.6.2.1.13",
+            "name": "ED – Ironmongery"
+          },
+          {
+            "code": "2.6.2.1.14",
+            "name": "ED – Glazed vision panels"
+          },
+          {
+            "code": "2.6.2.1.15",
+            "name": "Ed – Painting and decorating"
+          },
+          {
+            "code": "2.6.2.1.16",
+            "name": "ED – Fly screens and storm windows"
+          },
+          {
+            "code": "2.6.2.1.17",
+            "name": "ED – Integral blinds to doors"
+          },
+          {
+            "code": "2.6.2.1.18",
+            "name": "ED – Solar / rain screen over cladding to doors"
+          },
+          {
+            "code": "2.6.2.2.3",
+            "name": "ED – Revolving doors"
+          },
+          {
+            "code": "2.6.2.3.7",
+            "name": "ED – External shop front doors"
+          },
+          {
+            "code": "2.6.2.4.6",
+            "name": "ED – Roller shutters, sliding shutters in doors"
+          },
+          {
+            "code": "2.6.2.5.5",
+            "name": "ED – Garage doors"
+          },
+          {
+            "code": "2.6.2.6.9",
+            "name": "ED – Canopies, etc. providing protection"
+          },
+          {
+            "code": "2.6.2.7.10",
+            "name": "ED – Grilles (fixed and folding)"
+          },
+          {
+            "code": "2.6.2.8.12",
+            "name": "ED – Architraves"
+          }
+        ]
+      },
+      {
+        "code": "2.7",
+        "name": "Internal walls and partitions (IW)",
+        "assets": [
+          {
+            "code": "2.7.1.1",
+            "name": "IW – Walls and partitions – state type (block; timber)"
+          },
+          {
+            "code": "2.7.1.1.3",
+            "name": "IW – Internal shop fronts"
+          },
+          {
+            "code": "2.7.1.1.9",
+            "name": "IW – Borrowed lights/screens, etc."
+          },
+          {
+            "code": "2.7.1.1.17",
+            "name": "IW – Integral blinds in partitions"
+          },
+          {
+            "code": "2.7.1.3.22",
+            "name": "IW – Fixed partitions"
+          },
+          {
+            "code": "2.7.2.1.1",
+            "name": "IW – Balustrades and handrails"
+          },
+          {
+            "code": "2.7.3.1.1",
+            "name": "IW – Moveable room dividers"
+          },
+          {
+            "code": "2.7.4.1.1",
+            "name": "IW – Proprietary pre finished panel cubicles"
+          }
+        ]
+      },
+      {
+        "code": "2.8",
+        "name": "Internal doors (ID)",
+        "assets": [
+          {
+            "code": "2.8.1.1.1",
+            "name": "ID – Doors, inc. standard doors or purpose made doors"
+          },
+          {
+            "code": "2.8.1.1.5",
+            "name": "ID – Glazed vision panels"
+          },
+          {
+            "code": "2.8.1.1.6",
+            "name": "ID – Sliding and folding doors in fixed partitions"
+          },
+          {
+            "code": "2.8.1.1.7",
+            "name": "ID – Hatches"
+          },
+          {
+            "code": "2.8.1.1.8",
+            "name": "ID – Ironmongery"
+          },
+          {
+            "code": "2.8.1.1.10",
+            "name": "ID – Painting and decorating"
+          },
+          {
+            "code": "2.8.1.2.1.A",
+            "name": "ID – Fire resisting doors"
+          },
+          {
+            "code": "2.8.1.3.3",
+            "name": "ID – Door sets"
+          },
+          {
+            "code": "2.8.1.4.4",
+            "name": "ID – Composite door and fanlight"
+          },
+          {
+            "code": "2.8.1.5.8",
+            "name": "ID – Roller/sliding door"
+          },
+          {
+            "code": "2.8.1.6.9",
+            "name": "ID – Architraves"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "3",
+    "name": "Internal finishes",
+    "subCategories": [
+      {
+        "code": "3.1",
+        "name": "Wall finishes (WF)",
+        "assets": [
+          {
+            "code": "3.1.1.1.1",
+            "name": "WF – Wall finishes (state type e.g. plaster; timber etc)"
+          },
+          {
+            "code": "3.1.1.1.3",
+            "name": "WF – Plasterboard or other sheet linings"
+          },
+          {
+            "code": "3.1.1.1.4",
+            "name": "WF – Specialist wall finishes"
+          },
+          {
+            "code": "3.1.1.1.12",
+            "name": "WF – Acoustic Insulation"
+          },
+          {
+            "code": "3.1.1.2.7",
+            "name": "WF – Picture and dado rail"
+          },
+          {
+            "code": "3.1.1.3.8",
+            "name": "WF – Wall protection"
+          }
+        ]
+      },
+      {
+        "code": "3.2",
+        "name": "Floor finishes (FF)",
+        "assets": [
+          {
+            "code": "3.2.1.1.1",
+            "name": "FF – Non structural screeds"
+          },
+          {
+            "code": "3.2.1.1.2",
+            "name": "FF – Latex screeds"
+          },
+          {
+            "code": "3.2.1.1.3",
+            "name": "FF – Chemical surface hardeners"
+          },
+          {
+            "code": "3.2.1.1.4",
+            "name": "FF – Floating floors"
+          },
+          {
+            "code": "3.2.1.1.5",
+            "name": "FF – Resin boned resilient layers"
+          },
+          {
+            "code": "3.2.1.1.6",
+            "name": "FF – Insitu floor finishes"
+          },
+          {
+            "code": "3.2.1.1.7",
+            "name": "FF – Hard tiled floor finishes"
+          },
+          {
+            "code": "3.2.1.1.8",
+            "name": "FF – Wood block"
+          },
+          {
+            "code": "3.2.1.1.9",
+            "name": "FF – Proprietary thin tiled and strip flooring"
+          },
+          {
+            "code": "3.2.1.1.10",
+            "name": "FF – Floor painting and sealing"
+          },
+          {
+            "code": "3.2.1.1.11",
+            "name": "FF – Carpets (edge fixed including underlay)"
+          },
+          {
+            "code": "3.2.1.1.12",
+            "name": "FF – Tile/sheet floors"
+          },
+          {
+            "code": "3.2.1.2.13",
+            "name": "FF – Timber sprung floor"
+          },
+          {
+            "code": "3.2.1.3.17",
+            "name": "FF – Skirtings"
+          },
+          {
+            "code": "3.2.1.4.18",
+            "name": "FF – Matwells"
+          },
+          {
+            "code": "3.2.1.5.15",
+            "name": "FF – Finishes to swimming pools"
+          },
+          {
+            "code": "3.2.1.6.19",
+            "name": "FF – Line markings"
+          },
+          {
+            "code": "3.2.1.7.19",
+            "name": "FF – Numerals and symbols"
+          },
+          {
+            "code": "3.2.2.1.1",
+            "name": "FF – Proprietary access floor system"
+          },
+          {
+            "code": "3.2.2.2",
+            "name": "FF – Skirtings"
+          }
+        ]
+      },
+      {
+        "code": "3.3",
+        "name": "Ceiling finishes (CF)",
+        "assets": [
+          {
+            "code": "3.3.1.1.1",
+            "name": "CF – Ceiling finishes"
+          },
+          {
+            "code": "3.3.1.1.3",
+            "name": "CF – In-situ coatings applied to ceilings"
+          },
+          {
+            "code": "3.3.1.1.4",
+            "name": "CF – Sprayed monolithic coatings"
+          },
+          {
+            "code": "3.3.1.1.5",
+            "name": "CF – Painting and decorating to ceilings"
+          },
+          {
+            "code": "3.3.1.1.7",
+            "name": "CF – Specialist ceiling finishes"
+          },
+          {
+            "code": "3.3.1.2.6",
+            "name": "CF – Cornices and covings"
+          },
+          {
+            "code": "3.3.2.1.1",
+            "name": "CF – Proprietary suspended ceiling systems, including suspension systems"
+          },
+          {
+            "code": "3.3.2.1.3",
+            "name": "CF – Insitu coatings"
+          },
+          {
+            "code": "3.3.2.1.4",
+            "name": "CF – Painting and decorating to false ceilings"
+          },
+          {
+            "code": "3.3.2.2.5",
+            "name": "CF – Cornices and covings"
+          },
+          {
+            "code": "3.3.2.3.7",
+            "name": "CF – Access hatches"
+          },
+          {
+            "code": "3.3.3.1",
+            "name": "CF – Demountable suspended ceilings"
+          },
+          {
+            "code": "3.3.3.2.6",
+            "name": "CF – Shadow gaps"
+          },
+          {
+            "code": "3.3.3.3.7",
+            "name": "CF – Access hatches"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "4",
+    "name": "Fittings, furnishings and equipment",
+    "subCategories": [
+      {
+        "code": "4.1",
+        "name": "Fittings, furnishings and equipment (FFE)",
+        "assets": [
+          {
+            "code": "4.1.1.1",
+            "name": "FFE – Fittings (state type)"
+          },
+          {
+            "code": "4.1.1.1.1",
+            "name": "FFE – Counters, desks & benches and worktops"
+          },
+          {
+            "code": "4.1.1.1.2",
+            "name": "FFE – Mirrors"
+          },
+          {
+            "code": "4.1.1.1.3",
+            "name": "FFE – Curtains, tracks, etc."
+          },
+          {
+            "code": "4.1.1.1.5",
+            "name": "FFE – Fireplace surrounds and hearths"
+          },
+          {
+            "code": "4.1.1.1.8",
+            "name": "FFE – Storage racks, shelving, etc."
+          },
+          {
+            "code": "4.1.1.1.10",
+            "name": "FFE – Fitted seating upholstery"
+          },
+          {
+            "code": "4.1.1.2",
+            "name": "FFE – Furnishings (state type)"
+          },
+          {
+            "code": "4.1.1.2.4",
+            "name": "FFE – Blinds"
+          },
+          {
+            "code": "4.1.1.2.6",
+            "name": "FFE – Wall hangings"
+          },
+          {
+            "code": "4.1.1.2.7",
+            "name": "FFE – Loose carpets"
+          },
+          {
+            "code": "4.1.1.2.9",
+            "name": "FFE – Tables and chairs"
+          },
+          {
+            "code": "4.1.1.2.11",
+            "name": "FFE – Bedroom furniture"
+          },
+          {
+            "code": "4.1.1.2.13",
+            "name": "FFE – Lockers, hat and coal rails"
+          },
+          {
+            "code": "4.1.1.3.14",
+            "name": "FFE – Hand held firefighting equipment – Water, Co2 etc"
+          },
+          {
+            "code": "4.1.1.3.15",
+            "name": "FFE – Bins"
+          },
+          {
+            "code": "4.1.1.3.16",
+            "name": "FFE – Safes"
+          },
+          {
+            "code": "4.1.1.3.17",
+            "name": "FFE – Vacuum cleaners and cleaning equipment"
+          },
+          {
+            "code": "4.1.1.3.18",
+            "name": "FFE – Televisions, hi-fi and computers"
+          },
+          {
+            "code": "4.1.1.3.19",
+            "name": "FFE – Vending machines"
+          },
+          {
+            "code": "4.1.1.3.20",
+            "name": "FFE – Telephone booths and enclosure"
+          },
+          {
+            "code": "4.1.2.1.1",
+            "name": "FFE – Domestic kitchen units"
+          },
+          {
+            "code": "4.1.2.1.2",
+            "name": "FFE – Sinks and taps etc, part of kitchen units"
+          },
+          {
+            "code": "4.1.2.1.8",
+            "name": "FFE – Kitchen equipment (taken in 4.1.2.3 to 7)"
+          },
+          {
+            "code": "4.1.2.1.9",
+            "name": "FFE – Other kitchen fittings and equipment"
+          },
+          {
+            "code": "4.1.2.2.3",
+            "name": "FFE – Catering equipment (ovens, hobs, etc.)"
+          },
+          {
+            "code": "4.1.2.2.4",
+            "name": "FFE – Refrigerators/freezers"
+          },
+          {
+            "code": "4.1.2.2.5",
+            "name": "FFE – Dishwashers"
+          },
+          {
+            "code": "4.1.2.2.6",
+            "name": "FFE – White goods (e.g. washing machine, dryers)"
+          },
+          {
+            "code": "4.1.2.3.7",
+            "name": "FFE – Waste bins, towel racks"
+          },
+          {
+            "code": "4.1.3.1.1",
+            "name": "FFE – Special purpose fittings (type for particular buildings such as educational; hospitals, factories, defence, farming, fishing, etc.)"
+          },
+          {
+            "code": "4.1.3.2.1",
+            "name": "FFE – Special purpose furnishings (type for particular buildings such as educational; hospitals and other by function usage)"
+          },
+          {
+            "code": "4.1.3.3.1",
+            "name": "FFE – Special purpose equipment (type for particular buildings such as educational; hospitals and others by function usage)"
+          },
+          {
+            "code": "4.1.3.3.2",
+            "name": "FFE – Other special purpose fittings, furnishings and equipment (state type)"
+          },
+          {
+            "code": "4.1.4.1.1",
+            "name": "FFE – Directional signboards"
+          },
+          {
+            "code": "4.1.4.1.2",
+            "name": "FFE – Notice boards, white boards, etc."
+          },
+          {
+            "code": "4.1.4.1.3",
+            "name": "FFE – Sign writing"
+          },
+          {
+            "code": "4.1.4.1.4",
+            "name": "FFE – Shop front lettering, emblems and symbols"
+          },
+          {
+            "code": "4.1.4.1.5",
+            "name": "FFE – Door or floor numbering or lettering"
+          },
+          {
+            "code": "4.1.4.1.6",
+            "name": "FFE – Nameplates, plaques and ID symbols"
+          },
+          {
+            "code": "4.1.4.1.7",
+            "name": "FFE – Lettering emblems and directional symbols"
+          },
+          {
+            "code": "4.1.5.1",
+            "name": "FFE – Works of art"
+          },
+          {
+            "code": "4.1.5.2.2",
+            "name": "FFE – Decorative features – including panels"
+          },
+          {
+            "code": "4.1.6.1.1",
+            "name": "FFE – Disabled access equipment"
+          },
+          {
+            "code": "4.1.6.1.2",
+            "name": "FFE – Other non-mechanical/electrical equipment"
+          },
+          {
+            "code": "4.1.6.2.2",
+            "name": "FFE – Removable Ladders"
+          },
+          {
+            "code": "4.1.7.1.2",
+            "name": "FFE – Planting container grown plants"
+          },
+          {
+            "code": "4.1.7.1.3",
+            "name": "FFE – Planting shrubs"
+          },
+          {
+            "code": "4.1.7.1.5",
+            "name": "FFE – Planting to containers"
+          },
+          {
+            "code": "4.1.7.1.7",
+            "name": "FFE – Watering feeding and maintenance"
+          },
+          {
+            "code": "4.1.7.4.8",
+            "name": "FFE – Replacement plants"
+          },
+          {
+            "code": "4.1.7.4.9",
+            "name": "FFE – Artificial plants"
+          },
+          {
+            "code": "4.1.7.2.1",
+            "name": "FFE – Internal prefabricated plant containers"
+          },
+          {
+            "code": "4.1.7.3.4",
+            "name": "FFE – Planting trees"
+          },
+          {
+            "code": "4.1.7.4.6",
+            "name": "FFE – Planting containers"
+          },
+          {
+            "code": "4.1.8.1",
+            "name": "FFE – Wires, nets and traps"
+          },
+          {
+            "code": "4.1.8.2.2",
+            "name": "FFE – Electronic and sonic systems"
+          },
+          {
+            "code": "4.1.8.3.3",
+            "name": "FFE – Bird repellent coatings"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "5",
+    "name": "Services",
+    "subCategories": [
+      {
+        "code": "5.1",
+        "name": "Sanitary appliances (SA)",
+        "assets": [
+          {
+            "code": "5.1.1.1.1",
+            "name": "SA – WC, slop hoppers, urinals/cisterns"
+          },
+          {
+            "code": "5.1.1.1.2",
+            "name": "SA – Sinks"
+          },
+          {
+            "code": "5.1.1.1.3",
+            "name": "SA – Wash basins"
+          },
+          {
+            "code": "5.1.1.1.4",
+            "name": "SA – Bidets"
+          },
+          {
+            "code": "5.1.1.1.5",
+            "name": "SA – Baths"
+          },
+          {
+            "code": "5.1.1.1.6",
+            "name": "SA – Shower trays"
+          },
+          {
+            "code": "5.1.1.1.7",
+            "name": "SA – Shower unit including head/hose"
+          },
+          {
+            "code": "5.1.1.1.8",
+            "name": "SA – Shower booster pumps"
+          },
+          {
+            "code": "5.1.1.1.9",
+            "name": "SA – Shower valves"
+          },
+          {
+            "code": "5.1.1.1.10",
+            "name": "SA – Drinking fountains"
+          },
+          {
+            "code": "5.1.1.1.11",
+            "name": "SA – Taps and waste fittings"
+          },
+          {
+            "code": "5.1.1.1.12",
+            "name": "SA – Water saving devices"
+          },
+          {
+            "code": "5.1.1.1.13",
+            "name": "SA – Automated controls and sensors"
+          },
+          {
+            "code": "5.1.2.1.1",
+            "name": "SA – Shower cubicles"
+          },
+          {
+            "code": "5.1.2.1.2",
+            "name": "SA – Bath/shower curtain and rails"
+          },
+          {
+            "code": "5.1.2.1.3",
+            "name": "SA – Grab/support rail"
+          },
+          {
+            "code": "5.1.2.1.4",
+            "name": "SA – Towel rails and holders"
+          },
+          {
+            "code": "5.1.2.1.5",
+            "name": "SA – Hand dryers"
+          },
+          {
+            "code": "5.1.2.1.6",
+            "name": "SA – Paper towel dispensers"
+          },
+          {
+            "code": "5.1.2.1.7",
+            "name": "SA – Sanitary incinerators (towel disposal)"
+          },
+          {
+            "code": "5.1.2.1.8",
+            "name": "SA – Macerators"
+          },
+          {
+            "code": "5.1.2.1.9",
+            "name": "SA – Other sanitary fittings (state type)"
+          }
+        ]
+      },
+      {
+        "code": "5.2",
+        "name": "Services equipment (SE)",
+        "assets": [
+          {
+            "code": "5.2.1.1.1",
+            "name": "SE – Catering equipment – state type"
+          },
+          {
+            "code": "5.2.1.1.2",
+            "name": "SE – Sinks – supplied with catering equipment"
+          },
+          {
+            "code": "5.2.1.1.3",
+            "name": "SE – Food storage equipment"
+          },
+          {
+            "code": "5.2.1.1.4",
+            "name": "SE – Other free standing/fixed equipment"
+          }
+        ]
+      },
+      {
+        "code": "5.3",
+        "name": "Disposal installations (DI)",
+        "assets": [
+          {
+            "code": "5.3.1.1.1",
+            "name": "DI – Waste pipes and fittings"
+          },
+          {
+            "code": "5.3.1.2.2",
+            "name": "DI – Discharge stacks and waste pipes"
+          },
+          {
+            "code": "5.3.1.2.3",
+            "name": "DI – Ventilation stacks and pipes"
+          },
+          {
+            "code": "5.3.1.2.4",
+            "name": "DI – Traps access points and rodding eyes"
+          },
+          {
+            "code": "5.3.1.2.5",
+            "name": "DI – Pipeline assemblies"
+          },
+          {
+            "code": "5.3.1.2.6",
+            "name": "DI – Floor channels and gratings"
+          },
+          {
+            "code": "5.3.1.2.7",
+            "name": "DI – Sump pumps"
+          },
+          {
+            "code": "5.3.2.1.1",
+            "name": "DI – Pipe work systems"
+          },
+          {
+            "code": "5.3.2.1.2",
+            "name": "DI – Traps access points and rodding eyes"
+          },
+          {
+            "code": "5.3.2.1.3",
+            "name": "DI – Gullies"
+          },
+          {
+            "code": "5.3.2.1.5",
+            "name": "DI – Storage tanks and vessels"
+          },
+          {
+            "code": "5.3.2.1.6",
+            "name": "DI – Settlement tanks"
+          },
+          {
+            "code": "5.3.2.1.7",
+            "name": "DI – Effluent treatment plant"
+          },
+          {
+            "code": "5.3.2.1.8",
+            "name": "DI – Dosing equipment"
+          },
+          {
+            "code": "5.3.2.1.9",
+            "name": "DI – Sterilisation equipment"
+          },
+          {
+            "code": "5.3.2.1.11",
+            "name": "DI – Thermal insulation"
+          },
+          {
+            "code": "5.3.2.1.13",
+            "name": "DI – Control components"
+          },
+          {
+            "code": "5.3.2.1.14",
+            "name": "DI – Monitoring equipment"
+          },
+          {
+            "code": "5.3.2.1.15",
+            "name": "DI – Painting anti-corrosion treatments"
+          },
+          {
+            "code": "5.3.3.1.1",
+            "name": "DI – Refuse input devices"
+          },
+          {
+            "code": "5.3.3.1.2",
+            "name": "DI – Refuse chutes and ducts"
+          },
+          {
+            "code": "5.3.3.1.3",
+            "name": "DI – Plant for compacting/macerating refuse"
+          },
+          {
+            "code": "5.3.3.1.4",
+            "name": "DI – Refuse collection equipment"
+          },
+          {
+            "code": "5.3.3.1.5",
+            "name": "DI – Incineration plant"
+          },
+          {
+            "code": "5.3.3.1.6",
+            "name": "DI – Paper shredders"
+          },
+          {
+            "code": "5.3.3.1.7",
+            "name": "DI – Safety devices"
+          }
+        ]
+      },
+      {
+        "code": "5.4",
+        "name": "Water installations (WI)",
+        "assets": [
+          {
+            "code": "5.4.1.1.1",
+            "name": "WI – Pipe work systems"
+          },
+          {
+            "code": "5.4.1.1.2",
+            "name": "WI – Valves"
+          },
+          {
+            "code": "5.4.1.1.3",
+            "name": "WI – Water meters"
+          },
+          {
+            "code": "5.4.1.1.4",
+            "name": "WI – Rising main to storage tanks"
+          },
+          {
+            "code": "5.4.1.1.5",
+            "name": "WI – Trace heating"
+          },
+          {
+            "code": "5.4.1.1.7",
+            "name": "WI – Thermal insulation"
+          },
+          {
+            "code": "5.4.2.1.1",
+            "name": "WI – CW Pipe work systems"
+          },
+          {
+            "code": "5.4.2.1.2",
+            "name": "WI – Valves"
+          },
+          {
+            "code": "5.4.2.1.3",
+            "name": "WI – Water saving devices"
+          },
+          {
+            "code": "5.4.2.1.4",
+            "name": "WI – Taps"
+          },
+          {
+            "code": "5.4.2.1.5",
+            "name": "WI – Pumps"
+          },
+          {
+            "code": "5.4.2.1.6",
+            "name": "WI – Pressurisation units"
+          },
+          {
+            "code": "5.4.2.1.7",
+            "name": "WI – Pressure booster sets"
+          },
+          {
+            "code": "5.4.2.1.8",
+            "name": "WI – Cold water storage tanks and cisterns"
+          },
+          {
+            "code": "5.4.2.1.9",
+            "name": "WI – Trace heating"
+          },
+          {
+            "code": "5.4.2.1.10",
+            "name": "WI – Instrumentation and controls"
+          },
+          {
+            "code": "5.4.2.1.11",
+            "name": "WI – Thermal insulation"
+          },
+          {
+            "code": "5.4.2.2.2",
+            "name": "WI – Storage tanks"
+          },
+          {
+            "code": "5.4.2.3.12",
+            "name": "WI – Rainwater harvesting"
+          },
+          {
+            "code": "5.4.2.3A.13",
+            "name": "WI – Grey water collection pipe systems"
+          },
+          {
+            "code": "5.4.2.6.1",
+            "name": "WI – Train water points"
+          },
+          {
+            "code": "5.4.2.6.2",
+            "name": "WI – Vehicle washing points"
+          },
+          {
+            "code": "5.4.3.1.1",
+            "name": "WI – Hot water systems (vented or unvented)"
+          },
+          {
+            "code": "5.4.3.1.2",
+            "name": "WI – Valves"
+          },
+          {
+            "code": "5.4.3.1.3",
+            "name": "WI – Water saving devices"
+          },
+          {
+            "code": "5.4.3.1.4",
+            "name": "WI – Taps"
+          },
+          {
+            "code": "5.4.3.1.5",
+            "name": "WI – Pumps"
+          },
+          {
+            "code": "5.4.3.1.6",
+            "name": "WI – Heat exchangers"
+          },
+          {
+            "code": "5.4.3.1.7",
+            "name": "WI – Storage cylinders and calorifiers"
+          },
+          {
+            "code": "5.4.3.1.8",
+            "name": "WI – Trace heating"
+          },
+          {
+            "code": "5.4.3.1.9",
+            "name": "WI – Hot water storage tanks"
+          },
+          {
+            "code": "5.4.3.1.10",
+            "name": "WI – Immersion heaters"
+          },
+          {
+            "code": "5.4.3.1.11",
+            "name": "WI – Insulation combination units"
+          },
+          {
+            "code": "5.4.3.1.12",
+            "name": "WI – Water softeners"
+          },
+          {
+            "code": "5.4.3.1.13",
+            "name": "WI – Instrumentation and controls"
+          },
+          {
+            "code": "5.4.3.1.14",
+            "name": "WI – Thermal insulation"
+          },
+          {
+            "code": "5.4.4.1.1",
+            "name": "WI – Instant water heaters"
+          },
+          {
+            "code": "5.4.4.1.2",
+            "name": "WI – Under-sink, multipoint and over sink units"
+          },
+          {
+            "code": "5.4.5.1.1",
+            "name": "WI – Steam services pipe work systems"
+          },
+          {
+            "code": "5.4.5.1.2",
+            "name": "WI – Valves"
+          },
+          {
+            "code": "5.4.5.1.3",
+            "name": "WI – Steam reduction stations"
+          },
+          {
+            "code": "5.4.5.1.4",
+            "name": "WI – Condensate receivers"
+          },
+          {
+            "code": "5.4.5.1.5",
+            "name": "WI – Condensate pump sets"
+          },
+          {
+            "code": "5.4.5.1.6",
+            "name": "WI – Steam connection units"
+          },
+          {
+            "code": "5.4.5.1.7",
+            "name": "WI – Taps"
+          },
+          {
+            "code": "5.4.5.1.8",
+            "name": "WI – Heat exchangers"
+          },
+          {
+            "code": "5.4.5.1.9",
+            "name": "WI – Storage cylinders and calorifiers"
+          },
+          {
+            "code": "5.4.5.1.10",
+            "name": "WI – Instrumentation and controls"
+          },
+          {
+            "code": "5.4.5.1.11",
+            "name": "WI – Thermal insulation"
+          }
+        ]
+      },
+      {
+        "code": "5.5",
+        "name": "Heat source (HS)",
+        "assets": [
+          {
+            "code": "5.5.1.1.1",
+            "name": "HS – Boilers Biomass"
+          },
+          {
+            "code": "5.5.1.1.2",
+            "name": "HS – Boiler Gas/oil"
+          },
+          {
+            "code": "5.5.1.1.2.A",
+            "name": "HS – Boiler Steam"
+          },
+          {
+            "code": "5.5.1.1.3",
+            "name": "HS – Coal-fired boiler plant and ancillary items"
+          },
+          {
+            "code": "5.5.1.1.4",
+            "name": "HS – Boiler Electric"
+          },
+          {
+            "code": "5.5.1.1.5",
+            "name": "HS – Packaged steam generators"
+          },
+          {
+            "code": "5.5.1.1.6",
+            "name": "HS – Boiler Wood pellet"
+          },
+          {
+            "code": "5.5.1.1.7",
+            "name": "HS – Central combined heat and power plant"
+          },
+          {
+            "code": "5.5.1.1.8",
+            "name": "HS – Heat pumps"
+          },
+          {
+            "code": "5.5.1.1.9",
+            "name": "HS – Ground source heating"
+          },
+          {
+            "code": "5.5.1.1.10",
+            "name": "HS – Pumps"
+          },
+          {
+            "code": "5.5.1.1.10.A",
+            "name": "HS – Valves"
+          },
+          {
+            "code": "5.5.1.1.11",
+            "name": "HS – Step down/non storage cylinders"
+          },
+          {
+            "code": "5.5.1.1.12",
+            "name": "HS – Solar thermal panels"
+          },
+          {
+            "code": "5.5.1.1.13",
+            "name": "HS – Other heat sources (air source heating)"
+          },
+          {
+            "code": "5.5.1.1.14",
+            "name": "HS – Water tanks (header tanks)"
+          },
+          {
+            "code": "5.5.1.1.15",
+            "name": "HS – Vibration isolation mountings"
+          },
+          {
+            "code": "5.5.1.1.16",
+            "name": "HS – Instrumentation and controls"
+          },
+          {
+            "code": "5.5.1.1.17",
+            "name": "HS – Forced draft fans"
+          },
+          {
+            "code": "5.5.1.1.18",
+            "name": "HS – Gantries"
+          },
+          {
+            "code": "5.5.1.1.19",
+            "name": "HS – Chimneys and flues"
+          },
+          {
+            "code": "5.5.1.1.20",
+            "name": "HS – Forced draft extract"
+          }
+        ]
+      },
+      {
+        "code": "5.6",
+        "name": "Space heating and air conditioning (SHAC)",
+        "assets": [
+          {
+            "code": "5.6.1.1.1",
+            "name": "SHAC – Central heating system"
+          },
+          {
+            "code": "5.6.1.1.2",
+            "name": "SHAC – Heat distribution pipework systems"
+          },
+          {
+            "code": "5.6.1.1.3",
+            "name": "SHAC – Heat emission units (e.g. radiators, etc.)"
+          },
+          {
+            "code": "5.6.1.1.4",
+            "name": "SHAC – Under floor heating"
+          },
+          {
+            "code": "5.6.1.1.5",
+            "name": "SHAC – Heating ceiling panels"
+          },
+          {
+            "code": "5.6.1.1.6",
+            "name": "SHAC – Warm air heating"
+          },
+          {
+            "code": "5.6.1.1.7",
+            "name": "SHAC – Convection systems"
+          },
+          {
+            "code": "5.6.1.1.8",
+            "name": "SHAC – Fan assisted convection systems"
+          },
+          {
+            "code": "5.6.1.1.9",
+            "name": "SHAC – Cable heating systems"
+          },
+          {
+            "code": "5.6.1.1.10",
+            "name": "SHAC – Plenum air-heating systems"
+          },
+          {
+            "code": "5.6.1.1.11",
+            "name": "SHAC – Off peak heating system"
+          },
+          {
+            "code": "5.6.1.1.12",
+            "name": "SHAC – Distribution pipelines"
+          },
+          {
+            "code": "5.6.1.1.13",
+            "name": "SHAC – Heated towel rails"
+          },
+          {
+            "code": "5.6.1.1.14",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.1.1.15",
+            "name": "SHAC – Ductwork"
+          },
+          {
+            "code": "5.6.1.1.16",
+            "name": "SHAC – Air handling equipment"
+          },
+          {
+            "code": "5.6.1.1.17",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.1.1.18",
+            "name": "SHAC – Plate recuperator"
+          },
+          {
+            "code": "5.6.1.1.19",
+            "name": "SHAC – Thermal wheel"
+          },
+          {
+            "code": "5.6.1.1.20",
+            "name": "SHAC – Duct heat recovery – electric"
+          },
+          {
+            "code": "5.6.1.1.21",
+            "name": "SHAC – Cables"
+          },
+          {
+            "code": "5.6.1.1.22",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.1.1.23",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.2.1.1",
+            "name": "SHAC – Heat emitters"
+          },
+          {
+            "code": "5.6.2.1.2",
+            "name": "SHAC – Chimneys and flues"
+          },
+          {
+            "code": "5.6.2.1.3",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.3.1.1",
+            "name": "SHAC – Chilled beams"
+          },
+          {
+            "code": "5.6.3.1.2",
+            "name": "SHAC – Terminal units – fan coils"
+          },
+          {
+            "code": "5.6.3.1.3",
+            "name": "SHAC – Terminal units – VAV"
+          },
+          {
+            "code": "5.6.3.1.4",
+            "name": "SHAC – Terminal units – VRV"
+          },
+          {
+            "code": "5.6.3.1.5",
+            "name": "SHAC – Chillers"
+          },
+          {
+            "code": "5.6.3.1.6",
+            "name": "SHAC – Central refrigeration plant"
+          },
+          {
+            "code": "5.6.3.1.7",
+            "name": "SHAC – Cooling towers"
+          },
+          {
+            "code": "5.6.3.1.8",
+            "name": "SHAC – Pipework systems"
+          },
+          {
+            "code": "5.6.3.1.9",
+            "name": "SHAC – Cold and treated water feeds"
+          },
+          {
+            "code": "5.6.3.1.10",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.3.1.11",
+            "name": "SHAC – Pumps"
+          },
+          {
+            "code": "5.6.3.1.12",
+            "name": "SHAC – Distribution ductwork and fittings"
+          },
+          {
+            "code": "5.6.3.1.13",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.3.1.13.A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.3.1.14",
+            "name": "SHAC – Air handling units"
+          },
+          {
+            "code": "5.6.3.1.14.A",
+            "name": "SHAC – Filters"
+          },
+          {
+            "code": "5.6.3.1.15",
+            "name": "SHAC – Emission units"
+          },
+          {
+            "code": "5.6.3.1.16",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.3.1.17",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.4.1.1",
+            "name": "SHAC – Air conditioning units"
+          },
+          {
+            "code": "5.6.4.1.2",
+            "name": "SHAC – Pipe work systems"
+          },
+          {
+            "code": "5.6.4.1.3",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.4.1.4",
+            "name": "SHAC – Ductwork system"
+          },
+          {
+            "code": "5.6.4.1.5",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.4.1.5.A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.4.1.6",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.4.1.7",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.5.1.1",
+            "name": "SHAC – Terminal units – fan coils"
+          },
+          {
+            "code": "5.6.5.1.2",
+            "name": "SHAC – Terminal units – VAV"
+          },
+          {
+            "code": "5.6.5.1.3",
+            "name": "SHAC – Reverse cycle heat pump systems"
+          },
+          {
+            "code": "5.6.5.1.4",
+            "name": "SHAC – Chillers"
+          },
+          {
+            "code": "5.6.5.1.5",
+            "name": "SHAC – Pipe work systems"
+          },
+          {
+            "code": "5.6.5.1.6",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.5.1.7",
+            "name": "SHAC – Pumps"
+          },
+          {
+            "code": "5.6.5.1.8",
+            "name": "SHAC – Ductwork systems"
+          },
+          {
+            "code": "5.6.5.1.9",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.5.1.9.A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.5.1.10",
+            "name": "SHAC – Air handling units"
+          },
+          {
+            "code": "5.6.5.1.10.A",
+            "name": "SHAC – AHU Filters"
+          },
+          {
+            "code": "5.6.5.1.11",
+            "name": "SHAC – Emission units"
+          },
+          {
+            "code": "5.6.5.1.12",
+            "name": "SHAC – Vibration isolation mountings"
+          },
+          {
+            "code": "5.6.5.1.13",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.5.1.14",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.6.1.1",
+            "name": "SHAC – Split systems / DX systems"
+          },
+          {
+            "code": "5.6.6.1.2",
+            "name": "SHAC – Pipework systems"
+          },
+          {
+            "code": "5.6.6.1.3",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.6.1.4",
+            "name": "SHAC – Pumps"
+          },
+          {
+            "code": "5.6.6.1.5",
+            "name": "SHAC – Ductwork system"
+          },
+          {
+            "code": "5.6.6.1.6",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.6.1.6.A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.6.1.7",
+            "name": "SHAC – Vibration isolation mountings"
+          },
+          {
+            "code": "5.6.6.1.8",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.6.1.9",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.7.1.1",
+            "name": "SHAC – Plenum air – heating systems"
+          },
+          {
+            "code": "5.6.7.1.2",
+            "name": "SHAC – Central air conditioning systems – VAV"
+          },
+          {
+            "code": "5.6.7.1.3",
+            "name": "SHAC – Humidifiers"
+          },
+          {
+            "code": "5.6.7.1.4",
+            "name": "SHAC – Multi-zone air conditioning systems"
+          },
+          {
+            "code": "5.6.7.1.5",
+            "name": "SHAC – Induction air conditioning systems"
+          },
+          {
+            "code": "5.6.7.1.6",
+            "name": "SHAC – Hybrid air conditioning systems"
+          },
+          {
+            "code": "5.6.7.1.7",
+            "name": "SHAC – Chillers"
+          },
+          {
+            "code": "5.6.7.1.8",
+            "name": "SHAC – Air handling units"
+          },
+          {
+            "code": "5.6.7.1.8.A",
+            "name": "SHAVC – AHU Filters"
+          },
+          {
+            "code": "5.6.7.1.9",
+            "name": "SHAC – Terminal units / emitters"
+          },
+          {
+            "code": "5.6.7.1.10",
+            "name": "SHAC – Distribution pipelines systems"
+          },
+          {
+            "code": "5.6.7.1.11",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.7.1.12",
+            "name": "SHAC – Pumps"
+          },
+          {
+            "code": "5.6.7.1.13",
+            "name": "SHAC – Ductwork system"
+          },
+          {
+            "code": "5.6.7.1.14",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.7.1.14.A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.7.1.15",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.7.1.16",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.8.1.1",
+            "name": "SHAC – Room air conditioning units"
+          },
+          {
+            "code": "5.6.8.1.2",
+            "name": "SHAC – Clean room air conditioning units"
+          },
+          {
+            "code": "5.6.8.1.3",
+            "name": "SHAC – Pipework systems"
+          },
+          {
+            "code": "5.6.8.1.4",
+            "name": "SHAC – Valves"
+          },
+          {
+            "code": "5.6.8.1.5",
+            "name": "SHAC – Pumps"
+          },
+          {
+            "code": "5.6.8.1.6",
+            "name": "SHAC – Ductwork system"
+          },
+          {
+            "code": "5.6.8.1.7",
+            "name": "SHAC – Grilles and diffusers"
+          },
+          {
+            "code": "5.6.8.1.7A",
+            "name": "SHAC – Fans"
+          },
+          {
+            "code": "5.6.8.1.8",
+            "name": "SHAC – Vibration isolation mountings"
+          },
+          {
+            "code": "5.6.8.1.9",
+            "name": "SHAC – Instrumentation and controls"
+          },
+          {
+            "code": "5.6.8.1.10",
+            "name": "SHAC – Thermal insulation"
+          },
+          {
+            "code": "5.6.8.1.11",
+            "name": "SHAC – Air curtains"
+          }
+        ]
+      },
+      {
+        "code": "5.7",
+        "name": "Ventilation systems (VS)",
+        "assets": [
+          {
+            "code": "5.7.1.1.1",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.1.1.2",
+            "name": "VS – Air supply and extract"
+          },
+          {
+            "code": "5.7.1.1.2.A",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.1.1.3",
+            "name": "VS – Extract units/terminal units"
+          },
+          {
+            "code": "5.7.1.1.4",
+            "name": "VS – Fan units"
+          },
+          {
+            "code": "5.7.1.1.5",
+            "name": "VS – Ductwork systems"
+          },
+          {
+            "code": "5.7.1.1.6",
+            "name": "VS – Grilles and diffusers"
+          },
+          {
+            "code": "5.7.1.1.7",
+            "name": "VS – Distribution pipelines system"
+          },
+          {
+            "code": "5.7.1.1.8",
+            "name": "VS – Valves"
+          },
+          {
+            "code": "5.7.1.1.9",
+            "name": "VS – Pumps"
+          },
+          {
+            "code": "5.7.1.1.10",
+            "name": "VS – Vibration isolation mountings"
+          },
+          {
+            "code": "5.7.1.1.11",
+            "name": "VS – Instrumentation and controls"
+          },
+          {
+            "code": "5.7.2.1.1",
+            "name": "VS – Toilet extract system"
+          },
+          {
+            "code": "5.7.2.1.1.A",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.2.2.2",
+            "name": "VS – Kitchen ventilation units"
+          },
+          {
+            "code": "5.7.2.3.3",
+            "name": "VS – Safety cabinet and fume cupboards"
+          },
+          {
+            "code": "5.7.2.4.4",
+            "name": "VS – Fume extracts"
+          },
+          {
+            "code": "5.7.2.5.5",
+            "name": "VS – Dust collection units"
+          },
+          {
+            "code": "5.7.2.6.6",
+            "name": "VS – Anaesthetic gas extracts"
+          },
+          {
+            "code": "5.7.2.7.7",
+            "name": "VS – Cyclone systems"
+          },
+          {
+            "code": "5.7.2.8.8",
+            "name": "VS – Unit extract fans"
+          },
+          {
+            "code": "5.7.2.9.9",
+            "name": "VS – Rotating ventilators"
+          },
+          {
+            "code": "5.7.2.9.9.A",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.2.10.10",
+            "name": "VS – Roof-mounted ventilation units"
+          },
+          {
+            "code": "5.7.2.11.11",
+            "name": "VS – Car parking ventilation"
+          },
+          {
+            "code": "5.7.2.11.11.A",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.2.12.12",
+            "name": "VS – Ductwork system"
+          },
+          {
+            "code": "5.7.2.12.13",
+            "name": "VS – Grilles and diffusers"
+          },
+          {
+            "code": "5.7.2.12.13.A",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.2.12.14",
+            "name": "VS – Vibration isolation mountings"
+          },
+          {
+            "code": "5.7.2.12.15",
+            "name": "VS – Instrumentation and controls"
+          },
+          {
+            "code": "5.7.3.1.1",
+            "name": "VS – Smoke extract"
+          },
+          {
+            "code": "5.7.3.1.2",
+            "name": "VS – Automatic smoke compartmentalisation"
+          },
+          {
+            "code": "5.7.3.1.3",
+            "name": "VS – Fans"
+          },
+          {
+            "code": "5.7.3.1.4",
+            "name": "VS – Ductwork systems"
+          },
+          {
+            "code": "5.7.3.1.5",
+            "name": "VS – Grilles and diffusers"
+          },
+          {
+            "code": "5.7.3.1.6",
+            "name": "VS – Vibration isolation mountings"
+          },
+          {
+            "code": "5.7.3.1.7",
+            "name": "VS – Instrumentation and controls"
+          }
+        ]
+      },
+      {
+        "code": "5.8",
+        "name": "Electrical installations (EI)",
+        "assets": [
+          {
+            "code": "5.8.1.1.1",
+            "name": "EI – LV distribution"
+          },
+          {
+            "code": "5.8.1.1.2",
+            "name": "EI – HV switch gear"
+          },
+          {
+            "code": "5.8.1.1.3",
+            "name": "EI – LV switchgear and distribution boards"
+          },
+          {
+            "code": "5.8.1.1.4",
+            "name": "EI – HV and LV cables and wiring"
+          },
+          {
+            "code": "5.8.1.1.5",
+            "name": "EI – Conduits and cable trunking"
+          },
+          {
+            "code": "5.8.1.1.6",
+            "name": "EI – Busbar trunking"
+          },
+          {
+            "code": "5.8.1.1.7",
+            "name": "EI – Earthing and bonding"
+          },
+          {
+            "code": "5.8.1.1.8",
+            "name": "EI – Transformers"
+          },
+          {
+            "code": "5.8.1.1.9",
+            "name": "EI – Fuse pillars, base units, etc."
+          },
+          {
+            "code": "5.8.1.1.10",
+            "name": "EI – Surge protection"
+          },
+          {
+            "code": "5.8.1.1.11",
+            "name": "EI – Electricity monitoring system"
+          },
+          {
+            "code": "5.8.2.1.1",
+            "name": "EI – General LV power installations"
+          },
+          {
+            "code": "5.8.2.1.2",
+            "name": "EI – Extra LV supply installations"
+          },
+          {
+            "code": "5.8.2.1.3",
+            "name": "EI – DC installations"
+          },
+          {
+            "code": "5.8.2.1.4",
+            "name": "EI – Distribution boards (PDUs)"
+          },
+          {
+            "code": "5.8.2.1.5",
+            "name": "EI – UPS system"
+          },
+          {
+            "code": "5.8.2.1.6",
+            "name": "EI – Cables and wiring"
+          },
+          {
+            "code": "5.8.2.1.7",
+            "name": "EI – Conduits and cable trunking"
+          },
+          {
+            "code": "5.8.2.1.8",
+            "name": "EI – Earthing and bonding"
+          },
+          {
+            "code": "5.8.2.1.9",
+            "name": "EI – Socket outlets"
+          },
+          {
+            "code": "5.8.2.1.11",
+            "name": "EI – Specialist power installations"
+          },
+          {
+            "code": "5.8.2.2.14.A",
+            "name": "EI – PAT Testing"
+          },
+          {
+            "code": "5.8.2.2.14.B",
+            "name": "EI – Fixed electrical wire testing"
+          },
+          {
+            "code": "5.8.3.1.1",
+            "name": "EI – Light fittings – general"
+          },
+          {
+            "code": "5.8.3.1.2",
+            "name": "EI – Emergency lighting"
+          },
+          {
+            "code": "5.8.3.1.3",
+            "name": "EI – External lighting"
+          },
+          {
+            "code": "5.8.3.1.4",
+            "name": "EI – LV switchgear and distribution boards"
+          },
+          {
+            "code": "5.8.3.1.5",
+            "name": "EI – Cables and wiring"
+          },
+          {
+            "code": "5.8.3.1.6",
+            "name": "EI – Conduits and cable trunking"
+          },
+          {
+            "code": "5.8.3.1.7",
+            "name": "EI – Earthing and bonding"
+          },
+          {
+            "code": "5.8.3.1.8",
+            "name": "EI – Fittings to lighting points"
+          },
+          {
+            "code": "5.8.3.1.9",
+            "name": "EI – Lighting switches"
+          },
+          {
+            "code": "5.8.3.1.10",
+            "name": "EI – Luminaries/lamps"
+          },
+          {
+            "code": "5.8.3.1.11",
+            "name": "EI – Lighting control equipment"
+          },
+          {
+            "code": "5.8.4.1.1",
+            "name": "EI – Illuminated display units"
+          },
+          {
+            "code": "5.8.4.1.2",
+            "name": "EI – Studio lighting"
+          },
+          {
+            "code": "5.8.4.1.3",
+            "name": "EI – Auditorium lighting"
+          },
+          {
+            "code": "5.8.4.1.4",
+            "name": "EI – Arena lighting"
+          },
+          {
+            "code": "5.8.4.1.5",
+            "name": "EI – Operating theatre lighting"
+          },
+          {
+            "code": "5.8.4.1.6",
+            "name": "EI – LV switchgear and distribution boards"
+          },
+          {
+            "code": "5.8.4.1.7",
+            "name": "EI – Cables and wiring"
+          },
+          {
+            "code": "5.8.4.1.8",
+            "name": "EI – Conduits and cable trunking"
+          },
+          {
+            "code": "5.8.4.1.9",
+            "name": "EI – Earthing and bonding"
+          },
+          {
+            "code": "5.8.4.1.10",
+            "name": "EI – Fittings to lighting points"
+          },
+          {
+            "code": "5.8.4.1.11",
+            "name": "EI – Switches"
+          },
+          {
+            "code": "5.8.4.1.12",
+            "name": "EI – Luminaries/lamps"
+          },
+          {
+            "code": "5.8.4.1.13",
+            "name": "EI – Lighting gantries"
+          },
+          {
+            "code": "5.8.4.1.14",
+            "name": "EI – Lighting control equipment"
+          },
+          {
+            "code": "5.8.5.1.1",
+            "name": "EI – Standby generator"
+          },
+          {
+            "code": "5.8.5.1.2",
+            "name": "EI – Ancillary cables and wiring"
+          },
+          {
+            "code": "5.8.5.4.1",
+            "name": "EI – Wind turbines"
+          },
+          {
+            "code": "5.8.5.5.2",
+            "name": "EI – Photovoltaic devices"
+          },
+          {
+            "code": "5.8.5.5.3",
+            "name": "EI – Solar collectors"
+          },
+          {
+            "code": "5.8.5.6.4",
+            "name": "EI – Other transformation devices"
+          },
+          {
+            "code": "5.8.5.4.5",
+            "name": "EI – Generators"
+          },
+          {
+            "code": "5.8.5.4.6",
+            "name": "EI – Ancillary cables and wiring, etc."
+          },
+          {
+            "code": "5.8.6.1.1",
+            "name": "EI – Earthing and bonding cables"
+          },
+          {
+            "code": "5.8.6.1.2",
+            "name": "EI – Protective conductor earthing"
+          },
+          {
+            "code": "5.8.6.1.3.A",
+            "name": "EI – Hazardous areas (electrics) earthing"
+          }
+        ]
+      },
+      {
+        "code": "5.9",
+        "name": "Fuel installations",
+        "assets": [
+          {
+            "code": "5.9.1.1.1",
+            "name": "Fuel systems – oil, petrol, diesel and liquified petroleum gas, biomass and others"
+          },
+          {
+            "code": "5.9.1.1.2",
+            "name": "Fuel – Storage tanks and vessels"
+          },
+          {
+            "code": "5.9.1.1.5",
+            "name": "Fuel – Thermal insulation"
+          },
+          {
+            "code": "5.9.2.1.1",
+            "name": "Fuel systems – oil, petrol, diesel and liquified petroleum gas, biomass and others"
+          },
+          {
+            "code": "5.9.2.1.2",
+            "name": "Fuel – Pipework systems"
+          },
+          {
+            "code": "5.9.2.1.3",
+            "name": "Fuel – Pumps"
+          },
+          {
+            "code": "5.9.2.1.3.A",
+            "name": "Flue – Valves"
+          },
+          {
+            "code": "5.9.2.1.4",
+            "name": "Flue – Bracketry"
+          },
+          {
+            "code": "5.9.2.1.5",
+            "name": "Fuel – Gas distribution components"
+          },
+          {
+            "code": "5.9.2.1.6",
+            "name": "Fuel – Terminal control equipment"
+          },
+          {
+            "code": "5.9.2.1.7",
+            "name": "Fuel – Thermal insulation"
+          },
+          {
+            "code": "5.9.2.1.8",
+            "name": "Fuel – Monitoring equipment"
+          }
+        ]
+      },
+      {
+        "code": "5.10",
+        "name": "Lift and conveyor installations",
+        "assets": [
+          {
+            "code": "5.10.1.1.1",
+            "name": "Lifts – Complete lift installations"
+          },
+          {
+            "code": "5.10.1.1.2",
+            "name": "Lifts – Fire fighting"
+          },
+          {
+            "code": "5.10.1.2.3",
+            "name": "Lifts – Wall climbing"
+          },
+          {
+            "code": "5.10.1.2.4",
+            "name": "Lifts – Gantries, trolley and blocks"
+          },
+          {
+            "code": "5.10.1.2.5",
+            "name": "Lifts controls and electrical works"
+          },
+          {
+            "code": "5.10.1.3.1",
+            "name": "Lifts – Complete lift installations"
+          },
+          {
+            "code": "5.10.1.6.1",
+            "name": "Hoists, kitchen service and dumb waiters"
+          },
+          {
+            "code": "5.10.1.6.2",
+            "name": "Complete hoist installations"
+          },
+          {
+            "code": "5.10.1.6.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.2.1.1",
+            "name": "Escalators"
+          },
+          {
+            "code": "5.10.2.1.2",
+            "name": "Ancillary components"
+          },
+          {
+            "code": "5.10.2.1.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.3.1.1",
+            "name": "Moving platforms"
+          },
+          {
+            "code": "5.10.3.1.2",
+            "name": "Travelators"
+          },
+          {
+            "code": "5.10.3.1.3",
+            "name": "Stair lifts"
+          },
+          {
+            "code": "5.10.3.1.4",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.4.1.1",
+            "name": "Complete powered stair life installations"
+          },
+          {
+            "code": "5.10.4.1.2",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.5.1.1",
+            "name": "Complete conveyor systems"
+          },
+          {
+            "code": "5.10.5.1.2",
+            "name": "Specialist system (baggage handling)"
+          },
+          {
+            "code": "5.10.5.1.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.5.2.1",
+            "name": "Complete conveyor systems"
+          },
+          {
+            "code": "5.10.5.2.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.6.1.1",
+            "name": "Dock levellers, including canopy"
+          },
+          {
+            "code": "5.10.6.1.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.6.2.2",
+            "name": "Scissor lifts"
+          },
+          {
+            "code": "5.10.6.2.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.7.1.1",
+            "name": "Cranes"
+          },
+          {
+            "code": "5.10.7.1.4",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.7.2.2",
+            "name": "Travelling cranes"
+          },
+          {
+            "code": "5.10.7.2.4",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.7.3.3",
+            "name": "Unenclosed hoists and other lifting systems"
+          },
+          {
+            "code": "5.10.7.3.4",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.8.1.1",
+            "name": "Car lifts"
+          },
+          {
+            "code": "5.10.8.1.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.8.2.2",
+            "name": "Car stacking"
+          },
+          {
+            "code": "5.10.8.2.3",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.8.3.3",
+            "name": "Vehicle turntables"
+          },
+          {
+            "code": "5.10.8.3.3B",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.9.1.1.A",
+            "name": "Document handling/delivery systems"
+          },
+          {
+            "code": "5.10.9.1.2",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.9.2.1.B",
+            "name": "Warehouse picking systems"
+          },
+          {
+            "code": "5.10.9.2.2",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.9.3.1.C",
+            "name": "Other systems (state type)"
+          },
+          {
+            "code": "5.10.9.3.2",
+            "name": "Controls and electrical works"
+          },
+          {
+            "code": "5.10.10.1.1",
+            "name": "Lifts – Paternoster"
+          },
+          {
+            "code": "5.10.10.1.2",
+            "name": "Hoist for moving people with disability"
+          },
+          {
+            "code": "5.10.10.1.3",
+            "name": "Other transport systems"
+          },
+          {
+            "code": "5.10.10.1.4",
+            "name": "Controls and electrical works"
+          }
+        ]
+      },
+      {
+        "code": "5.11",
+        "name": "Fire and lightning protection",
+        "assets": [
+          {
+            "code": "5.11.1.1.1",
+            "name": "Fire hose reels – inc. pressure booster sets"
+          },
+          {
+            "code": "5.11.1.1.4",
+            "name": "Distribution pipeline systems"
+          },
+          {
+            "code": "5.11.1.1.5",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.11.1.1.6",
+            "name": "Control components"
+          },
+          {
+            "code": "5.11.1.2.2",
+            "name": "Dry risers"
+          },
+          {
+            "code": "5.11.1.2.4",
+            "name": "Distribution pipeline systems"
+          },
+          {
+            "code": "5.11.1.2.5",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.11.1.3.3",
+            "name": "Wet risers"
+          },
+          {
+            "code": "5.11.1.3.4",
+            "name": "Distribution pipeline systems"
+          },
+          {
+            "code": "5.11.1.3.5",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.11.1.4.7",
+            "name": "Fire and smoke protection curtains"
+          },
+          {
+            "code": "5.11.1.4.6",
+            "name": "Control components"
+          },
+          {
+            "code": "5.11.1.5",
+            "name": "Other fire fighting systems (state type)"
+          },
+          {
+            "code": "5.11.1.5.4",
+            "name": "Distribution pipeline systems"
+          },
+          {
+            "code": "5.11.1.5.5",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.11.1.5.6",
+            "name": "Control components"
+          },
+          {
+            "code": "5.11.2.1.1",
+            "name": "Sprinklers – inc. control devices and sprinkler heads"
+          },
+          {
+            "code": "5.11.2.2.2",
+            "name": "Deluge systems"
+          },
+          {
+            "code": "5.11.2.3.3",
+            "name": "Gas fire fighting systems"
+          },
+          {
+            "code": "5.11.2.4.4",
+            "name": "Foam fighting systems"
+          },
+          {
+            "code": "5.11.2.5.5",
+            "name": "Distribution pipelines system"
+          },
+          {
+            "code": "5.11.2.5.6",
+            "name": "Water tanks and cisterns for firefighting"
+          },
+          {
+            "code": "5.11.2.5.7",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.11.2.5.8",
+            "name": "Control components"
+          },
+          {
+            "code": "5.11.3.1.1",
+            "name": "Bonded steel frame/tape based systems"
+          },
+          {
+            "code": "5.11.3.1.2",
+            "name": "Finials"
+          },
+          {
+            "code": "5.11.3.1.3",
+            "name": "Conductor tapes"
+          },
+          {
+            "code": "5.11.3.1.4",
+            "name": "Grounding/earthing"
+          }
+        ]
+      },
+      {
+        "code": "5.12",
+        "name": "Specialist installations",
+        "assets": [
+          {
+            "code": "5.12.1.1.1",
+            "name": "General communications and PA systems"
+          },
+          {
+            "code": "5.12.1.2.1",
+            "name": "Computer networking, modems, etc."
+          },
+          {
+            "code": "5.12.1.2.2",
+            "name": "Multiplexes data terminals"
+          },
+          {
+            "code": "5.12.1.3.1",
+            "name": "Aerials, radio and paging equipment"
+          },
+          {
+            "code": "5.12.1.3.2",
+            "name": "Emergency call buttons, pull cords etc."
+          },
+          {
+            "code": "5.12.1.3.3",
+            "name": "Paging and emergency call systems"
+          },
+          {
+            "code": "5.12.1.3.4",
+            "name": "Hospital patients call points"
+          },
+          {
+            "code": "5.12.1.3.5",
+            "name": "Cell call systems"
+          },
+          {
+            "code": "5.12.1.3.6",
+            "name": "Personal receivers"
+          },
+          {
+            "code": "5.12.1.4.1",
+            "name": "Public address system"
+          },
+          {
+            "code": "5.12.1.4.2",
+            "name": "Conference audio facilities"
+          },
+          {
+            "code": "5.12.1.4.3",
+            "name": "Induction loop systems"
+          },
+          {
+            "code": "5.12.1.4.4",
+            "name": "Hospital radio facilities"
+          },
+          {
+            "code": "5.12.1.4.5",
+            "name": "Background noise systems"
+          },
+          {
+            "code": "5.12.1.4.6",
+            "name": "Microphones, amplifiers and speakers"
+          },
+          {
+            "code": "5.12.1.4.7",
+            "name": "Indicator boards"
+          },
+          {
+            "code": "5.12.1.5.1",
+            "name": "Cable and satellite systems"
+          },
+          {
+            "code": "5.12.1.5.2",
+            "name": "Receivers and other ancillaries"
+          },
+          {
+            "code": "5.12.1.6.1",
+            "name": "Cinematographic equipment"
+          },
+          {
+            "code": "5.12.1.6.2",
+            "name": "Fixed and portable projectors"
+          },
+          {
+            "code": "5.12.1.6.3",
+            "name": "Screens and back projection equipment"
+          },
+          {
+            "code": "5.12.1.6.4",
+            "name": "Sound equipment"
+          },
+          {
+            "code": "5.12.1.7",
+            "name": "Fire detection and alarm systems"
+          },
+          {
+            "code": "5.12.1.7.1",
+            "name": "Carbon dioxide sensor"
+          },
+          {
+            "code": "5.12.1.7.2",
+            "name": "Heat detector"
+          },
+          {
+            "code": "5.12.1.7.7",
+            "name": "Call points automatic detection equipment"
+          },
+          {
+            "code": "5.12.1.8.1",
+            "name": "Smoke detectors"
+          },
+          {
+            "code": "5.12.1.8.2",
+            "name": "IT smoke detection system"
+          },
+          {
+            "code": "5.12.1.8.3",
+            "name": "Gas detector sensors"
+          },
+          {
+            "code": "5.12.1.8.4",
+            "name": "Batteries – lead acid – unsealed"
+          },
+          {
+            "code": "5.12.1.8.5",
+            "name": "Batteries – sealed"
+          },
+          {
+            "code": "5.12.1.8.6",
+            "name": "Battery charging equipment"
+          },
+          {
+            "code": "5.12.1.9",
+            "name": "Liquid detection systems"
+          },
+          {
+            "code": "5.12.1.10",
+            "name": "Clocks, card clocks and flexitime installations"
+          },
+          {
+            "code": "5.12.1.11",
+            "name": "Door entry systems"
+          },
+          {
+            "code": "5.12.1.12",
+            "name": "Radio and televisions"
+          },
+          {
+            "code": "5.12.1.13",
+            "name": "Television systems"
+          },
+          {
+            "code": "5.12.1.14",
+            "name": "TV monitors"
+          },
+          {
+            "code": "5.12.1.15",
+            "name": "Pneumatic message systems"
+          },
+          {
+            "code": "5.12.1.16",
+            "name": "Other comms systems"
+          },
+          {
+            "code": "5.12.2.1.1",
+            "name": "Surveillance systems"
+          },
+          {
+            "code": "5.12.2.2.2",
+            "name": "Security detection"
+          },
+          {
+            "code": "5.12.2.3.3",
+            "name": "Security alarm equipment"
+          },
+          {
+            "code": "5.12.2.4.4",
+            "name": "Access control systems"
+          },
+          {
+            "code": "5.12.2.5.5",
+            "name": "Burglar and security alarms"
+          },
+          {
+            "code": "5.12.2.6.6",
+            "name": "Door entry systems (audio and visual)"
+          },
+          {
+            "code": "5.12.2.7.7",
+            "name": "Security lights and lighting systems"
+          },
+          {
+            "code": "5.12.2.8.8",
+            "name": "Other security systems"
+          },
+          {
+            "code": "5.12.3.1.1",
+            "name": "Control panels for mechanical and electrical equipment"
+          },
+          {
+            "code": "5.12.3.1.2",
+            "name": "BMS and operating station systems"
+          },
+          {
+            "code": "5.12.3.1.4",
+            "name": "Controlling terminal units and switches"
+          },
+          {
+            "code": "5.12.3.1.5",
+            "name": "Control cabling and containment"
+          },
+          {
+            "code": "5.12.3.1.6",
+            "name": "Compressed air and vacuum operating controls"
+          },
+          {
+            "code": "5.12.3.2.3",
+            "name": "CAFM systems"
+          },
+          {
+            "code": "5.12.4.1.2",
+            "name": "Recoding studio equipment"
+          }
+        ]
+      },
+      {
+        "code": "5.13",
+        "name": "Specialist installations",
+        "assets": [
+          {
+            "code": "5.13.1.1.1",
+            "name": "Medical and laboratory gas supply systems – including ancillary components (e.g. storage vessels, controls and alarms, etc.)"
+          },
+          {
+            "code": "5.13.1.2.2",
+            "name": "Centralised vacuum cleaning systems – including vacuum pumps, blowers, etc."
+          },
+          {
+            "code": "5.13.1.3.3",
+            "name": "Treated water systems – including ancillary components (e.g. raw sewage storage tanks, chemical storage and vessels)"
+          },
+          {
+            "code": "5.13.1.4.4",
+            "name": "Swimming pools water treatment systems – including ancillary components (e.g. filters vessels, chemical storage vessels, chemical dosing equipment storage vessels, etc.)"
+          },
+          {
+            "code": "5.13.1.5.5",
+            "name": "Compressed air systems – including compressors and other ancillary components"
+          },
+          {
+            "code": "5.13.1.6.6",
+            "name": "Vacuum installations – including ancillary components"
+          },
+          {
+            "code": "5.13.1.7.7",
+            "name": "Other specialist piped supply systems"
+          },
+          {
+            "code": "5.13.1.7.8",
+            "name": "Pipework systems"
+          },
+          {
+            "code": "5.13.1.7.9",
+            "name": "Air duct lines and ancillaries and fittings"
+          },
+          {
+            "code": "5.13.1.7.10",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "5.13.1.7.11",
+            "name": "Silencers and acoustic treatment"
+          },
+          {
+            "code": "5.13.1.7.12",
+            "name": "Control components"
+          },
+          {
+            "code": "5.13.2.1.1",
+            "name": "Cold rooms"
+          },
+          {
+            "code": "5.13.2.2.2",
+            "name": "Ice pads"
+          },
+          {
+            "code": "5.13.2.3.3",
+            "name": "Other specialist refrigeration systems"
+          },
+          {
+            "code": "5.13.3.1.1",
+            "name": "Wave machines"
+          },
+          {
+            "code": "5.13.3.1.2",
+            "name": "Saunas"
+          },
+          {
+            "code": "5.13.3.1.3",
+            "name": "Jacuzzis"
+          },
+          {
+            "code": "5.13.3.1.4",
+            "name": "Swimming pools"
+          },
+          {
+            "code": "5.13.3.1.5",
+            "name": "Other specialist installations (state type)"
+          },
+          {
+            "code": "5.13.4.1.1",
+            "name": "Radio and television studio equipment"
+          },
+          {
+            "code": "5.13.4.1.3",
+            "name": "Television aerial and satellite systems"
+          },
+          {
+            "code": "5.13.4.1.4",
+            "name": "Home cinemas"
+          },
+          {
+            "code": "5.13.4.1.5",
+            "name": "Multi-room audio and video"
+          },
+          {
+            "code": "5.13.4.1.6",
+            "name": "Automated curtains and blinds"
+          },
+          {
+            "code": "5.13.4.1.7",
+            "name": "Other specialist electrical/electronic system"
+          },
+          {
+            "code": "5.13.5.1.1",
+            "name": "Water features – inc. ornamental fountains and waterfalls"
+          },
+          {
+            "code": "5.13.5.1.2",
+            "name": "Water filtration equipment"
+          },
+          {
+            "code": "5.13.5.1.3",
+            "name": "Nutrient treatment and equipment"
+          },
+          {
+            "code": "5.13.5.1.4",
+            "name": "Final electrical components – NA"
+          },
+          {
+            "code": "5.13.5.1.5",
+            "name": "Control components"
+          }
+        ]
+      },
+      {
+        "code": "5.14",
+        "name": "Builders' work in connection with services",
+        "assets": [
+          {
+            "code": "5.14.1.1.1",
+            "name": "General builders works with services"
+          },
+          {
+            "code": "5.14.1.2.2",
+            "name": "Builder's work in landlord areas"
+          },
+          {
+            "code": "5.14.1.3.3",
+            "name": "Builder's work to plant rooms"
+          },
+          {
+            "code": "5.14.1.4.4",
+            "name": "Large plant and equipment bases"
+          },
+          {
+            "code": "5.14.1.5.5",
+            "name": "BWIC to fuel bunds"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "6",
+    "name": "",
+    "subCategories": [
+      {
+        "code": "6.1",
+        "name": "Prefabricated buildings",
+        "assets": [
+          {
+            "code": "6.1.1",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "6.1.2",
+            "name": "Not covered by NRM 3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "7",
+    "name": "Works to existing buildings",
+    "subCategories": [
+      {
+        "code": "7.1",
+        "name": "Minor demolition works and alteration works",
+        "assets": [
+          {
+            "code": "7.1.1.1.1.A",
+            "name": "Repair items"
+          },
+          {
+            "code": "7.1.1.2.2.A",
+            "name": "Removal items"
+          },
+          {
+            "code": "7.1.1.3.4",
+            "name": "Kitchen fittings and appliances"
+          },
+          {
+            "code": "7.1.1.4.4.A",
+            "name": "Alteration works"
+          }
+        ]
+      },
+      {
+        "code": "7.2",
+        "name": "Repairs to existing services",
+        "assets": [
+          {
+            "code": "7.2.1.1.1.A",
+            "name": "Repair items"
+          },
+          {
+            "code": "7.2.1.2",
+            "name": "Overhaul services installations"
+          }
+        ]
+      },
+      {
+        "code": "7.3",
+        "name": "Damp proof courses/fungus and beetle eradication",
+        "assets": [
+          {
+            "code": "7.3.1.1.1",
+            "name": "Chemical damp proof course"
+          },
+          {
+            "code": "7.3.1.1.2",
+            "name": "Injection of mortar damp proof course"
+          },
+          {
+            "code": "7.3.1.1.3",
+            "name": "Inserting mechanical damp proof course"
+          },
+          {
+            "code": "7.3.1.1.4",
+            "name": "Local making good to finishes"
+          },
+          {
+            "code": "7.3.2.1.1.A",
+            "name": "Fungus/beetle eradication"
+          }
+        ]
+      },
+      {
+        "code": "7.4",
+        "name": "Facade retention",
+        "assets": [
+          {
+            "code": "7.4.1.1",
+            "name": "Support structures"
+          }
+        ]
+      },
+      {
+        "code": "7.5",
+        "name": "Cleaning existing surfaces",
+        "assets": [
+          {
+            "code": "7.5.1.1.1",
+            "name": "Remove efflorescence stains, spot graffiti, algae, bird droppings, etc."
+          },
+          {
+            "code": "7.5.1.1.2",
+            "name": "Cleaning surfaces"
+          },
+          {
+            "code": "7.5.1.1.3",
+            "name": "Artificial weathering"
+          },
+          {
+            "code": "7.5.2.1.1.A",
+            "name": "Protective coatings"
+          }
+        ]
+      },
+      {
+        "code": "7.6",
+        "name": "Renovation works",
+        "assets": [
+          {
+            "code": "7.6.1.1",
+            "name": "Masonry repairs"
+          },
+          {
+            "code": "7.6.2.1",
+            "name": "Concrete repairs"
+          },
+          {
+            "code": "7.6.3.1",
+            "name": "Metal repairs"
+          },
+          {
+            "code": "7.6.4.1",
+            "name": "Timber repairs"
+          },
+          {
+            "code": "7.6.5.1",
+            "name": "Plastic repairs"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "8",
+    "name": "External works",
+    "subCategories": [
+      {
+        "code": "8.1",
+        "name": "Site preparation works",
+        "assets": [
+          {
+            "code": "8.1.1",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "8.1.2",
+            "name": "Not covered by NRM 3"
+          }
+        ]
+      },
+      {
+        "code": "8.2",
+        "name": "Roads, paths and paving",
+        "assets": [
+          {
+            "code": "8.2.1.1.1.A",
+            "name": "Maintenance of roads"
+          },
+          {
+            "code": "8.2.1.2.1.A",
+            "name": "Maintenance of paths"
+          },
+          {
+            "code": "8.2.1.3.12",
+            "name": "Paved areas"
+          },
+          {
+            "code": "8.2.1.4.1.A",
+            "name": "Maintenance of roundabouts"
+          },
+          {
+            "code": "8.2.1.5.22",
+            "name": "Road crossings"
+          },
+          {
+            "code": "8.2.1.6.27",
+            "name": "Steps"
+          },
+          {
+            "code": "8.2.1.7.28",
+            "name": "Ramps"
+          },
+          {
+            "code": "8.2.1.8.25",
+            "name": "Traffic calming accessories"
+          },
+          {
+            "code": "8.2.1.9.25",
+            "name": "Tree grilles"
+          },
+          {
+            "code": "8.2.1.10.23",
+            "name": "Vehicle protection barriers"
+          },
+          {
+            "code": "8.2.1.11.24",
+            "name": "Bumpers"
+          },
+          {
+            "code": "8.2.1.12.26",
+            "name": "Pavement"
+          },
+          {
+            "code": "8.2.2.1",
+            "name": "Surfacing and paving"
+          }
+        ]
+      },
+      {
+        "code": "8.3",
+        "name": "Soft landscaping, planting and irrigation systems",
+        "assets": [
+          {
+            "code": "8.3.1.1.1.A",
+            "name": "Seeding and turfing (part of ground maintenance)"
+          },
+          {
+            "code": "8.3.1.2.9",
+            "name": "Reinforced grass proprietary systems"
+          },
+          {
+            "code": "8.3.1.3.12",
+            "name": "Initial marking out grass sports pitches"
+          },
+          {
+            "code": "8.3.1.4.4",
+            "name": "Work to existing grass areas"
+          },
+          {
+            "code": "8.3.1.5.5",
+            "name": "Maintenance of grassed areas"
+          },
+          {
+            "code": "8.3.2.1",
+            "name": "Planting"
+          },
+          {
+            "code": "8.3.2.2",
+            "name": "Planting reed beds"
+          },
+          {
+            "code": "8.3.2.3",
+            "name": "Hedges"
+          },
+          {
+            "code": "8.3.2.4",
+            "name": "Trees"
+          },
+          {
+            "code": "8.3.2.5",
+            "name": "Woodland planting"
+          },
+          {
+            "code": "8.3.2.6",
+            "name": "Tree surgery"
+          },
+          {
+            "code": "8.3.2.7",
+            "name": "Maintenance works to plants"
+          },
+          {
+            "code": "8.3.2.8",
+            "name": "Maintenance works to trees"
+          },
+          {
+            "code": "8.3.2.9",
+            "name": "Maintenance works to hedges"
+          },
+          {
+            "code": "8.3.3.1.1",
+            "name": "Irrigation pipework system"
+          },
+          {
+            "code": "8.3.3.1.2",
+            "name": "Storage tanks and vessels"
+          },
+          {
+            "code": "8.3.3.1.3",
+            "name": "Chemical storage vessels"
+          },
+          {
+            "code": "8.3.3.1.4",
+            "name": "Chemical dosing equipment"
+          },
+          {
+            "code": "8.3.3.1.5",
+            "name": "Nutrient treatment and equipment"
+          },
+          {
+            "code": "8.3.3.1.6",
+            "name": "Outlet pipes and nozzles"
+          },
+          {
+            "code": "8.3.3.1.7",
+            "name": "Painting anti-corrosion treatments"
+          }
+        ]
+      },
+      {
+        "code": "8.4",
+        "name": "Fencing, railing and walls",
+        "assets": [
+          {
+            "code": "8.4.1.1.1",
+            "name": "Fencing systems (types)"
+          },
+          {
+            "code": "8.4.1.1.3",
+            "name": "Noise/light screening applied to fencing"
+          },
+          {
+            "code": "8.4.1.1.9",
+            "name": "Fixing railings to concrete and masonry"
+          },
+          {
+            "code": "8.4.1.1.10",
+            "name": "Painting coating and preservative treatments"
+          },
+          {
+            "code": "8.4.1.2.2",
+            "name": "Railings"
+          },
+          {
+            "code": "8.4.1.3.4",
+            "name": "Gates and posts"
+          },
+          {
+            "code": "8.4.1.3.5",
+            "name": "Security gates and posts"
+          },
+          {
+            "code": "8.4.1.3.6",
+            "name": "Ironmongery"
+          },
+          {
+            "code": "8.4.2.1.1",
+            "name": "Masonry walls and screens"
+          },
+          {
+            "code": "8.4.2.1.9",
+            "name": "Pier caps"
+          },
+          {
+            "code": "8.4.2.1.10",
+            "name": "Copings, etc."
+          },
+          {
+            "code": "8.4.2.2.2",
+            "name": "Masonry walls with timber infill panels"
+          },
+          {
+            "code": "8.4.2.3",
+            "name": "Gates"
+          },
+          {
+            "code": "8.4.3.1",
+            "name": "Retaining walls"
+          },
+          {
+            "code": "8.4.4.1.1.A",
+            "name": "Fixing barriers and guardrails\r\nRedecorations"
+          },
+          {
+            "code": "8.4.4.1.1.B",
+            "name": "Redecorations"
+          },
+          {
+            "code": "8.4.4.2.2",
+            "name": "Pedestrian restraint systems"
+          },
+          {
+            "code": "8.4.4.3.3",
+            "name": "Vehicle and pedestrian control barriers and gates"
+          }
+        ]
+      },
+      {
+        "code": "8.5",
+        "name": "Site/street furniture and equipment",
+        "assets": [
+          {
+            "code": "8.5.1.1.1",
+            "name": "Gates"
+          },
+          {
+            "code": "8.5.1.1.2",
+            "name": "Turnstiles"
+          },
+          {
+            "code": "8.5.1.1.3",
+            "name": "Bollards"
+          },
+          {
+            "code": "8.5.1.1.4",
+            "name": "Seats, benches and tables"
+          },
+          {
+            "code": "8.5.1.1.5",
+            "name": "Litter bins, grit bins and dustbins"
+          },
+          {
+            "code": "8.5.1.1.6",
+            "name": "Poster display units and notice boards"
+          },
+          {
+            "code": "8.5.1.1.7",
+            "name": "Cycle stands"
+          },
+          {
+            "code": "8.5.1.1.8",
+            "name": "Directional signs"
+          },
+          {
+            "code": "8.5.1.1.9",
+            "name": "Flagpoles"
+          },
+          {
+            "code": "8.5.1.1.10",
+            "name": "Sports and playground equipment"
+          },
+          {
+            "code": "8.5.1.1.11",
+            "name": "Other furniture and equipment"
+          },
+          {
+            "code": "8.5.1.1.12",
+            "name": "Minor footbridges"
+          },
+          {
+            "code": "8.5.1.1.13",
+            "name": "Clothes drying fittings"
+          },
+          {
+            "code": "8.5.1.1.14",
+            "name": "Bus stops, bus shelters, telephone boxes"
+          },
+          {
+            "code": "8.5.1.1.15",
+            "name": "Sculptures"
+          },
+          {
+            "code": "8.5.1.1.16",
+            "name": "Site/street furniture and equipment"
+          },
+          {
+            "code": "8.5.1.1.17",
+            "name": "Other site and street furniture and equipment"
+          },
+          {
+            "code": "8.5.1.1.19",
+            "name": "Painting and preservation treatments"
+          },
+          {
+            "code": "8.5.2.1.1",
+            "name": "Water features"
+          },
+          {
+            "code": "8.5.2.2.2",
+            "name": "Other features"
+          }
+        ]
+      },
+      {
+        "code": "8.6",
+        "name": "External drainage",
+        "assets": [
+          {
+            "code": "8.6.1.1.1",
+            "name": "Gullies and gratings"
+          },
+          {
+            "code": "8.6.1.2.2",
+            "name": "Drainage runs below ground"
+          },
+          {
+            "code": "8.6.1.3.3",
+            "name": "Drainage runs above ground"
+          },
+          {
+            "code": "8.6.1.4.11",
+            "name": "Prefabricated channels"
+          },
+          {
+            "code": "8.6.1.5.12",
+            "name": "Interceptor traps"
+          },
+          {
+            "code": "8.6.1.5.13",
+            "name": "Inspection chambers"
+          },
+          {
+            "code": "8.6.1.5.14",
+            "name": "Soakaways"
+          },
+          {
+            "code": "8.6.1.5.15",
+            "name": "Retention/storage tanks and vessels"
+          },
+          {
+            "code": "8.6.1.5.16",
+            "name": "Cesspools and septic tanks"
+          },
+          {
+            "code": "8.6.1.5.17",
+            "name": "Petrol interceptor units"
+          },
+          {
+            "code": "8.6.1.6.24",
+            "name": "Alterations to existing external drainage systems"
+          },
+          {
+            "code": "8.6.1.7.25",
+            "name": "Works to existing manholes"
+          },
+          {
+            "code": "8.6.1.8.26",
+            "name": "Cleaning existing drains"
+          },
+          {
+            "code": "8.6.1.9.27",
+            "name": "Sealing redundant drains"
+          },
+          {
+            "code": "8.6.1.10.28",
+            "name": "Filling disused manholes"
+          },
+          {
+            "code": "8.6.2.1.1",
+            "name": "Pipework systems"
+          },
+          {
+            "code": "8.6.2.1.7",
+            "name": "Controls components"
+          },
+          {
+            "code": "8.6.2.1.8",
+            "name": "Monitoring equipment located externally"
+          },
+          {
+            "code": "8.6.2.1.9",
+            "name": "Painting anti-corrosion treatments"
+          },
+          {
+            "code": "8.6.2.2",
+            "name": "Ejector stations"
+          },
+          {
+            "code": "8.6.2.3",
+            "name": "Storage/retention tanks and vessels"
+          },
+          {
+            "code": "8.6.2.4",
+            "name": "Sewage treatment"
+          },
+          {
+            "code": "8.6.2.5",
+            "name": "Enzyme systems"
+          },
+          {
+            "code": "8.6.2.6",
+            "name": "Sustainable urban drainage systems"
+          },
+          {
+            "code": "8.6.3.1.1",
+            "name": "External chemical toxic and industrial liquid waste drainage"
+          },
+          {
+            "code": "8.6.3.2.4",
+            "name": "Drainage runs above ground"
+          },
+          {
+            "code": "8.6.3.3.6",
+            "name": "Storage tanks and vessels"
+          },
+          {
+            "code": "8.6.3.3.7",
+            "name": "Settlement tanks"
+          },
+          {
+            "code": "8.6.3.3.8",
+            "name": "Effluent treatment plant"
+          },
+          {
+            "code": "8.6.3.3.9",
+            "name": "Dosing equipment"
+          },
+          {
+            "code": "8.6.3.3.10",
+            "name": "Sterilisation equipment"
+          },
+          {
+            "code": "8.6.3.3.12",
+            "name": "Controls components"
+          },
+          {
+            "code": "8.6.3.3.13",
+            "name": "Monitoring equipment"
+          },
+          {
+            "code": "8.6.4.1",
+            "name": "Drainage runs below ground"
+          },
+          {
+            "code": "8.6.4.2.12",
+            "name": "Soakaways"
+          },
+          {
+            "code": "8.6.4.2.13",
+            "name": "Storage tanks and vessels"
+          },
+          {
+            "code": "8.6.4.3.6",
+            "name": "Drainage blankets"
+          },
+          {
+            "code": "8.6.4.4",
+            "name": "Land drainage to parkland"
+          }
+        ]
+      },
+      {
+        "code": "8.7",
+        "name": "External services",
+        "assets": [
+          {
+            "code": "8.7.1.1.1",
+            "name": "Water mains supply connection"
+          },
+          {
+            "code": "8.7.1.1.5",
+            "name": "Water meters"
+          },
+          {
+            "code": "8.7.1.1.6",
+            "name": "Fire hydrants"
+          },
+          {
+            "code": "8.7.1.1.7",
+            "name": "Trace heating – pipework"
+          },
+          {
+            "code": "8.7.1.1.8",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "8.7.1.2.2",
+            "name": "Connections to external plant"
+          },
+          {
+            "code": "8.7.1.3.2",
+            "name": "Service runs"
+          },
+          {
+            "code": "8.7.1.3.4",
+            "name": "Mains supply and distribution"
+          },
+          {
+            "code": "8.7.1.4.10",
+            "name": "Rainwater harvesting systems"
+          },
+          {
+            "code": "8.7.1.5.11",
+            "name": "Grey water systems"
+          },
+          {
+            "code": "8.7.2.1.1",
+            "name": "Electrical mains supply"
+          },
+          {
+            "code": "8.7.2.2",
+            "name": "Service runs"
+          },
+          {
+            "code": "8.7.2.3.3",
+            "name": "Transformer substations"
+          },
+          {
+            "code": "8.7.2.4.7",
+            "name": "External electricity generation installation/plant"
+          },
+          {
+            "code": "8.7.3.1.1",
+            "name": "Wind turbines (external transformation devices)"
+          },
+          {
+            "code": "8.7.3.1.2",
+            "name": "Distribution of LV electricity to main switch gear panel within buildings"
+          },
+          {
+            "code": "8.7.3.2.2",
+            "name": "Photovoltaic devices"
+          },
+          {
+            "code": "8.7.3.3.3",
+            "name": "Other transformation devices"
+          },
+          {
+            "code": "8.7.4.1.1",
+            "name": "Electrical distribution systems"
+          },
+          {
+            "code": "8.7.4.1.2",
+            "name": "LV switchgear and distribution boards"
+          },
+          {
+            "code": "8.7.4.1.3",
+            "name": "UPS"
+          },
+          {
+            "code": "8.7.4.1.4",
+            "name": "Cables and wiring"
+          },
+          {
+            "code": "8.7.4.1.5",
+            "name": "Conduits and cable trunking"
+          },
+          {
+            "code": "8.7.4.1.6",
+            "name": "Earthing and bonding"
+          },
+          {
+            "code": "8.7.5.1.1",
+            "name": "Gas mains supply"
+          },
+          {
+            "code": "8.7.5.2.2",
+            "name": "Gas mains"
+          },
+          {
+            "code": "8.7.5.3.4",
+            "name": "Distribution pipelines"
+          },
+          {
+            "code": "8.7.5.3.5",
+            "name": "Governing stations"
+          },
+          {
+            "code": "8.7.5.3.6",
+            "name": "LPG installations"
+          },
+          {
+            "code": "8.7.6.1.1",
+            "name": "Telecommunications systems"
+          },
+          {
+            "code": "8.7.6.1.2",
+            "name": "Telecomm distribution systems"
+          },
+          {
+            "code": "8.7.6.2.7",
+            "name": "Cables television connections"
+          },
+          {
+            "code": "8.7.6.3.8",
+            "name": "Other communication systems"
+          },
+          {
+            "code": "8.7.6.4.9",
+            "name": "Service runs"
+          },
+          {
+            "code": "8.7.7.1.1",
+            "name": "Oil, petrol and diesel"
+          },
+          {
+            "code": "8.7.7.1.2",
+            "name": "Storage tanks and vessels"
+          },
+          {
+            "code": "8.7.7.1.3",
+            "name": "Proprietary supports"
+          },
+          {
+            "code": "8.7.7.1.6",
+            "name": "Distribution pipelines"
+          },
+          {
+            "code": "8.7.7.1.7",
+            "name": "Pipeline ancillaries"
+          },
+          {
+            "code": "8.7.7.1.8",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "8.7.7.1.10",
+            "name": "Meters"
+          },
+          {
+            "code": "8.7.7.1.11",
+            "name": "Monitoring equipment"
+          },
+          {
+            "code": "8.7.7.2",
+            "name": "Service runs"
+          },
+          {
+            "code": "8.7.8.1.1",
+            "name": "Surveillance equipment (e.g. CCTV)"
+          },
+          {
+            "code": "8.7.8.1.9",
+            "name": "Camera poles, etc."
+          },
+          {
+            "code": "8.7.8.1.10",
+            "name": "General power installations"
+          },
+          {
+            "code": "8.7.8.2.2",
+            "name": "Security detection equipment"
+          },
+          {
+            "code": "8.7.8.3.3",
+            "name": "Security alarm equipment"
+          },
+          {
+            "code": "8.7.8.4.4",
+            "name": "Gate access control systems"
+          },
+          {
+            "code": "8.7.8.5.5",
+            "name": "Gate entry systems"
+          },
+          {
+            "code": "8.7.8.6.6",
+            "name": "Security lights and lighting systems"
+          },
+          {
+            "code": "8.7.8.7.7",
+            "name": "Other security systems"
+          },
+          {
+            "code": "8.7.8.8.8",
+            "name": "Cables and wiring"
+          },
+          {
+            "code": "8.7.9.1.1",
+            "name": "External lighting columns and poles, bollards and masts"
+          },
+          {
+            "code": "8.7.9.1.2",
+            "name": "Luminaries/lamps"
+          },
+          {
+            "code": "8.7.9.1.4",
+            "name": "General power installations"
+          },
+          {
+            "code": "8.7.9.1.7",
+            "name": "Luminaries/lamps"
+          },
+          {
+            "code": "8.7.9.1.8",
+            "name": "Lighting control points"
+          },
+          {
+            "code": "8.7.9.1.9",
+            "name": "Painting and anti-corrosion treatments"
+          },
+          {
+            "code": "8.7.9.2",
+            "name": "External lighting to paths"
+          },
+          {
+            "code": "8.7.9.3",
+            "name": "External lighting to roads"
+          },
+          {
+            "code": "8.7.9.4.3",
+            "name": "Illuminated traffic signs"
+          },
+          {
+            "code": "8.7.10.1.1",
+            "name": "External located heat source (e.g. boiler plant)"
+          },
+          {
+            "code": "8.7.10.1.2",
+            "name": "Instrumentation and controls to heat source"
+          },
+          {
+            "code": "8.7.10.1.5",
+            "name": "Instrumentation and controls to heating systems"
+          },
+          {
+            "code": "8.7.10.1.6",
+            "name": "Thermal insulation"
+          },
+          {
+            "code": "8.7.10.2.3",
+            "name": "Service runs"
+          },
+          {
+            "code": "8.7.10.3.4",
+            "name": "External heating, ducts and duct access covers"
+          },
+          {
+            "code": "8.7.11.1.1",
+            "name": "Ducts"
+          },
+          {
+            "code": "8.7.11.2.2",
+            "name": "Supports to external storage tanks etc"
+          },
+          {
+            "code": "8.7.11.3.3",
+            "name": "Fuel bunds, etc."
+          },
+          {
+            "code": "8.7.11.4.4",
+            "name": "Protective compounds, fencing etc for LPG installations, etc."
+          },
+          {
+            "code": "8.7.11.5.5",
+            "name": "Protective compounds connected with transformer substations, etc."
+          },
+          {
+            "code": "8.7.11.6.6",
+            "name": "Bases for service equipment"
+          },
+          {
+            "code": "8.7.11.7.7",
+            "name": "Other builder's work in connection with external services"
+          }
+        ]
+      },
+      {
+        "code": "8.8",
+        "name": "Minor building works and ancillary buildings",
+        "assets": [
+          {
+            "code": "8.8.1.1",
+            "name": "Minor building works"
+          },
+          {
+            "code": "8.8.1.2.2",
+            "name": "Overhaul existing mechanical and electrical plant ad equipment"
+          },
+          {
+            "code": "8.8.1.3.3",
+            "name": "Repairs to existing fences, railings, walls and screen walls"
+          },
+          {
+            "code": "8.8.2.1",
+            "name": "Ancillary buildings and structures"
+          },
+          {
+            "code": "8.8.3.1.1",
+            "name": "Underpinning"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "9",
+    "name": "Maintenance contractor's management and administration costs",
+    "subCategories": [
+      {
+        "code": "9.1",
+        "name": "Employer's requirements",
+        "assets": [
+          {
+            "code": "9.1.1.1",
+            "name": "Site accommodation"
+          },
+          {
+            "code": "9.1.1.2",
+            "name": "Furniture and equipment"
+          },
+          {
+            "code": "9.1.1.3",
+            "name": "Telecommunications and IT systems"
+          },
+          {
+            "code": "9.1.2.1.1",
+            "name": "Web based facilities management systems – including updating data as well as implementation and training on BMS"
+          },
+          {
+            "code": "9.1.3.1.2",
+            "name": "Provision of spare parts for maintenance"
+          },
+          {
+            "code": "9.1.3.1.3",
+            "name": "Provision of tools and portable instruments"
+          },
+          {
+            "code": "9.1.3.2",
+            "name": "Operation and maintenance services"
+          },
+          {
+            "code": "9.1.4.1",
+            "name": "Air conditioning inspections"
+          },
+          {
+            "code": "9.1.4.2",
+            "name": "Building logbooks and O&M Manuals"
+          },
+          {
+            "code": "9.1.4.3",
+            "name": "Display energy certificates (DEC)"
+          },
+          {
+            "code": "9.1.4.4",
+            "name": "Electrical installations – management audits"
+          },
+          {
+            "code": "9.1.4.5",
+            "name": "Electrical lighting certificates logbook"
+          },
+          {
+            "code": "9.1.4.6",
+            "name": "Energy performance certificates (EPC)"
+          },
+          {
+            "code": "9.1.4.7",
+            "name": "Evaporating cooling systems – management audit"
+          },
+          {
+            "code": "9.1.4.8",
+            "name": "Fire risk assessments"
+          },
+          {
+            "code": "9.1.4.9",
+            "name": "Fire safety logbook"
+          },
+          {
+            "code": "9.1.4.10",
+            "name": "Inventory of Greenhouses Gases (F-Gases)"
+          },
+          {
+            "code": "9.1.4.11",
+            "name": "Lifting equipment – management audit"
+          },
+          {
+            "code": "9.1.4.12",
+            "name": "Lifts and escalators – management audit"
+          },
+          {
+            "code": "9.1.4.13",
+            "name": "Local extract ventilation – management audit"
+          },
+          {
+            "code": "9.1.4.14",
+            "name": "Noise assessment and records"
+          },
+          {
+            "code": "9.1.4.15",
+            "name": "Pressure systems – management audits"
+          },
+          {
+            "code": "9.1.4.16",
+            "name": "Smoke control and pressurisation – management audits"
+          },
+          {
+            "code": "9.1.4.17",
+            "name": "Tree reports"
+          },
+          {
+            "code": "9.1.4.18",
+            "name": "Waste disposal"
+          },
+          {
+            "code": "9.1.4.19",
+            "name": "Waste electrical and electronic equipment (WEEE) – management audit"
+          },
+          {
+            "code": "9.1.4.20",
+            "name": "Water systems – management audit"
+          },
+          {
+            "code": "9.1.4.21",
+            "name": "Other management tasks – state type"
+          }
+        ]
+      },
+      {
+        "code": "9.2",
+        "name": "Maintenance contractor's cost items",
+        "assets": [
+          {
+            "code": "9.2.1.1",
+            "name": "Contract specific management and staff"
+          },
+          {
+            "code": "9.2.1.2",
+            "name": "Visiting management and staff"
+          },
+          {
+            "code": "9.2.1.3",
+            "name": "Extraordinary support costs"
+          },
+          {
+            "code": "9.2.1.4",
+            "name": "Staff travel (not part of labour rates)"
+          },
+          {
+            "code": "9.2.2.1",
+            "name": "Site accommodation"
+          },
+          {
+            "code": "9.2.2.2",
+            "name": "Temporary works"
+          },
+          {
+            "code": "9.2.2.3",
+            "name": "Furniture and equipment"
+          },
+          {
+            "code": "9.2.2.4",
+            "name": "IT systems"
+          },
+          {
+            "code": "9.2.2.5",
+            "name": "Consumables and services"
+          },
+          {
+            "code": "9.2.2.6",
+            "name": "Brought on services"
+          },
+          {
+            "code": "9.2.3",
+            "name": "Taken elsewhere with work items"
+          },
+          {
+            "code": "9.2.4.1",
+            "name": "Security"
+          },
+          {
+            "code": "9.2.4.2",
+            "name": "Security equipment"
+          },
+          {
+            "code": "9.2.4.3",
+            "name": "Hoardings fences and gates"
+          },
+          {
+            "code": "9.2.5.1",
+            "name": "Safety performance"
+          },
+          {
+            "code": "9.2.5.2",
+            "name": "Barriers and safety scaffolding"
+          },
+          {
+            "code": "9.2.5.3",
+            "name": "Environmental protection measures"
+          },
+          {
+            "code": "9.2.6.1",
+            "name": "Surveys inspections and monitoring"
+          },
+          {
+            "code": "9.2.6.2",
+            "name": "Setting out"
+          },
+          {
+            "code": "9.2.6.3",
+            "name": "Protection of works"
+          },
+          {
+            "code": "9.2.6.4",
+            "name": "Samples"
+          },
+          {
+            "code": "9.2.6.5",
+            "name": "Environmental control of building"
+          },
+          {
+            "code": "9.2.7.1",
+            "name": "Generally"
+          },
+          {
+            "code": "9.2.7.2",
+            "name": "Tower cranes"
+          },
+          {
+            "code": "9.2.7.3",
+            "name": "Mobile cranes"
+          },
+          {
+            "code": "9.2.7.4",
+            "name": "Hoists"
+          },
+          {
+            "code": "9.2.7.5",
+            "name": "Access plant"
+          },
+          {
+            "code": "9.2.7.6",
+            "name": "Concrete plant"
+          },
+          {
+            "code": "9.2.7.7",
+            "name": "Other plant"
+          },
+          {
+            "code": "9.2.8.1",
+            "name": "Taken elsewhere with work item"
+          },
+          {
+            "code": "9.2.8.2",
+            "name": "Temporary works"
+          },
+          {
+            "code": "9.2.9.1",
+            "name": "Maintenance works"
+          },
+          {
+            "code": "9.2.9.22",
+            "name": "Web based facilities management systems"
+          },
+          {
+            "code": "9.2.10.1",
+            "name": "Testing and commissioning plan"
+          },
+          {
+            "code": "9.2.10.2",
+            "name": "Handover"
+          },
+          {
+            "code": "9.2.10.3",
+            "name": "Post completion services (hand back)"
+          },
+          {
+            "code": "9.2.11.1",
+            "name": "Site tidy"
+          },
+          {
+            "code": "9.2.11.2",
+            "name": "Maintenance of roads, paths and paving"
+          },
+          {
+            "code": "9.2.12.1",
+            "name": "Fees"
+          },
+          {
+            "code": "9.2.12.2",
+            "name": "Charges"
+          },
+          {
+            "code": "9.2.13.1",
+            "name": "Temporary works"
+          },
+          {
+            "code": "9.2.13.2",
+            "name": "Multi service gang"
+          },
+          {
+            "code": "9.2.14.1.1",
+            "name": "Contractor’s all risks (CAR) insurance"
+          },
+          {
+            "code": "9.2.14.1.2",
+            "name": "Contractor’s plant and equipment insurance"
+          },
+          {
+            "code": "9.2.14.1.3",
+            "name": "Temporary buildings insurance"
+          },
+          {
+            "code": "9.2.14.1.4",
+            "name": "Terrorism insurance"
+          },
+          {
+            "code": "9.2.14.1.5",
+            "name": "Other insurances in connection with the works"
+          },
+          {
+            "code": "9.2.14.1.6",
+            "name": "Insurance premium tax (IPT)"
+          },
+          {
+            "code": "9.2.14.1.7",
+            "name": "Allowance for recovery of all or part of insurance premium excess"
+          },
+          {
+            "code": "9.2.14.2.1",
+            "name": "Non-negligence insurance"
+          },
+          {
+            "code": "9.2.14.2.2",
+            "name": "Professional indemnity insurance"
+          },
+          {
+            "code": "9.2.14.2.3",
+            "name": "Insurance premium tax (IPT)"
+          },
+          {
+            "code": "9.2.14.2.4",
+            "name": "Allowance for recovery of all or part of insurance premium excess"
+          },
+          {
+            "code": "9.2.14.3.1",
+            "name": "Refer to section 9.2.15 for specific operational tasks which require inspections"
+          },
+          {
+            "code": "9.2.14.4.1",
+            "name": "Management and staff, including administrative staff"
+          },
+          {
+            "code": "9.2.14.4.2",
+            "name": "Works operatives"
+          },
+          {
+            "code": "9.2.14.4.3",
+            "name": "Insurance premium tax (IPT)"
+          },
+          {
+            "code": "9.2.14.4.4",
+            "name": "Allowance for recovery of all or part of insurance premium excess"
+          },
+          {
+            "code": "9.2.14.5.1",
+            "name": "Client’s loss of liquidated damages"
+          },
+          {
+            "code": "9.2.14.5.2",
+            "name": "Latent defects cover"
+          },
+          {
+            "code": "9.2.14.5.3",
+            "name": "Motor vehicles"
+          },
+          {
+            "code": "9.2.14.5.4",
+            "name": "Other insurances"
+          },
+          {
+            "code": "9.2.14.5.5",
+            "name": "Insurance premium tax (IPT)"
+          },
+          {
+            "code": "9.2.14.5.6",
+            "name": "Allowance for recovery of all or part of insurance premium excess"
+          },
+          {
+            "code": "9.2.14.6.1",
+            "name": "Bonds are not part of NRM 3"
+          },
+          {
+            "code": "9.2.14.7.1",
+            "name": "Parent company guarantees"
+          },
+          {
+            "code": "9.2.14.7.2",
+            "name": "Product guarantees (insurance backed)"
+          },
+          {
+            "code": "9.2.14.8.1",
+            "name": "Collateral warranties"
+          },
+          {
+            "code": "9.2.14.8.2",
+            "name": "Funder’s warranties"
+          },
+          {
+            "code": "9.2.14.8.3",
+            "name": "Purchaser’s and tenant’s warranties"
+          },
+          {
+            "code": "9.2.14.8.4",
+            "name": "Other warranties"
+          },
+          {
+            "code": "9.2.15.1.1",
+            "name": "Asbestos register"
+          },
+          {
+            "code": "9.2.15.1.2",
+            "name": "Emergency and panic escape doors and fire exits"
+          },
+          {
+            "code": "9.2.15.1.3",
+            "name": "Emergency lighting – power supply and maintained fittings inspections"
+          },
+          {
+            "code": "9.2.15.1.4",
+            "name": "Fire alarm system – daily /weekly inspections"
+          },
+          {
+            "code": "9.2.15.1.5",
+            "name": "Automatic doors release mechanisms – electronic secure escape doors and fire exits"
+          },
+          {
+            "code": "9.2.15.1.6",
+            "name": "Fire evacuation drill"
+          },
+          {
+            "code": "9.2.15.1.7",
+            "name": "Fire exit signage"
+          },
+          {
+            "code": "9.2.15.1.8",
+            "name": "Fire hydrant – weekly checks"
+          },
+          {
+            "code": "9.2.15.1.9",
+            "name": "Hose reels – daily, monthly and annual checks"
+          },
+          {
+            "code": "9.2.15.1.10",
+            "name": "Insurance periodic inspections"
+          },
+          {
+            "code": "9.2.15.1.11",
+            "name": "Independent water risk assessment (legionella)"
+          },
+          {
+            "code": "9.2.15.1.12",
+            "name": "Meter reading (electric, gas, oil and water)"
+          },
+          {
+            "code": "9.2.15.1.13",
+            "name": "Oil storage tanks – above ground"
+          },
+          {
+            "code": "9.2.15.1.14",
+            "name": "Plant room checks"
+          },
+          {
+            "code": "9.2.15.1.15",
+            "name": "Portable appliance testing . PAT user checks"
+          },
+          {
+            "code": "9.2.15.1.16",
+            "name": "Portable fire extinguishers – weekly checks"
+          },
+          {
+            "code": "9.2.15.1.17",
+            "name": "Smoke control systems – daily 3 monthly and annual checks"
+          },
+          {
+            "code": "9.2.15.1.18",
+            "name": "Sprinkler systems – inspections"
+          },
+          {
+            "code": "9.2.15.1.19",
+            "name": "Visual inspections of voids, cavities & the like"
+          },
+          {
+            "code": "9.2.15.1.20",
+            "name": "Water risk assessment (legionella)"
+          },
+          {
+            "code": "9.2.15.1.21",
+            "name": "Water sampling and testing – closed systems"
+          },
+          {
+            "code": "9.2.15.1.22",
+            "name": "Other operational tasks (type to be stated)"
+          },
+          {
+            "code": "9.2.16.1.1",
+            "name": "Ducting – volume control dampers (5 yearly)"
+          },
+          {
+            "code": "9.2.16.1.2",
+            "name": "Electrical Fixed wiring testing (2 to 5 yearly)"
+          },
+          {
+            "code": "9.2.16.1.3",
+            "name": "Hose reels – static and swinging (5 yearly)"
+          },
+          {
+            "code": "9.2.16.1.4",
+            "name": "Main switch panel at supply intake (2 yearly)"
+          },
+          {
+            "code": "9.2.16.1.5",
+            "name": "Portable appliance testing – (2 yearly)"
+          },
+          {
+            "code": "9.2.16.1.6",
+            "name": "Sprinkler systems (3 yearly, 5 yearly etc)"
+          },
+          {
+            "code": "9.2.16.1.7",
+            "name": "Suspended façade access equipment (10 yearly)"
+          },
+          {
+            "code": "9.2.16.1.8",
+            "name": "Insurance periodic inspections (2 yearly)"
+          },
+          {
+            "code": "9.2.16.1.9",
+            "name": "Vertical platform lifts (2 yearly)"
+          },
+          {
+            "code": "9.2.16.1.10",
+            "name": "Other periodic maintenance tasks (to be stated)"
+          },
+          {
+            "code": "9.2.16.2.1",
+            "name": "External walls – depending on finishes type"
+          },
+          {
+            "code": "9.2.16.2.2",
+            "name": "External windows and doors – timber or like"
+          },
+          {
+            "code": "9.2.16.2.3",
+            "name": "Internal walls, including skirtings"
+          },
+          {
+            "code": "9.2.16.2.4",
+            "name": "Internal ceilings"
+          },
+          {
+            "code": "9.2.16.2.5",
+            "name": "Internal windows and doors"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "10",
+    "name": "",
+    "subCategories": [
+      {
+        "code": "10.1",
+        "name": "Maintenance contractor's overhead",
+        "assets": [
+          {
+            "code": "10.1.1.1",
+            "name": "Maintenance contractors overhead"
+          }
+        ]
+      },
+      {
+        "code": "10.2",
+        "name": "Maintenance contractor's profit",
+        "assets": [
+          {
+            "code": "10.2.2.1",
+            "name": "Project team and design team consultants and other specialist fees"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "11",
+    "name": "Consultant and specialist fees",
+    "subCategories": [
+      {
+        "code": "11.1",
+        "name": "Consultant's and specialist fees",
+        "assets": [
+          {
+            "code": "11.1.1.1",
+            "name": "Consultant's and specialist fees"
+          },
+          {
+            "code": "11.1.2.1",
+            "name": "Other consultant's fees"
+          },
+          {
+            "code": "11.1.3.1",
+            "name": "Site investigation fees"
+          },
+          {
+            "code": "11.1.4.1",
+            "name": "Specialist support consultants fees"
+          }
+        ]
+      },
+      {
+        "code": "11.2",
+        "name": "Maintenance contractor's tender / pre-contract fees",
+        "assets": [
+          {
+            "code": "11.2.1.1",
+            "name": "Management and staff"
+          },
+          {
+            "code": "11.2.2.1",
+            "name": "Specialist support services fees"
+          },
+          {
+            "code": "11.2.3.1",
+            "name": "Temporary accommodation, services and facilities charges"
+          },
+          {
+            "code": "11.2.4.1",
+            "name": "Maintenance contractors overhead and profit"
+          }
+        ]
+      },
+      {
+        "code": "11.3",
+        "name": "Maintenance contractor's design fees",
+        "assets": [
+          {
+            "code": "11.3.1.1",
+            "name": "Maintenance contractors design consultant's fees"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "12",
+    "name": "Employer definable maintenance related costs",
+    "subCategories": [
+      {
+        "code": "12.1",
+        "name": "Employer definable maintenance related costs",
+        "assets": [
+          {
+            "code": "12.1.1.1",
+            "name": "Land acquisition costs"
+          },
+          {
+            "code": "12.1.2.1",
+            "name": "Employer finance costs"
+          },
+          {
+            "code": "12.1.3.1",
+            "name": "Fees"
+          },
+          {
+            "code": "12.1.4.1",
+            "name": "Charges"
+          },
+          {
+            "code": "12.1.5",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "12.1.6.1",
+            "name": "Insurances"
+          },
+          {
+            "code": "12.1.7.1",
+            "name": "Archaeological field work"
+          },
+          {
+            "code": "12.1.8.1",
+            "name": "Other specialist fieldwork"
+          },
+          {
+            "code": "12.1.9.1",
+            "name": "Decanting and relocation costs"
+          },
+          {
+            "code": "12.1.10.1",
+            "name": "Fittings, furnishings and equipment"
+          },
+          {
+            "code": "12.1.11.1",
+            "name": "Tenant's costs/ contributions"
+          },
+          {
+            "code": "12.1.12.1",
+            "name": "Marketing costs"
+          },
+          {
+            "code": "12.1.13.1",
+            "name": "Other employer costs"
+          },
+          {
+            "code": "12.1.14.1",
+            "name": "Allowances"
+          },
+          {
+            "code": "12.1.15.1",
+            "name": "Energy efficiency"
+          },
+          {
+            "code": "12.1.16",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "12.1.17",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "12.1.18",
+            "name": "Taken elsewhere"
+          },
+          {
+            "code": "12.1.19",
+            "name": "Not covered by NRM 3"
+          },
+          {
+            "code": "12.1.20",
+            "name": "Not covered by NRM 3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "13",
+    "name": "Risks",
+    "subCategories": [
+      {
+        "code": "13.1",
+        "name": "Design and installation risks",
+        "assets": [
+          {
+            "code": "13.1.1.1",
+            "name": "Design development and standards"
+          },
+          {
+            "code": "13.1.1.2",
+            "name": "Construction installation legacy risks"
+          },
+          {
+            "code": "13.1.1.3",
+            "name": "Handover"
+          },
+          {
+            "code": "13.1.1.4",
+            "name": "Legislation and changing future regulations, e.g. Health & Safety at work"
+          }
+        ]
+      },
+      {
+        "code": "13.2",
+        "name": "Maintenance risks",
+        "assets": [
+          {
+            "code": "13.2.2.1",
+            "name": "Procurement"
+          },
+          {
+            "code": "13.2.2.2",
+            "name": "Maintenance delivery"
+          },
+          {
+            "code": "13.2.2.3",
+            "name": "Life cycle replacement works"
+          }
+        ]
+      },
+      {
+        "code": "13.3",
+        "name": "Employer change risks",
+        "assets": [
+          {
+            "code": "13.3.3.1",
+            "name": "Project brief"
+          },
+          {
+            "code": "13.3.3.2",
+            "name": "Scope creep"
+          },
+          {
+            "code": "13.3.3.3",
+            "name": "System redundancy"
+          },
+          {
+            "code": "13.3.3.4",
+            "name": "Timescales"
+          }
+        ]
+      },
+      {
+        "code": "13.4",
+        "name": "Employer other risks",
+        "assets": [
+          {
+            "code": "13.4.4.1",
+            "name": "Maintenance brief"
+          },
+          {
+            "code": "13.4.4.2",
+            "name": "Timescales"
+          },
+          {
+            "code": "13.4.4.3",
+            "name": "Third party"
+          },
+          {
+            "code": "13.4.4.4",
+            "name": "Management"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "14",
+    "name": "Inflation",
+    "subCategories": [
+      {
+        "code": "14.1",
+        "name": "Tender inflation",
+        "assets": []
+      },
+      {
+        "code": "14.2",
+        "name": "Construction inflation",
+        "assets": []
+      },
+      {
+        "code": "14.3",
+        "name": "Life cycle renewal inflation",
+        "assets": []
+      },
+      {
+        "code": "14.4",
+        "name": "Life cycle discount rate",
+        "assets": []
+      }
+    ]
+  }
+]

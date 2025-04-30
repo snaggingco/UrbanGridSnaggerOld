@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanGrid Corporate Profile | Established 2002</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+    
+    :root {
+      --primary: #34A853;
+      --primary-dark: #2D8F47;
+      --secondary: #4285F4;
+      --accent: #FBBC04;
+      --accent-dark: #EA8600;
+      --luxury: #D4AF37;
+      --text: #1F2937;
+      --light-text: #6B7280;
+      --background: #FFFFFF;
+      --light-gray: #F3F4F6;
+      --medium-gray: #E5E7EB;
+      --dark-gray: #4B5563;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background-color: var(--background);
+      line-height: 1.7;
+      font-size: 11pt;
+    }
+    
+    .container {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+    /* Header */
+    .header {
+      padding: 2.5cm 2cm 2.5cm;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url('../company/assets/pattern-bg.svg');
+      background-size: cover;
+      mix-blend-mode: overlay;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+    
+    .established {
+      font-size: 12pt;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo {
+      height: 60px;
+    }
+    
+    h1 {
+      font-size: 48pt;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      letter-spacing: -1px;
+      position: relative;
+    }
+    
+    h1::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 6px;
+      background-color: var(--accent);
+      margin-top: 20px;
+    }
+    
+    .tagline {
+      font-size: 18pt;
+      font-weight: 400;
+      line-height: 1.4;
+      max-width: 500px;
+    }
+    
+    /* Main Content */
+    .content {
+      padding: 2cm;
+    }
+    
+    h2 {
+      font-size: 22pt;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+    }
+    
+    h3 {
+      font-size: 16pt;
+      margin-bottom: 16px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    p {
+      margin-bottom: 20px;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+    }
+    
+    .subtitle {
+      color: var(--dark-gray);
+      font-size: 14pt;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Stats Section */
+    .stats-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      gap: 20px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: linear-gradient(to bottom, var(--light-gray), white);
+      border-radius: 8px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      flex: 1;
+    }
+    
+    .stat-number {
+      font-size: 36pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 11pt;
+      font-weight: 500;
+      color: var(--dark-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* About Section */
+    .about {
+      display: flex;
+      gap: 50px;
+      margin-bottom: 70px;
+    }
+    
+    .about-text {
+      flex: 3;
+    }
+    
+    .about-image {
+      flex: 2;
+      background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .about-image-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url('../company/assets/pattern-bg.svg');
+      background-size: cover;
+    }
+    
+    .about-image-content {
+      position: relative;
+      z-index: 10;
+      max-width: 80%;
+      padding: 20px;
+    }
+    
+    /* Services */
+    .services-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+    
+    .services-text {
+      flex: 1;
+      max-width: 60%;
+    }
+    
+    .services-badge {
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 14pt;
+      padding: 12px 24px;
+      border-radius: 6px;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(52, 168, 83, 0.2);
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .service-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--medium-gray);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+      background-color: var(--light-gray);
+      border-radius: 6px;
+      padding: 12px;
+    }
+    
+    .service-title {
+      font-size: 14pt;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .service-description {
+      font-size: 10pt;
+      color: var(--light-text);
+      line-height: 1.6;
+    }
+    
+    /* Executive Team */
+    .executive-team {
+      margin: 60px 0;
+    }
+    
+    .team-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+    
+    .team-member {
+      text-align: center;
+    }
+    
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      background-color: var(--light-gray);
+      border-radius: 100%;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36pt;
+      color: var(--dark-gray);
+      font-weight: 300;
+    }
+    
+    .member-name {
+      font-size: 12pt;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .member-title {
+      font-size: 10pt;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    /* Process Page */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin: 40px 0;
+    }
+    
+    .process-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: var(--light-gray);
+      border-radius: 10px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .process-number {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 20pt;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .process-title {
+      font-size: 14pt;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .process-description {
+      font-size: 10pt;
+      color: var(--dark-gray);
+    }
+    
+    /* Client Section */
+    .clients-section {
+      margin: 60px 0;
+      text-align: center;
+    }
+    
+    .clients-intro {
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+    
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .client-logo {
+      height: 60px;
+      background-color: var(--light-gray);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12pt;
+      font-weight: 600;
+      color: var(--dark-gray);
+      padding: 10px;
+    }
+    
+    /* Certifications */
+    .certifications {
+      margin-top: 60px;
+      border-top: 1px solid var(--medium-gray);
+      padding-top: 50px;
+    }
+    
+    .certificates-grid {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 30px;
+    }
+    
+    .certificate {
+      text-align: center;
+      flex: 1;
+      max-width: 200px;
+    }
+    
+    .certificate-logo {
+      height: 100px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .certificate-name {
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      padding: 1.5cm 2cm;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: url('../company/assets/pattern-bg.svg');
+      background-size: cover;
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .footer-logo {
+      height: 50px;
+      margin-bottom: 30px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 30px;
+      margin-bottom: 30px;
+    }
+    
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10pt;
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+    }
+    
+    .contact-item i {
+      margin-right: 8px;
+      font-size: 14px;
+    }
+    
+    .contact-label {
+      font-weight: 600;
+      margin-right: 5px;
+    }
+    
+    .footer-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+    
+    .copyright {
+      font-size: 9pt;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .legal-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    /* Utility classes */
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: var(--accent);
+      color: white;
+      font-size: 9pt;
+      font-weight: 600;
+      border-radius: 20px;
+      margin-right: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .highlight-box {
+      background-color: var(--light-gray);
+      border-left: 4px solid var(--primary);
+      padding: 20px 25px;
+      margin: 30px 0;
+    }
+    
+    .highlight-box p {
+      margin: 0;
+      font-style: italic;
+      color: var(--dark-gray);
+    }
+    
+    .two-columns {
+      column-count: 2;
+      column-gap: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .feature-list {
+      list-style: none;
+    }
+    
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    .page-break {
+      page-break-before: always;
+    }
+    
+    @media print {
+      body {
+        width: 210mm;
+        height: 297mm;
+      }
+      
+      .page {
+        page-break-after: always;
+      }
+    }
+    
+    /* Icons */
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      position: relative;
+      top: 2px;
+    }
+    
+    /* Executive Summary Callout */
+    .executive-summary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 40px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .executive-summary-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: url('../company/assets/pattern-bg.svg');
+      background-size: cover;
+    }
+    
+    .executive-content {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .executive-heading {
+      font-size: 16pt;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: white;
+    }
+    
+    .executive-summary p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 15px;
+    }
+    
+    .executive-summary p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Global Presence */
+    .global-presence {
+      margin-top: 50px;
+      text-align: center;
+    }
+    
+    .presence-heading {
+      margin-bottom: 30px;
+    }
+    
+    .map-container {
+      height: 250px;
+      background-color: var(--light-gray);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .locations-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .location-item {
+      position: relative;
+      padding-left: 20px;
+      font-weight: 500;
+    }
+    
+    .location-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Cover Page -->
+    <div class="page">
+      <header class="header">
+        <div class="header-pattern"></div>
+        <div class="header-content">
+          <div class="top-bar">
+            <div class="logo-container">
+              <img src="../company/assets/urbangrid-logo.svg" alt="UrbanGrid Logo" class="logo">
+            </div>
+            <div class="established">ESTABLISHED 2002</div>
+          </div>
+          
+          <h1>CORPORATE PROFILE</h1>
+          <p class="tagline">A global leader in property assessment and technical consulting, delivering excellence and precision for the world's most demanding real estate markets.</p>
+        </div>
+      </header>
+      
+      <section class="content">
+        <div class="executive-summary">
+          <div class="executive-summary-pattern"></div>
+          <div class="executive-content">
+            <h3 class="executive-heading">Executive Summary</h3>
+            <p>
+              For over two decades, UrbanGrid has established itself as one of the Gulf region's preeminent property assessment and technical consultancy firms, supporting major developers, government entities, and global investment firms. With our headquarters in Dubai and offices across the UAE, we have built a reputation for technical excellence, comprehensive service delivery, and uncompromising integrity.
+            </p>
+            <p>
+              Our multidisciplinary team of engineers, architects, and technical specialists delivers exceptional value through specialized property services, data-driven assessments, and innovative solutions that set the gold standard for the industry.
+            </p>
+          </div>
+        </div>
+        
+        <div class="about">
+          <div class="about-text">
+            <h2>About UrbanGrid</h2>
+            <p class="subtitle">The Gulf Region's Premier Property Technical Consultancy</p>
+            
+            <p>UrbanGrid stands as one of the UAE's most respected property technical consultancies, trusted by leading developers, premium property managers, government agencies, and global institutional investors. Our comprehensive portfolio of specialized property assessment and management services ensures optimal performance, compliance, and value in high-value real estate assets.</p>
+            
+            <p>With our team of globally certified professionals and proprietary assessment methodologies, we deliver unparalleled precision in property snagging, technical due diligence, building condition assessments, and complex property evaluations throughout the MENA region.</p>
+          </div>
+          
+          <div class="about-image">
+            <div class="about-image-pattern"></div>
+            <div class="about-image-content">
+              <svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 20L240 80V160L140 220L40 160V80L140 20Z" fill="white" fill-opacity="0.2"/>
+                <path d="M140 60L200 95V165L140 200L80 165V95L140 60Z" fill="white" fill-opacity="0.3"/>
+                <path d="M140 100L170 120V160L140 180L110 160V120L140 100Z" fill="white"/>
+                <text x="140" y="240" fill="white" font-size="16" text-anchor="middle" font-weight="bold">EXCELLENCE IN PROPERTY ASSESSMENT</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Major Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15k+</div>
+            <div class="stat-label">Properties Assessed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Our Mission</h2>
+          <p>
+            UrbanGrid's mission is to elevate property standards and enhance value across the entire real estate lifecycle through technical excellence, comprehensive assessments, and strategic recommendations. As a global property technical authority, we aim to establish the benchmark for precision, reliability, and innovation in real estate technical consulting.
+          </p>
+          
+          <div class="highlight-box">
+            <p>
+              "Our commitment to technical excellence and uncompromising assessment standards has established UrbanGrid as the partner of choice for the region's most discerning property stakeholders."
+            </p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Why Global Leaders Choose UrbanGrid</h2>
+          <ul class="feature-list two-columns">
+            <li><strong class="text-primary">Technical Excellence</strong> — Globally certified professionals with specialized expertise in all property assessment disciplines</li>
+            <li><strong class="text-primary">Comprehensive Coverage</strong> — Integrated solutions spanning the entire property lifecycle from pre-handover to asset management</li>
+            <li><strong class="text-primary">Proprietary Methodology</strong> — Advanced, data-driven assessment frameworks delivering unmatched precision and reliability</li>
+            <li><strong class="text-primary">Global Standards</strong> — Adherence to international best practices and certification requirements across all operations</li>
+            <li><strong class="text-primary">Technology Integration</strong> — Cutting-edge digital tools and analysis platforms for superior assessment efficiency</li>
+            <li><strong class="text-primary">Executive Reporting</strong> — Comprehensive, action-oriented documentation with clear prioritization and visual evidence</li>
+            <li><strong class="text-primary">Institutional Experience</strong> — Proven track record with major developers, government entities, and global investors</li>
+            <li><strong class="text-primary">Market Leadership</strong> — Recognized authority in property technical standards across the MENA region</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Services Page -->
+    <div class="page page-break">
+      <section class="content">
+        <div class="services-intro">
+          <div class="services-text">
+            <h2>Comprehensive Service Portfolio</h2>
+            <p>UrbanGrid delivers a comprehensive suite of specialized property technical services designed to maximize asset performance, ensure regulatory compliance, and optimize property value throughout the real estate lifecycle.</p>
+          </div>
+          <div class="services-badge">Industry Leading</div>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="50 50 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#snagging" />
+              </svg>
+            </div>
+            <h4 class="service-title">Professional Snagging Services</h4>
+            <p class="service-description">Comprehensive defect identification and documentation covering all structural, mechanical, electrical, and aesthetic elements, ensuring properties meet international quality standards.</p>
+          </div>
+          
+          <!-- Service 2 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="200 50 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#handover" />
+              </svg>
+            </div>
+            <h4 class="service-title">Property Handover Consulting</h4>
+            <p class="service-description">End-to-end handover management including pre-handover inspection, developer coordination, defect rectification, and final documentation to ensure seamless property transition.</p>
+          </div>
+          
+          <!-- Service 3 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="350 50 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#reserve-fund" />
+              </svg>
+            </div>
+            <h4 class="service-title">Reserve Fund Studies</h4>
+            <p class="service-description">Comprehensive financial planning for future capital expenditures, ensuring optimal maintenance reserves and strategic long-term asset management for property portfolios and communities.</p>
+          </div>
+          
+          <!-- Service 4 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="500 50 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#service-charge" />
+              </svg>
+            </div>
+            <h4 class="service-title">Service Charge Optimization</h4>
+            <p class="service-description">Expert analysis and equitable allocation of service charges across multi-unit developments, optimizing operational budgets while ensuring transparent cost distribution.</p>
+          </div>
+          
+          <!-- Service 5 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="50 200 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#building-audit" />
+              </svg>
+            </div>
+            <h4 class="service-title">Building Condition Assessments</h4>
+            <p class="service-description">Comprehensive evaluation of building conditions with detailed reporting on structural integrity, system performance, maintenance requirements, and regulatory compliance.</p>
+          </div>
+          
+          <!-- Service 6 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="200 200 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#due-diligence" />
+              </svg>
+            </div>
+            <h4 class="service-title">Technical Due Diligence</h4>
+            <p class="service-description">Thorough property evaluation for investors, financial institutions, and asset managers, providing comprehensive insights into asset condition, performance, and potential liabilities.</p>
+          </div>
+          
+          <!-- Service 7 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="350 200 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#reinstatement-cost" />
+              </svg>
+            </div>
+            <h4 class="service-title">Reinstatement Cost Assessment</h4>
+            <p class="service-description">Precise evaluation of property reconstruction costs for insurance purposes, ensuring optimal coverage while preventing excessive premium payments for institutional portfolios.</p>
+          </div>
+          
+          <!-- Service 8 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="500 200 100 100" width="100%" height="100%">
+                <use href="../company/assets/service-icons.svg#energy-audit" />
+              </svg>
+            </div>
+            <h4 class="service-title">Energy Efficiency Consulting</h4>
+            <p class="service-description">Comprehensive energy usage analysis with strategic recommendations for optimization, sustainability improvements, and operational cost reduction in commercial and residential properties.</p>
+          </div>
+        </div>
+        
+        <div class="executive-team">
+          <div class="team-intro">
+            <h2>Leadership & Expertise</h2>
+            <p>UrbanGrid's executive team brings together decades of international property experience, technical certification, and strategic leadership to deliver exceptional value for our global clients.</p>
+          </div>
+          
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="member-photo">S</div>
+              <div class="member-name">Shiyaz</div>
+              <div class="member-title">Co-Founder, Expansions</div>
+            </div>
+            <div class="team-member">
+              <div class="member-photo">N</div>
+              <div class="member-name">Nishla</div>
+              <div class="member-title">Co-Founder, Business Head</div>
+            </div>
+            <div class="team-member">
+              <div class="member-photo">A</div>
+              <div class="member-name">Arif</div>
+              <div class="member-title">Co-Founder, Strategy & Tech</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="global-presence">
+          <h3 class="presence-heading">Global Presence</h3>
+          <div class="map-container">
+            <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: #666; font-size: 16pt;">GLOBAL OPERATIONS MAP</div>
+          </div>
+          <div class="locations-list">
+            <div class="location-item">Dubai (HQ)</div>
+            <div class="location-item">Abu Dhabi</div>
+            <div class="location-item">Riyadh</div>
+            <div class="location-item">Doha</div>
+            <div class="location-item">London</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Process Page -->
+    <div class="page page-break">
+      <section class="content">
+        <h2>Our Assessment Methodology</h2>
+        <p class="subtitle">Delivering Precision and Excellence Through a Strategic Approach</p>
+        <p>
+          UrbanGrid employs a proprietary assessment framework developed over decades of experience in global property markets. Our systematic approach ensures comprehensive evaluation, precise documentation, and actionable recommendations for every client engagement.
+        </p>
+        
+        <div class="process-grid">
+          <div class="process-item">
+            <div class="process-number">1</div>
+            <h4 class="process-title">Strategic Consultation</h4>
+            <p class="process-description">We begin with a detailed understanding of your specific property objectives, technical requirements, and strategic priorities through in-depth stakeholder consultation.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">2</div>
+            <h4 class="process-title">Technical Planning</h4>
+            <p class="process-description">Our specialists develop a customized assessment framework based on property type, regulatory requirements, and specific technical considerations.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">3</div>
+            <h4 class="process-title">Comprehensive Assessment</h4>
+            <p class="process-description">Certified specialists conduct meticulous on-site evaluations using advanced diagnostic tools, specialized equipment, and proprietary assessment protocols.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">4</div>
+            <h4 class="process-title">Data Collection</h4>
+            <p class="process-description">All findings are documented with high-resolution imaging, precise measurements, thermal analysis, and comprehensive technical observations.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">5</div>
+            <h4 class="process-title">Analysis & Evaluation</h4>
+            <p class="process-description">Our technical team performs comprehensive data analysis to identify issues, regulatory gaps, performance limitations, and optimization opportunities.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">6</div>
+            <h4 class="process-title">Strategic Reporting</h4>
+            <p class="process-description">We deliver detailed executive reports with clear prioritization, visual documentation, and actionable recommendations aligned with client objectives.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">7</div>
+            <h4 class="process-title">Implementation Support</h4>
+            <p class="process-description">Our team provides ongoing technical guidance, stakeholder coordination, and implementation oversight to address identified issues effectively.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">8</div>
+            <h4 class="process-title">Quality Verification</h4>
+            <p class="process-description">We conduct thorough follow-up assessments to verify remediation quality, confirm implementation effectiveness, and document final conditions.</p>
+          </div>
+          
+          <div class="process-item">
+            <div class="process-number">9</div>
+            <h4 class="process-title">Strategic Advisory</h4>
+            <p class="process-description">Our consultants provide ongoing strategic recommendations for property optimization, maintenance planning, and long-term asset management.</p>
+          </div>
+        </div>
+        
+        <div class="clients-section">
+          <div class="clients-intro">
+            <h2>Trusted by Industry Leaders</h2>
+            <p>UrbanGrid provides professional services to premier developers, government entities, and institutional clients across the Gulf region and beyond.</p>
+          </div>
+          
+          <div class="clients-grid">
+            <div class="client-logo">Emirates Group</div>
+            <div class="client-logo">Dubai Properties</div>
+            <div class="client-logo">Aldar</div>
+            <div class="client-logo">Emaar</div>
+            <div class="client-logo">Dubai Holding</div>
+            <div class="client-logo">DMCC</div>
+            <div class="client-logo">Sobha Group</div>
+            <div class="client-logo">Nakheel</div>
+            <div class="client-logo">Damac</div>
+            <div class="client-logo">Meraas</div>
+          </div>
+        </div>
+        
+        <div class="certifications">
+          <h2>Professional Accreditations</h2>
+          <p class="subtitle">Maintaining the Highest Standards of Excellence</p>
+          <p>UrbanGrid maintains an extensive portfolio of international certifications and memberships, ensuring the highest standards of technical expertise and professional excellence:</p>
+          
+          <div class="certificates-grid">
+            <div class="certificate">
+              <div class="certificate-logo">
+                <img src="../assets/internachi.png" alt="InterNACHI Certification" style="height: 80px; width: auto;">
+              </div>
+              <div class="certificate-name">International Association of Certified Home Inspectors</div>
+            </div>
+            
+            <div class="certificate">
+              <div class="certificate-logo">
+                <img src="../assets/internachi 2.png" alt="CPI Certification" style="height: 80px; width: auto;">
+              </div>
+              <div class="certificate-name">Certified Professional Inspector</div>
+            </div>
+            
+            <div class="certificate">
+              <div class="certificate-logo">
+                <div style="width: 80px; height: 80px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #666; margin: 0 auto;">ISO 9001</div>
+              </div>
+              <div class="certificate-name">Quality Management Systems</div>
+            </div>
+            
+            <div class="certificate">
+              <div class="certificate-logo">
+                <div style="width: 80px; height: 80px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #666; margin: 0 auto;">RICS</div>
+              </div>
+              <div class="certificate-name">Royal Institution of Chartered Surveyors</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-pattern"></div>
+      <div class="footer-content">
+        <img src="../company/assets/urbangrid-logo.svg" alt="UrbanGrid Logo" class="footer-logo">
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="icon">📍</span> Corporate HQ: Naema Ali Buamim Building - 306 - Al Bada'a - Dubai
+          </div>
+          <div class="contact-item">
+            <span class="icon">📱</span> +971 4 XXX XXXX
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span> info@urbangrid.ae
+          </div>
+          <div class="contact-item">
+            <span class="icon">🌐</span> www.urbangrid.ae | www.snagging.me
+          </div>
+        </div>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="copyright">
+          <div>© 2025 UrbanGrid International. All rights reserved.</div>
+          <div class="legal-links">
+            <span>Terms of Service</span>
+            <span>Privacy Policy</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

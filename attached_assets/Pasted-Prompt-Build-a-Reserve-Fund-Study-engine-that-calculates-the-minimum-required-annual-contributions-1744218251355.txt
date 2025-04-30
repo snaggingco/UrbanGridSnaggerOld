@@ -1,0 +1,132 @@
+Prompt:
+
+Build a Reserve Fund Study engine that calculates the minimum required annual contributions needed to fully fund a project's capital repair and replacement costs over a multi-year planning horizon. The study should:
+
+Ensure no negative fund balances at any point.
+
+Account for interest gained on the reserve balance.
+
+Account for inflation on future capital costs.
+
+Determine (not input) the target reserve balance required at the end of the period.
+
+Provide options for different funding strategies, including flat and escalating contributions.
+
+🎯 Goal:
+Calculate the annual amount that needs to be collected and contributed to the reserve fund each year to ensure future capital expenditures are covered.
+
+📥 Inputs (User-Entered):
+study_period (int): Number of years (e.g., 30)
+
+start_balance (decimal): Initial reserve balance in escrow (e.g., 50,000)
+
+interest_rate (decimal): Annual interest rate earned on the reserve fund (e.g., 0.03 = 3%)
+
+inflation_rate (decimal): Annual inflation rate for capital costs (e.g., 0.025 = 2.5%)
+
+capital_plan (list of dict): List of capital events with fields:
+
+year (int): Year of expense
+
+amount (decimal): Estimated cost in today’s dollars
+
+contribution_strategy (enum): "flat" (equal every year), "escalating" (e.g., 2% yearly increase)
+
+🧠 Processing Logic:
+1. Inflate Future Capital Costs
+Apply the inflation rate to each capital event using:
+
+ini
+Copy
+Edit
+inflated_cost = amount * (1 + inflation_rate) ^ (year - 1)
+2. Determine Target Final Balance
+The target balance at year N should at minimum be equal to:
+
+The sum of inflated capital costs remaining after the study period (if any).
+
+Or zero if all costs fall within the study window.
+
+3. Simulate Fund Performance
+Simulate each year’s cash flow:
+
+Beginning balance
+
+Contribution (based on selected strategy)
+
+Interest earned:
+
+Copy
+Edit
+interest = balance * interest_rate
+
+diff
+Copy
+Edit
+- Capital expense (if any)
+- Ending balance:
+end_balance = start_balance + contribution + interest - capital_expense
+
+markdown
+Copy
+Edit
+
+#### 4. **Iterative Solver**
+Use binary search or similar to:
+- Find the **minimum annual contribution** that satisfies:
+  - No negative balances
+  - End balance ≥ target balance
+- Repeat simulation until contribution value converges within acceptable **tolerance** (e.g., ±$1).
+
+#### 5. **Escalating Strategy (Optional)**
+For strategies where contributions increase over time (e.g., 2% annually), adjust:
+contribution_year_n = initial_contribution * (1 + escalation_rate) ^ (n - 1)
+
+yaml
+Copy
+Edit
+
+---
+
+### 📤 Output:
+- `minimum_annual_contribution` (float): Required annual contribution (first year)
+- `funding_strategy_results`:
+  - `strategy_type`: flat, escalating, or custom
+  - `contributions`: list of contributions by year
+  - `balances`: list of dicts per year showing:
+    - Year
+    - Begin balance
+    - Contribution
+    - Interest earned
+    - Capital cost
+    - End balance
+- Warnings or flags:
+  - Years where balance is critically low
+  - Years with unusually high capital cost
+
+---
+
+### 📊 Bonus (Optional Enhancements):
+- Allow export of report to CSV or PDF
+- Include visualizations (line chart of reserve balance, bar chart of capital vs. contribution)
+- Allow scenario comparison:
+  - Base Case
+  - Flat Contribution
+  - Escalating Contribution
+  - Underfunded scenario warning
+
+---
+
+### 🛠 Technical Notes:
+- Use precise decimal math (not floats) for currency
+- Decouple UI from logic for modularity
+- Optional: allow user to download or import capital plan as JSON/CSV
+- Optional: expose calculation engine as API
+✅ This Version Will:
+Give you accurate long-term funding models
+
+Avoid balance shortfalls
+
+Offer different funding strategies
+
+Scale well for any type of asset inventory

@@ -1,0 +1,1741 @@
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Line,
+  ComposedChart,
+  ReferenceLine,
+} from "recharts";
+import {
+  Calculator,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  Info,
+  FileText,
+  FileSpreadsheet,
+  Download
+} from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { toast } from "@/hooks/use-toast";
+
+import { RechartsTooltip } from "./RechartsTooltip";
+import ImportantNoticesWithRecommendations from "./ImportantNoticesWithRecommendations";
+import SummaryTooltip from "./SummaryTooltip";
+import AssetReplacementSchedule from "./AssetReplacementSchedule";
+import { 
+  getAssetDefaultValues, 
+  calculateRemainingServiceLife, 
+  calculateReplacementYear
+} from "./nrm3DefaultValues";
+
+/**
+ * Interfaces
+ */
+interface ReserveFundAnalysisProps {
+  projectId: number;
+  classifications: any[];
+  assessments: any[];
+}
+
+interface ReserveFundSettings {
+  id?: number;
+  projectId: number;
+  studyPeriod: number;
+  startBalance: number;
+  interestRate: number;
+  inflationRate: number;
+  contributionStrategy: 'flat' | 'escalating' | 'custom';
+  escalationRate?: number;
+  annualContribution?: number;
+  currentContribution?: number; // Optional field for user's current contribution
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+interface CapitalPlanEntry {
+  year: number;
+  amount: number;
+  description: string;
+  classificationId?: number;
+  inflatedAmount?: number;
+}
+
+interface FundingStrategyResult {
+  strategyType: 'flat' | 'escalating' | 'custom';
+  annualContribution: number;
+  escalationRate?: number;
+  contributions: number[];
+  cashflow: CashflowEntry[];
+  warnings: string[];
+}
+
+interface CashflowEntry {
+  year: number;
+  beginBalance: number;
+  contribution: number;
+  interest: number;
+  capitalCost: number;
+  endBalance: number;
+}
+
+/**
+ * Helper Functions
+ */
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-AE', {
+    style: 'currency',
+    currency: 'AED',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(value);
+};
+
+const formatPercentage = (value: number | undefined) => {
+  if (value === undefined) return '0.00%';
+  return (value * 100).toFixed(2) + '%';
+};
+
+const currentYear = new Date().getFullYear();
+
+/**
+ * Main Component
+ */
+export default function ReserveFundAnalysis({ 
+  projectId, 
+  classifications,
+  assessments
+}: ReserveFundAnalysisProps) {
+  const queryClient = useQueryClient();
+  const [activeTab, setActiveTab] = useState<string>("settings");
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [calculationTimeout, setCalculationTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [calculationTriggered, setCalculationTriggered] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  
+  // Function to export report to PDF
+  const exportToPDF = async () => {
+    if (!fundingStrategy) {
+      toast({
+        title: "Cannot export report",
+        description: "Please calculate fund projections first.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsExporting(true);
+    try {
+      // Call the API endpoint to generate PDF
+      const response = await apiRequest(`/api/rera/projects/${projectId}/reports/generate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reportType: "reserve-fund",
+          settings: {
+            ...settings,
+            fundingStrategy
+          },
+          capitalPlan,
+          summaryStats
+        }),
+      });
+      
+      if (response && response.reportUrl) {
+        // Open PDF in a new tab
+        window.open(response.reportUrl, '_blank');
+        toast({
+          title: "Report generated",
+          description: "Reserve fund report has been generated successfully."
+        });
+      } else {
+        throw new Error("Failed to generate report");
+      }
+    } catch (error) {
+      console.error("Error generating PDF report:", error);
+      toast({
+        title: "Export failed",
+        description: "An error occurred while exporting the reserve fund report.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+  
+  // Function to export data to Excel
+  const exportToExcel = async () => {
+    if (!fundingStrategy) {
+      toast({
+        title: "Cannot export data",
+        description: "Please calculate fund projections first.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    try {
+      // Import xlsx dynamically to reduce initial bundle size
+      const XLSX = await import('xlsx');
+      
+      // Create workbook and worksheets
+      const wb = XLSX.utils.book_new();
+      
+      // Summary worksheet
+      const summaryData = [
+        ["Reserve Fund Study Summary", "", ""],
+        ["Generated on", new Date().toLocaleDateString(), ""],
+        ["", "", ""],
+        ["Project ID", projectId, ""],
+        ["Study Period", settings.studyPeriod + " years", ""],
+        ["Contribution Strategy", settings.contributionStrategy, ""],
+        ["", "", ""],
+        ["Total Asset Replacement Cost", formatCurrency(totalReplacementCost), ""],
+        ["Total Inflated Replacement Cost", formatCurrency(totalInflatedReplacementCost), ""],
+        ["Short-Term Needs (5 Years)", formatCurrency(shortTermNeeds), ""],
+        ["Annual Maintenance Cost", formatCurrency(annualMaintenanceCost), ""],
+        ["", "", ""],
+        ["Recommended Annual Contribution", formatCurrency(fundingStrategy.annualContribution), ""],
+      ];
+      
+      // Add current contribution if provided
+      if (settings.currentContribution) {
+        summaryData.push(
+          ["Current Annual Contribution", formatCurrency(settings.currentContribution), ""],
+          ["Difference", formatCurrency(settings.currentContribution - fundingStrategy.annualContribution), ""]
+        );
+      }
+      
+      // Add escalation rate for escalating strategy
+      if (settings.contributionStrategy === 'escalating') {
+        summaryData.push(["Annual Contribution Increase", formatPercentage(settings.escalationRate), ""]);
+      }
+      
+      const summarySheet = XLSX.utils.aoa_to_sheet(summaryData);
+      XLSX.utils.book_append_sheet(wb, summarySheet, "Summary");
+      
+      // Cashflow worksheet
+      const cashflowHeaders = ["Year", "Beginning Balance", "Contribution", "Interest", "Capital Cost", "Ending Balance"];
+      const cashflowData = [cashflowHeaders];
+      
+      fundingStrategy.cashflow.forEach(entry => {
+        cashflowData.push([
+          String(currentYear + entry.year),
+          String(entry.beginBalance),
+          String(entry.contribution),
+          String(entry.interest),
+          String(entry.capitalCost),
+          String(entry.endBalance)
+        ]);
+      });
+      
+      const cashflowSheet = XLSX.utils.aoa_to_sheet(cashflowData);
+      XLSX.utils.book_append_sheet(wb, cashflowSheet, "Cashflow");
+      
+      // Capital plan worksheet
+      const planHeaders = ["Year", "Description", "Base Cost", "Inflated Cost"];
+      const planData = [planHeaders];
+      
+      // Sort capital plan by year
+      const sortedPlan = [...capitalPlan].sort((a, b) => a.year - b.year);
+      
+      sortedPlan.forEach(entry => {
+        planData.push([
+          String(currentYear + entry.year),
+          entry.description,
+          String(entry.amount),
+          String(entry.inflatedAmount || entry.amount)
+        ]);
+      });
+      
+      const planSheet = XLSX.utils.aoa_to_sheet(planData);
+      XLSX.utils.book_append_sheet(wb, planSheet, "Capital Plan");
+      
+      // Generate file and download
+      XLSX.writeFile(wb, `Reserve_Fund_Study_Project_${projectId}_${new Date().toISOString().split('T')[0]}.xlsx`);
+      
+      toast({
+        title: "Export successful",
+        description: "Reserve fund data has been exported to Excel."
+      });
+    } catch (error) {
+      console.error("Error exporting to Excel:", error);
+      toast({
+        title: "Export failed",
+        description: "An error occurred while exporting to Excel.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  // Reserve Fund Study settings
+  const [settings, setSettings] = useState<ReserveFundSettings>({
+    projectId,
+    studyPeriod: 30,
+    startBalance: 100000,
+    interestRate: 0.02,
+    inflationRate: 0.025,
+    contributionStrategy: 'flat',
+    escalationRate: 0.02,
+  });
+
+  // Funding strategy results
+  const [fundingStrategy, setFundingStrategy] = useState<FundingStrategyResult | null>(null);
+  
+  // Summary statistics
+  const [summaryStats, setSummaryStats] = useState({
+    totalReplacementCost: 0,
+    totalInflatedReplacementCost: 0,
+    shortTermNeeds: 0,
+    annualMaintenanceCost: 0,
+    annualContribution: 0,
+    minBalanceYear: 0,
+    minBalance: 0
+  });
+
+  /**
+   * Fetch existing settings
+   */
+  const { data: existingSettings, isLoading: isLoadingSettings } = useQuery({
+    queryKey: ["/api/rera/projects", projectId, "reserve-fund-settings"],
+    refetchOnWindowFocus: false,
+    queryFn: async () => {
+      try {
+        const response = await apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings`);
+        return response && response.id ? response : null;
+      } catch (error) {
+        console.error("Error fetching reserve fund settings:", error);
+        return null;
+      }
+    }
+  });
+
+  /**
+   * Update settings when data is loaded
+   */
+  useEffect(() => {
+    if (existingSettings) {
+      setSettings({
+        id: existingSettings.id,
+        projectId,
+        studyPeriod: existingSettings.studyPeriod || 30,
+        startBalance: existingSettings.startBalance || 100000,
+        interestRate: existingSettings.interestRate || 0.02,
+        inflationRate: existingSettings.inflationRate || 0.025,
+        contributionStrategy: existingSettings.contributionStrategy || 'flat',
+        escalationRate: existingSettings.escalationRate || 0.02,
+        annualContribution: existingSettings.annualContribution,
+      });
+    }
+  }, [existingSettings, projectId]);
+
+  /**
+   * Save or update settings mutation
+   */
+  const saveSettingsMutation = useMutation({
+    mutationFn: async (data: ReserveFundSettings) => {
+      if (data.id) {
+        // Update existing settings
+        return apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings/${data.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+      } else {
+        try {
+          // Try to create new settings
+          return await apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+        } catch (error: any) {
+          // If 409 Conflict error (settings already exist), get the existing settings ID and update
+          if (error.status === 409) {
+            // Get all settings for this project
+            const existingSettings = await apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings`);
+            if (existingSettings && existingSettings.id) {
+              console.log(`Settings already exist (ID: ${existingSettings.id}). Updating instead of creating.`);
+              return apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings/${existingSettings.id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({...data, id: existingSettings.id}),
+              });
+            }
+          }
+          throw error;
+        }
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "reserve-fund-settings"] });
+      
+      // Only show the toast if the calculation was not triggered from a strategy change
+      // to avoid back-to-back toast messages
+      if (!calculationTriggered) {
+        toast({
+          title: "Settings saved",
+          description: "Reserve fund settings have been saved successfully.",
+        });
+      }
+    },
+    onError: (error) => {
+      console.error("Error saving settings:", error);
+      toast({
+        title: "Error",
+        description: "Failed to save reserve fund settings.",
+        variant: "destructive",
+      });
+    }
+  });
+
+  /**
+   * Generate capital plan from classifications and assessments
+   */
+  const capitalPlan = useMemo(() => {
+    let plan: CapitalPlanEntry[] = [];
+    
+    // Create a map of assessments by classificationId for quick lookup
+    const assessmentMap: Record<number, any> = {};
+    if (assessments && assessments.length > 0) {
+      assessments.forEach(assessment => {
+        if (assessment.classificationId) {
+          assessmentMap[assessment.classificationId] = assessment;
+        }
+      });
+    }
+    
+    if (classifications && classifications.length > 0) {
+      classifications.forEach(classification => {
+        const assessment = assessmentMap[classification.id];
+        
+        // Skip assets without assessments if we have assessments for other assets
+        if (!assessment && Object.keys(assessmentMap).length > 0) {
+          return;
+        }
+        
+        // Get default values based on asset type
+        const nrmIdentifier = classification.nrmElement || classification.nrmSubGroup || '';
+        const defaultValues = getAssetDefaultValues(nrmIdentifier, classification.nrmGroup);
+        
+        // Calculate replacement cost based on quantity and unit rate
+        const quantity = parseFloat(classification.quantity || "1");
+        const unitCost = parseFloat(classification.costPerUnit) || 
+                        (defaultValues.replacementCostPerUnit || 500);
+        const validQuantity = !isNaN(quantity) && quantity > 0 ? quantity : 1;
+        const validUnitCost = !isNaN(unitCost) && unitCost > 0 ? unitCost : 500;
+        const replacementCost = validQuantity * validUnitCost;
+        
+        // Calculate life expectancy based on default values or custom settings
+        const lifeExpectancy = classification.lifeExpectancy || defaultValues.lifespan || 15;
+        
+        // For condition assessment, we need valid ratings
+        const conditionRating = assessment ? assessment.conditionRating || 'C' : 'C';
+        const priorityRating = assessment ? assessment.priorityRating || '3' : '3';
+        
+        // Calculate remaining life based on condition
+        const remainingLife = calculateRemainingServiceLife(lifeExpectancy, conditionRating);
+        
+        // Determine replacement year based on priority rating
+        const replacementAbsoluteYear = calculateReplacementYear(remainingLife, priorityRating);
+        const yearsUntilReplacement = replacementAbsoluteYear - currentYear;
+        const replacementYear = Math.max(0, Math.floor(yearsUntilReplacement));
+        
+        // Only add to capital plan if replacement is needed within study period
+        if (replacementYear <= settings.studyPeriod) {
+          plan.push({
+            year: replacementYear,
+            amount: replacementCost,
+            description: classification.description || classification.nrmElement || 'Asset Replacement',
+            classificationId: classification.id
+          });
+        }
+        
+        // Calculate recurring replacement cycles if component has multiple replacements in study period
+        if (lifeExpectancy > 0 && lifeExpectancy < settings.studyPeriod) {
+          let nextCycle = replacementYear + lifeExpectancy;
+          while (nextCycle <= settings.studyPeriod) {
+            plan.push({
+              year: nextCycle,
+              amount: replacementCost,
+              description: `${classification.description || classification.nrmElement || 'Asset'} Replacement (Cycle)`,
+              classificationId: classification.id
+            });
+            nextCycle += lifeExpectancy;
+          }
+        }
+      });
+    }
+    
+    // Apply inflation to all capital costs
+    return plan.map(entry => ({
+      ...entry,
+      inflatedAmount: entry.amount * Math.pow(1 + settings.inflationRate, entry.year)
+    }));
+  }, [classifications, assessments, settings.studyPeriod, settings.inflationRate]);
+
+  /**
+   * Total replacement cost for all assets
+   */
+  const { totalReplacementCost, totalInflatedReplacementCost } = useMemo(() => {
+    let totalCost = 0;
+    let totalInflatedCost = 0;
+    
+    capitalPlan.forEach(entry => {
+      totalCost += entry.amount;
+      totalInflatedCost += entry.inflatedAmount || entry.amount;
+    });
+    
+    return { totalReplacementCost: totalCost, totalInflatedReplacementCost: totalInflatedCost };
+  }, [capitalPlan]);
+
+  /**
+   * Capital costs grouped by year
+   */
+  const getCapitalCostsByYear = useCallback((years: number) => {
+    const costsByYear: { [key: number]: number } = {};
+    
+    for (let i = 0; i <= years; i++) {
+      costsByYear[i] = 0;
+    }
+    
+    capitalPlan.forEach(entry => {
+      if (entry.year <= years) {
+        costsByYear[entry.year] += entry.inflatedAmount || entry.amount;
+      }
+    });
+    
+    return costsByYear;
+  }, [capitalPlan]);
+
+  /**
+   * Short-term needs (costs in first 5 years)
+   */
+  const shortTermNeeds = useMemo(() => {
+    let costs = 0;
+    capitalPlan
+      .filter(entry => entry.year <= 5)
+      .forEach(entry => {
+        costs += entry.inflatedAmount || entry.amount;
+      });
+    return costs;
+  }, [capitalPlan]);
+
+  /**
+   * Annual maintenance cost
+   */
+  const annualMaintenanceCost = useMemo(() => {
+    let total = 0;
+    
+    if (classifications && classifications.length > 0) {
+      classifications.forEach(classification => {
+        const nrmIdentifier = classification.nrmElement || classification.nrmSubGroup || '';
+        const defaultValues = getAssetDefaultValues(nrmIdentifier, classification.nrmGroup);
+        
+        const quantity = parseFloat(classification.quantity || "1");
+        // Calculate maintenance cost based on replacement cost if maintenanceCostPerUnit is not available
+        const maintenanceCost = classification.annualMaintenanceCost || 
+                              (defaultValues.replacementCostPerUnit ? defaultValues.replacementCostPerUnit * 0.02 : 10);
+                              
+        const validQuantity = !isNaN(quantity) && quantity > 0 ? quantity : 1;
+        const validMaintenanceCost = !isNaN(maintenanceCost) ? maintenanceCost : 10;
+        
+        total += validQuantity * validMaintenanceCost;
+      });
+    }
+    
+    return total;
+  }, [classifications]);
+
+  /**
+   * Simulate fund performance with contribution strategy
+   */
+  /**
+   * Simulates the performance of the reserve fund over the study period
+   * This is the core function that calculates projected balances based on contributions
+   */
+  const simulateFundPerformance = useCallback((
+    annualContribution: number,
+    escalationRate: number = 0.02
+  ): { 
+    cashflow: CashflowEntry[], 
+    minBalance: number,
+    minBalanceYear: number,
+    finalBalance: number,
+    warnings: string[]
+  } => {
+    const cashflow: CashflowEntry[] = [];
+    const warnings: string[] = [];
+    const capitalCostsByYear = getCapitalCostsByYear(settings.studyPeriod);
+    
+    let currentBalance = settings.startBalance;
+    let minBalance = currentBalance;
+    let minBalanceYear = 0;
+    
+    // Check for immediate expense in year 0 when starting balance is very low
+    const immediateExpense = capitalCostsByYear[0] || 0;
+    let specialFirstYearContribution = 0;
+    
+    // If we have an immediate expense in year 0 and insufficient balance
+    if (immediateExpense > 0 && currentBalance < immediateExpense) {
+      // Calculate the special first year contribution needed to cover the expense
+      specialFirstYearContribution = immediateExpense - currentBalance + 5000; // Add a buffer
+      warnings.push(`Immediate expense detected (${formatCurrency(immediateExpense)}) with insufficient starting balance (${formatCurrency(currentBalance)}). An additional contribution of ${formatCurrency(specialFirstYearContribution)} is required in year 0.`);
+    }
+    
+    for (let year = 0; year <= settings.studyPeriod; year++) {
+      const beginBalance = currentBalance;
+      
+      // Determine contribution based on strategy
+      let contribution = 0;
+      
+      // For year 0, apply special contribution if needed
+      if (year === 0 && specialFirstYearContribution > 0) {
+        contribution = specialFirstYearContribution;
+      } else if (year > 0) { // Regular contributions start in year 1
+        if (settings.contributionStrategy === 'custom') {
+          // For custom strategy, this would need to be fetched from a user-defined schedule
+          // For now, default to the annual contribution
+          contribution = annualContribution;
+        } else if (escalationRate > 0 && settings.contributionStrategy === 'escalating') {
+          // Use the escalating contribution formula
+          contribution = annualContribution * Math.pow(1 + escalationRate, year - 1);
+        } else {
+          // Flat rate - same amount each year
+          contribution = annualContribution;
+        }
+      }
+      
+      // Add contribution to balance
+      currentBalance += contribution;
+      
+      // More realistic interest calculation - use average balance throughout the year
+      const capitalCost = capitalCostsByYear[year] || 0;
+      
+      // Calculate average balance throughout the year assuming expenses occur mid-year
+      const midYearBalance = currentBalance - (capitalCost / 2);
+      const averageBalance = (currentBalance + Math.max(0, midYearBalance)) / 2;
+      
+      // Only apply interest on positive balances
+      const interest = Math.max(0, averageBalance) * settings.interestRate;
+      
+      // Add interest
+      currentBalance += interest;
+      
+      // Subtract capital expenses for the year
+      currentBalance -= capitalCost;
+      
+      // Track minimum balance
+      if (currentBalance < minBalance) {
+        minBalance = currentBalance;
+        minBalanceYear = year;
+      }
+      
+      // Check for low or negative balance
+      if (currentBalance < 0) {
+        warnings.push(`Negative balance in year ${currentYear + year}: ${formatCurrency(currentBalance)}`);
+      } else if (currentBalance < totalReplacementCost * 0.05) {
+        warnings.push(`Critically low balance in year ${currentYear + year}: ${formatCurrency(currentBalance)}`);
+      }
+      
+      // Check for unusually high expenses
+      if (capitalCost > totalReplacementCost * 0.2) {
+        warnings.push(`High capital cost in year ${currentYear + year}: ${formatCurrency(capitalCost)}`);
+      }
+      
+      // Add to cashflow table
+      cashflow.push({
+        year: year,
+        beginBalance: beginBalance,
+        contribution: contribution,
+        interest: interest,
+        capitalCost: capitalCost,
+        endBalance: currentBalance
+      });
+    }
+    
+    return {
+      cashflow,
+      minBalance,
+      minBalanceYear,
+      finalBalance: currentBalance,
+      warnings
+    };
+  }, [settings.studyPeriod, settings.startBalance, settings.interestRate, settings.contributionStrategy, getCapitalCostsByYear, totalReplacementCost]);
+
+  /**
+   * Find minimum annual contribution using binary search
+   */
+  const calculateMinimumContribution = useCallback((
+    escalationRate: number = 0.02
+  ): FundingStrategyResult => {
+    // Calculate a reasonable initial upper bound
+    const totalCapitalCosts = Object.values(getCapitalCostsByYear(settings.studyPeriod))
+                                .reduce((sum, cost) => sum + cost, 0);
+    const avgAnnualCost = totalCapitalCosts / Math.max(settings.studyPeriod, 1);
+    const initialUpperBound = avgAnnualCost * 1.5; // Add safety margin
+    
+    let low = 1000; // Minimum reasonable annual contribution
+    let high = Math.max(initialUpperBound, 1000000); // Maximum reasonable bound
+    let mid = 0;
+    let result;
+    let iterations = 0;
+    const maxIterations = 20; // Prevent infinite loops
+    
+    // Strategy-specific logic
+    const strategyType = settings.contributionStrategy || 'flat';
+    console.log('Using strategy type for calculation:', strategyType);
+    
+    // Determine if we're using escalation or not
+    const useEscalation = strategyType === 'escalating';
+    
+    // Binary search to find minimum contribution
+    while (low <= high && iterations < maxIterations) {
+      mid = Math.floor((low + high) / 2);
+      
+      // For flat rate, pass 0 as escalation rate, for escalating use the provided rate
+      const rateToUse = useEscalation ? escalationRate : 0;
+      console.log(`Testing contribution: ${mid}, escalation: ${rateToUse}`);
+      
+      result = simulateFundPerformance(
+        mid, 
+        rateToUse
+      );
+      
+      // If we found a minimum balance that's non-negative, try a lower contribution
+      // Otherwise, try a higher contribution
+      if (result.minBalance >= 0) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+      
+      iterations++;
+    }
+    
+    // Ensure we return a valid positive contribution that gives non-negative balance
+    const finalAmount = low;
+    console.log(`Final contribution amount: ${finalAmount}, strategy: ${strategyType}`);
+    
+    // Pass the correct escalation rate based on strategy type
+    const finalRateToUse = useEscalation ? escalationRate : 0;
+    const finalResult = simulateFundPerformance(finalAmount, finalRateToUse);
+    
+    // Generate yearly contributions
+    const contributions: number[] = [];
+    
+    for (let year = 0; year <= settings.studyPeriod; year++) {
+      if (year === 0) {
+        // No regular contribution in year 0
+        contributions.push(0);
+      } else if (useEscalation) {
+        // For escalating, increase by rate each year
+        contributions.push(finalAmount * Math.pow(1 + escalationRate, year - 1));
+      } else {
+        // For flat rate, same contribution every year
+        contributions.push(finalAmount);
+      }
+    }
+    
+    return {
+      strategyType: strategyType,
+      annualContribution: finalAmount,
+      escalationRate: useEscalation ? escalationRate : 0,
+      contributions: contributions,
+      cashflow: finalResult.cashflow,
+      warnings: finalResult.warnings
+    };
+  }, [settings.studyPeriod, settings.contributionStrategy, settings.escalationRate, getCapitalCostsByYear, simulateFundPerformance]);
+
+  /**
+   * Update summary statistics
+   */
+  const updateSummaryStats = useCallback(() => {
+    if (!fundingStrategy) return;
+    
+    // Find minimum balance and its year
+    let minBalance = Infinity;
+    let minBalanceYear = 0;
+    
+    fundingStrategy.cashflow.forEach(entry => {
+      if (entry.endBalance < minBalance) {
+        minBalance = entry.endBalance;
+        minBalanceYear = entry.year;
+      }
+    });
+    
+    setSummaryStats({
+      totalReplacementCost,
+      totalInflatedReplacementCost,
+      shortTermNeeds,
+      annualMaintenanceCost,
+      annualContribution: fundingStrategy.annualContribution,
+      minBalanceYear,
+      minBalance
+    });
+  }, [fundingStrategy, totalReplacementCost, totalInflatedReplacementCost, shortTermNeeds, annualMaintenanceCost]);
+
+  /**
+   * Handler for setting changes
+   */
+  const handleSettingChange = (field: string, value: string | number) => {
+    const numericValue = typeof value === 'string' ? parseFloat(value) : value;
+    
+    setSettings(prev => ({
+      ...prev,
+      [field]: field.includes('Rate') ? numericValue / 100 : numericValue
+    }));
+    
+    // Schedule recalculation after a delay to avoid too many recalculations
+    if (calculationTimeout) {
+      clearTimeout(calculationTimeout);
+    }
+    
+    // Only schedule calculation for non-strategy fields to prevent duplicate calculations
+    // Strategy changes will be handled by the radio button's onValueChange
+    if (field !== 'contributionStrategy') {
+      const newTimeout = setTimeout(() => {
+        setCalculationTriggered(true);
+      }, 2000); // 2 second delay
+      
+      setCalculationTimeout(newTimeout);
+    }
+  };
+
+  /**
+   * Trigger calculation
+   */
+  const handleCalculate = useCallback(() => {
+    setIsCalculating(true);
+    
+    try {
+      // Calculate funding strategy based on settings
+      console.log('Calculating with strategy:', settings.contributionStrategy);
+      const result = calculateMinimumContribution(settings.escalationRate);
+      console.log('Strategy result:', result);
+      setFundingStrategy(result);
+      
+      // Save settings to backend - but don't overwrite contribution strategy
+      // This will prevent the strategy from changing due to race conditions
+      const settingsToSave = {
+        ...settings,
+        annualContribution: result.annualContribution
+      };
+      
+      // Set a small delay before saving to prevent race conditions
+      setTimeout(() => {
+        saveSettingsMutation.mutate(settingsToSave);
+      }, 500);
+      
+      toast({
+        title: "Calculation complete",
+        description: "Reserve fund analysis has been updated.",
+      });
+    } catch (error) {
+      console.error("Error calculating reserve fund:", error);
+      toast({
+        title: "Calculation failed",
+        description: "An error occurred while calculating the reserve fund analysis.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsCalculating(false);
+      setCalculationTriggered(false);
+    }
+  }, [settings.contributionStrategy, settings.escalationRate, settings.studyPeriod, settings.startBalance, settings.interestRate, settings.inflationRate, calculateMinimumContribution, saveSettingsMutation]);
+
+  /**
+   * Calculate when triggered
+   */
+  useEffect(() => {
+    if (calculationTriggered) {
+      handleCalculate();
+    }
+  }, [calculationTriggered, handleCalculate]);
+
+  /**
+   * Update summary when funding strategy changes
+   */
+  useEffect(() => {
+    if (fundingStrategy) {
+      updateSummaryStats();
+    }
+  }, [fundingStrategy, updateSummaryStats]);
+
+  /**
+   * Simulate performance with current contribution for comparison
+   */
+  const currentContributionPerformance = useMemo(() => {
+    // Only calculate current contribution performance if a value is provided
+    if (!settings.currentContribution || !fundingStrategy) return null;
+    
+    // Simulate performance with the current contribution instead of recommended
+    const currentPerformance = simulateFundPerformance(
+      settings.currentContribution,
+      settings.contributionStrategy === 'escalating' ? (settings.escalationRate || 0.02) : 0
+    );
+    
+    return currentPerformance;
+  }, [settings.currentContribution, settings.contributionStrategy, settings.escalationRate, simulateFundPerformance, fundingStrategy]);
+
+  /**
+   * Format chart data
+   */
+  const chartData = useMemo(() => {
+    if (!fundingStrategy) return [];
+    
+    const data = fundingStrategy.cashflow.map(entry => {
+      const baseData = {
+        year: currentYear + entry.year,
+        capitalCost: entry.capitalCost,
+        balance: entry.endBalance,
+        contribution: entry.contribution
+      };
+      
+      // If we have current contribution performance, add it to the chart data
+      if (currentContributionPerformance && settings.currentContribution) {
+        const currentEntry = currentContributionPerformance.cashflow.find(e => e.year === entry.year);
+        if (currentEntry) {
+          return {
+            ...baseData,
+            currentBalance: currentEntry.endBalance
+          };
+        }
+      }
+      
+      return baseData;
+    });
+    
+    return data;
+  }, [fundingStrategy, currentContributionPerformance, settings.currentContribution]);
+
+  // Skip if capital plan is empty or loading
+  if (capitalPlan.length === 0 && (!classifications || classifications.length === 0)) {
+    return (
+      <Alert className="mt-4">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Missing asset data</AlertTitle>
+        <AlertDescription>
+          Please add assets to the project before running a reserve fund analysis.
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="settings">Fund Settings</TabsTrigger>
+          <TabsTrigger value="assets">Asset Schedule</TabsTrigger>
+          <TabsTrigger value="projections">Financial Projections</TabsTrigger>
+          <TabsTrigger value="cashflow">Cashflow Details</TabsTrigger>
+        </TabsList>
+
+        {/* Settings Tab */}
+        <TabsContent value="settings" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Reserve Fund Settings</CardTitle>
+              <CardDescription>
+                Configure the parameters for your reserve fund analysis
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-4">
+                <Label>Funding Strategy</Label>
+                <RadioGroup 
+                  value={settings.contributionStrategy} 
+                  onValueChange={(value) => {
+                    console.log('Strategy changed to:', value);
+                    
+                    // First update settings immediately
+                    const newStrategy = value as 'flat' | 'escalating' | 'custom';
+                    
+                    // Create a separate updater function to ensure we don't have a race condition
+                    const updateStrategy = () => {
+                      setSettings(prev => ({
+                        ...prev,
+                        contributionStrategy: newStrategy
+                      }));
+                      
+                      // After updating settings, trigger the calculation
+                      // with a delay to ensure settings are updated first
+                      setTimeout(() => {
+                        // Only log to confirm which strategy is active when calculation starts
+                        console.log('Starting calculation with strategy:', newStrategy);
+                        setCalculationTriggered(true);
+                      }, 300);
+                    };
+                    
+                    // Execute the update
+                    updateStrategy();
+                  }}
+                  className="flex flex-col space-y-1"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="flat" id="flat-strategy" />
+                    <Label htmlFor="flat-strategy" className="font-normal">
+                      <span className="font-medium">Flat Rate</span> - Same contribution amount each year
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="escalating" id="escalating-strategy" />
+                    <Label htmlFor="escalating-strategy" className="font-normal">
+                      <span className="font-medium">Escalating</span> - Annual contribution increases each year
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="custom" id="custom-strategy" />
+                    <Label htmlFor="custom-strategy" className="font-normal">
+                      <span className="font-medium">Custom</span> - Manual contribution schedule
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="studyPeriod">Study Period (Years)</Label>
+                  <Input
+                    id="studyPeriod"
+                    type="number"
+                    min="5"
+                    max="100"
+                    value={settings.studyPeriod}
+                    onChange={(e) => handleSettingChange('studyPeriod', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="startBalance">Initial Balance (AED)</Label>
+                  <Input
+                    id="startBalance"
+                    type="number"
+                    min="0"
+                    value={settings.startBalance}
+                    onChange={(e) => handleSettingChange('startBalance', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-1">
+                    <Label htmlFor="currentContribution">Current Annual Contribution (AED)</Label>
+                    <SummaryTooltip
+                      label="Current Annual Contribution"
+                      description="The amount currently being contributed annually to the reserve fund"
+                      calculation="Enter your current annual contribution to compare with recommendations"
+                      importance="Helps evaluate if current funding levels are adequate compared to the recommended amount"
+                    >
+                      <Info className="h-4 w-4 text-muted-foreground" />
+                    </SummaryTooltip>
+                  </div>
+                  <Input
+                    id="currentContribution"
+                    type="number"
+                    min="0"
+                    placeholder="Optional"
+                    value={settings.currentContribution || ''}
+                    onChange={(e) => handleSettingChange('currentContribution', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="interestRate">Annual Interest Rate (%)</Label>
+                  <Input
+                    id="interestRate"
+                    type="number"
+                    min="0"
+                    max="20"
+                    step="0.1"
+                    value={(settings.interestRate * 100).toFixed(1)}
+                    onChange={(e) => handleSettingChange('interestRate', e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="inflationRate">Annual Inflation Rate (%)</Label>
+                  <Input
+                    id="inflationRate"
+                    type="number"
+                    min="0"
+                    max="20"
+                    step="0.1"
+                    value={(settings.inflationRate * 100).toFixed(1)}
+                    onChange={(e) => handleSettingChange('inflationRate', e.target.value)}
+                  />
+                </div>
+                {settings.contributionStrategy === 'escalating' && (
+                  <div className="space-y-2">
+                    <Label htmlFor="escalationRate">Annual Contribution Increase (%)</Label>
+                    <Input
+                      id="escalationRate"
+                      type="number"
+                      min="0"
+                      max="20"
+                      step="0.1"
+                      value={((settings.escalationRate || 0.02) * 100).toFixed(1)}
+                      onChange={(e) => handleSettingChange('escalationRate', e.target.value)}
+                    />
+                  </div>
+                )}
+                
+                {settings.contributionStrategy === 'custom' && (
+                  <div className="space-y-2 col-span-2">
+                    <Label>Custom Contribution Schedule</Label>
+                    <Alert>
+                      <Info className="h-4 w-4" />
+                      <AlertTitle>Custom schedule</AlertTitle>
+                      <AlertDescription>
+                        Custom contribution schedules allow you to manually set contribution amounts for each year.
+                        This feature will be available in a future update.
+                      </AlertDescription>
+                    </Alert>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <div>
+                {fundingStrategy && (
+                  <div className="text-sm">
+                    Minimum Annual Contribution: <span className="font-bold">{formatCurrency(fundingStrategy.annualContribution)}</span>
+                  </div>
+                )}
+              </div>
+              <div className="flex space-x-2">
+                {fundingStrategy && (
+                  <>
+                    <Button 
+                      variant="outline"
+                      onClick={exportToPDF}
+                      disabled={isExporting}
+                    >
+                      <FileText className="mr-2 h-4 w-4" />
+                      Export PDF
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      onClick={exportToExcel}
+                      disabled={isExporting}
+                    >
+                      <FileSpreadsheet className="mr-2 h-4 w-4" />
+                      Export Excel
+                    </Button>
+                  </>
+                )}
+                <Button 
+                  onClick={handleCalculate} 
+                  disabled={isCalculating}
+                >
+                  {isCalculating ? (
+                    <>Calculating...</>
+                  ) : (
+                    <>
+                      <Calculator className="mr-2 h-4 w-4" />
+                      Calculate
+                    </>
+                  )}
+                </Button>
+              </div>
+            </CardFooter>
+          </Card>
+
+          {fundingStrategy && fundingStrategy.warnings.length > 0 && (
+            <ImportantNoticesWithRecommendations
+              warnings={fundingStrategy.warnings}
+              onApplyRecommendation={(recommendation, index) => {
+                // Apply changes based on recommendation action type
+                switch(recommendation.type) {
+                  case 'increase_contribution':
+                    // Increase contribution by percentage
+                    const increasePercent = Number(recommendation.value);
+                    const newContrib = Math.round(fundingStrategy.annualContribution * (1 + increasePercent/100));
+                    setSettings(prev => ({
+                      ...prev,
+                      annualContribution: newContrib
+                    }));
+                    break;
+                    
+                  case 'increase_escalation':
+                    // Set escalation rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      contributionStrategy: 'escalating',
+                      escalationRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'decrease_escalation':
+                    // Set escalation rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      escalationRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'increase_inflation':
+                    // Set inflation rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      inflationRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'decrease_inflation':
+                    // Set inflation rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      inflationRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'increase_interest':
+                    // Set interest rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      interestRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'decrease_interest':
+                    // Set interest rate to specified percentage
+                    setSettings(prev => ({
+                      ...prev,
+                      interestRate: Number(recommendation.value) / 100
+                    }));
+                    break;
+                    
+                  case 'custom':
+                    // For custom actions that may affect multiple settings
+                    if (recommendation.customAction?.includes('monthly')) {
+                      // Monthly contributions logic could be implemented here
+                      console.log('Monthly contributions selected');
+                    } else {
+                      // Default to escalating strategy for other custom actions
+                      setSettings(prev => ({
+                        ...prev,
+                        contributionStrategy: 'escalating'
+                      }));
+                    }
+                    break;
+                }
+                
+                // Trigger recalculation with the new settings
+                setCalculationTriggered(true);
+              }}
+              currentSettings={{
+                annualContribution: fundingStrategy.annualContribution,
+                contributionIncreaseRate: String(settings.escalationRate || 0.02),
+                inflationRate: String(settings.inflationRate),
+                interestRate: String(settings.interestRate)
+              }}
+            />
+          )}
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Capital Plan Summary</CardTitle>
+              <CardDescription>
+                Overview of the project's capital needs
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <SummaryTooltip
+                    label="Total Asset Replacement Cost"
+                    description="The total cost to replace all components at current prices (without inflation)"
+                    calculation="Sum of the replacement costs of all components in the study"
+                    importance="Provides a baseline for understanding the scale of all assets in the property"
+                  >
+                    <div className="text-sm font-medium">Total Asset Replacement Cost</div>
+                  </SummaryTooltip>
+                  <div className="text-2xl font-bold">{formatCurrency(totalReplacementCost)}</div>
+                </div>
+                <div className="space-y-1">
+                  <SummaryTooltip
+                    label="Total Inflated Replacement Cost"
+                    description="The projected future cost of all replacements with inflation applied"
+                    calculation={`Current costs increased by inflation (${formatPercentage(settings.inflationRate)}) over each component's remaining life`}
+                    importance="Shows the actual amount that will need to be funded over the study period"
+                  >
+                    <div className="text-sm font-medium">Total Inflated Replacement Cost</div>
+                  </SummaryTooltip>
+                  <div className="text-2xl font-bold">{formatCurrency(totalInflatedReplacementCost)}</div>
+                </div>
+                <div className="space-y-1">
+                  <SummaryTooltip
+                    label="Short-Term Needs (5 Years)"
+                    description="Funds required for replacements in the next 5 years"
+                    calculation="Sum of inflated costs for all replacements scheduled in the first 5 years"
+                    importance="Critical for immediate financial planning and cash flow management"
+                  >
+                    <div className="text-sm font-medium">Short-Term Needs (5 Years)</div>
+                  </SummaryTooltip>
+                  <div className="text-2xl font-bold">{formatCurrency(shortTermNeeds)}</div>
+                </div>
+                <div className="space-y-1">
+                  <SummaryTooltip
+                    label="Annual Maintenance Cost"
+                    description="Estimated yearly expenses for routine maintenance"
+                    calculation="Typically 1-3% of replacement cost for each component, summed across all components"
+                    importance="These costs are separate from capital replacements and should be budgeted annually"
+                  >
+                    <div className="text-sm font-medium">Annual Maintenance Cost</div>
+                  </SummaryTooltip>
+                  <div className="text-2xl font-bold">{formatCurrency(annualMaintenanceCost)}</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        {/* Asset Schedule Tab */}
+        <TabsContent value="assets" className="space-y-4">
+          {classifications && classifications.length > 0 ? (
+            <AssetReplacementSchedule 
+              assets={classifications.map((classification: any, index: number) => {
+                // Get default values based on asset type
+                const nrmIdentifier = classification.nrmElement || classification.nrmSubGroup || '';
+                const defaultValues = getAssetDefaultValues(nrmIdentifier, classification.nrmGroup);
+                
+                // Calculate life expectancy based on default values or custom settings
+                const lifeExpectancy = classification.lifeExpectancy || defaultValues.lifespan || 15;
+                
+                // Get condition from assessment if available
+                const assessment = assessments.find((a: any) => a.classificationId === classification.id);
+                const conditionRating = assessment ? assessment.conditionRating || 'C' : 'C';
+                
+                // Calculate remaining life based on condition
+                const remainingLife = calculateRemainingServiceLife(lifeExpectancy, conditionRating);
+                
+                // Map condition rating to condition label
+                const conditionMap: Record<string, string> = {
+                  'A': 'Excellent',
+                  'B': 'Good',
+                  'C': 'Fair',
+                  'D': 'Poor',
+                  'E': 'Critical'
+                };
+                
+                // Calculate replacement year
+                const replacementAbsoluteYear = calculateReplacementYear(remainingLife, 
+                  assessment?.priorityRating || '3');
+                
+                return {
+                  id: classification.id,
+                  code: classification.nrmGroup + '.' + 
+                        (classification.nrmSubGroup ? classification.nrmSubGroup + '.' : '') + 
+                        (classification.nrmElement || ''),
+                  name: classification.description || classification.nrmElement || 'Asset',
+                  location: classification.location || 'General',
+                  category: classification.category || classification.nrmGroup || 'Unknown',
+                  lastMaintenanceDate: assessment?.lastMaintenanceDate,
+                  estimatedReplacement: replacementAbsoluteYear.toString(),
+                  replacementYear: replacementAbsoluteYear,
+                  replacementCost: parseFloat(classification.costPerUnit || '0') * 
+                                  parseFloat(classification.quantity || '1'),
+                  remainingLife: Math.max(0, remainingLife),
+                  condition: conditionMap[conditionRating] || 'Fair'
+                };
+              })}
+              currentYear={currentYear}
+            />
+          ) : (
+            <Alert>
+              <Info className="h-4 w-4 mr-2" />
+              <AlertTitle>No Asset Data Available</AlertTitle>
+              <AlertDescription>
+                Please add classifications to view the asset replacement schedule.
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
+
+        {/* Projections Tab */}
+        <TabsContent value="projections" className="space-y-4">
+          {fundingStrategy ? (
+            <>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Reserve Fund Projection</CardTitle>
+                  <CardDescription>
+                    Visualization of fund balance and capital expenses over time
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-[400px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <ComposedChart
+                        data={chartData}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 50 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis 
+                          dataKey="year" 
+                          angle={-45} 
+                          textAnchor="end"
+                          tick={{ fontSize: 12 }}
+                          interval={Math.ceil(settings.studyPeriod / 15)}
+                        />
+                        <YAxis 
+                          yAxisId="left"
+                          tickFormatter={(value) => formatCurrency(value).replace('AED', '')}
+                        />
+                        <YAxis 
+                          yAxisId="right"
+                          orientation="right"
+                          tickFormatter={(value) => formatCurrency(value).replace('AED', '')}
+                        />
+                        <RechartsTooltip formatter={(value) => formatCurrency(value as number)} />
+                        <Legend />
+                        <Bar 
+                          yAxisId="right"
+                          name="Capital Expense" 
+                          dataKey="capitalCost" 
+                          fill="#ff8042" 
+                        />
+                        <Line
+                          yAxisId="left"
+                          type="monotone"
+                          name="Recommended Funding Balance"
+                          dataKey="balance"
+                          stroke="#8884d8"
+                          strokeWidth={2}
+                        />
+                        {settings.currentContribution && currentContributionPerformance && (
+                          <Line
+                            yAxisId="left"
+                            type="monotone"
+                            name="Current Funding Balance"
+                            dataKey="currentBalance"
+                            stroke="#82ca9d"
+                            strokeWidth={2}
+                            strokeDasharray="5 5"
+                          />
+                        )}
+                        <ReferenceLine
+                          y={0}
+                          stroke="red"
+                          yAxisId="left"
+                          strokeWidth={2}
+                          strokeDasharray="3 3"
+                        />
+                      </ComposedChart>
+                    </ResponsiveContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle>Annual Contributions</CardTitle>
+                  <CardDescription>
+                    Recommended annual contributions to maintain adequate reserve fund
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-1">
+                        <SummaryTooltip
+                          label="First Year Contribution"
+                          description="The contribution needed in the first year of the funding plan"
+                          calculation="Calculated based on asset replacement needs, inflation, interest, and the selected funding strategy"
+                          importance="This is the minimum contribution required to meet future capital expenses"
+                        >
+                          <div className="text-sm font-medium">First Year Contribution</div>
+                        </SummaryTooltip>
+                        <div className="text-2xl font-bold">{formatCurrency(fundingStrategy.annualContribution)}</div>
+                      </div>
+                      <div className="space-y-1">
+                        <SummaryTooltip
+                          label="Annual Increase Rate"
+                          description="Annual percentage increase in contributions"
+                          calculation="Set to 0% for flat rate funding, or to your specified rate for escalating funding"
+                          importance="Higher growth rates allow for lower initial contributions but higher costs in later years"
+                        >
+                          <div className="text-sm font-medium">Annual Increase Rate</div>
+                        </SummaryTooltip>
+                        <div className="text-2xl font-bold">
+                          {settings.contributionStrategy === 'flat' 
+                            ? '0.00%' 
+                            : formatPercentage(settings.escalationRate)}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <SummaryTooltip
+                          label="Final Year Contribution"
+                          description="The contribution needed in the last year of the study period"
+                          calculation={settings.contributionStrategy === 'escalating' ? 
+                            `First year contribution increased by ${formatPercentage(settings.escalationRate)} annually for ${settings.studyPeriod-1} years` : 
+                            "Same as first year (flat rate funding)"}
+                          importance="Shows the long-term funding commitment required"
+                        >
+                          <div className="text-sm font-medium">Final Year Contribution</div>
+                        </SummaryTooltip>
+                        <div className="text-2xl font-bold">
+                          {settings.contributionStrategy === 'flat' 
+                            ? formatCurrency(fundingStrategy.annualContribution) 
+                            : formatCurrency(
+                                fundingStrategy.annualContribution * 
+                                Math.pow(1 + (settings.escalationRate || 0), settings.studyPeriod - 1)
+                              )
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {settings.currentContribution && (
+                      <div className="mt-6 border-t pt-4">
+                        <h4 className="text-md font-medium mb-2">Comparison to Current Contribution</h4>
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                          <div className="flex items-center gap-2">
+                            <div className="flex-grow">
+                              <div className="text-sm">Current Annual Contribution:</div>
+                              <div className="text-lg font-semibold">{formatCurrency(settings.currentContribution)}</div>
+                            </div>
+                            <div className="flex-grow">
+                              <div className="text-sm">Recommended Contribution:</div>
+                              <div className="text-lg font-semibold">{formatCurrency(fundingStrategy.annualContribution)}</div>
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-sm">Difference:</div>
+                            <div className={`text-lg font-semibold ${settings.currentContribution < fundingStrategy.annualContribution ? 'text-destructive' : 'text-green-600'}`}>
+                              {settings.currentContribution < fundingStrategy.annualContribution ? 
+                                `${formatCurrency(fundingStrategy.annualContribution - settings.currentContribution)} more needed annually` :
+                                `${formatCurrency(settings.currentContribution - fundingStrategy.annualContribution)} surplus annually`
+                              }
+                            </div>
+                          </div>
+                        </div>
+                        {currentContributionPerformance && currentContributionPerformance.minBalance < 0 && (
+                          <Alert className="mt-4" variant="destructive">
+                            <AlertCircle className="h-4 w-4 mr-2" />
+                            <AlertTitle>Funding Shortfall</AlertTitle>
+                            <AlertDescription>
+                              With your current contribution of {formatCurrency(settings.currentContribution)}, 
+                              the reserve fund will become negative in year {currentYear + currentContributionPerformance.minBalanceYear}, 
+                              reaching {formatCurrency(currentContributionPerformance.minBalance)}.
+                            </AlertDescription>
+                          </Alert>
+                        )}
+                      </div>
+                    )}
+                    
+                    {fundingStrategy.cashflow[0].contribution > 0 && (
+                      <Alert>
+                        <Info className="h-4 w-4 mr-2" />
+                        <AlertTitle>Special Year 0 Contribution</AlertTitle>
+                        <AlertDescription>
+                          An initial contribution of {formatCurrency(fundingStrategy.cashflow[0].contribution)} is required 
+                          before regular annual contributions begin.
+                        </AlertDescription>
+                      </Alert>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          ) : (
+            <Alert>
+              <Calculator className="h-4 w-4 mr-2" />
+              <AlertTitle>No projection data available</AlertTitle>
+              <AlertDescription>
+                Please calculate the reserve fund analysis first to view projections.
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
+
+        {/* Cashflow Tab */}
+        <TabsContent value="cashflow" className="space-y-4">
+          {fundingStrategy ? (
+            <>
+              {settings.currentContribution && currentContributionPerformance && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Funding Comparison</CardTitle>
+                    <CardDescription>
+                      Comparison between current and recommended funding strategies
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="overflow-auto">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <div className="font-medium">Current Funding ({formatCurrency(settings.currentContribution)}/year)</div>
+                          <div className="text-sm text-muted-foreground">End balance in {currentYear + settings.studyPeriod}: {formatCurrency(currentContributionPerformance.finalBalance)}</div>
+                          <div className="text-sm text-muted-foreground">
+                            Minimum balance: {formatCurrency(currentContributionPerformance.minBalance)} in year {currentYear + currentContributionPerformance.minBalanceYear}
+                          </div>
+                          <Alert variant={currentContributionPerformance.minBalance < 0 ? "destructive" : "default"}>
+                            <AlertTitle>Analysis</AlertTitle>
+                            <AlertDescription>
+                              {currentContributionPerformance.minBalance < 0 
+                                ? `Current funding is insufficient. The fund will go negative in year ${currentYear + currentContributionPerformance.minBalanceYear}.` 
+                                : "Current funding is sufficient to maintain a positive balance."}
+                            </AlertDescription>
+                          </Alert>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="font-medium">Recommended Funding ({formatCurrency(fundingStrategy.annualContribution)}/year)</div>
+                          <div className="text-sm text-muted-foreground">End balance in {currentYear + settings.studyPeriod}: {formatCurrency(fundingStrategy.cashflow[fundingStrategy.cashflow.length-1].endBalance)}</div>
+                          <div className="text-sm text-muted-foreground">
+                            Minimum balance: {formatCurrency(summaryStats.minBalance)} in year {currentYear + summaryStats.minBalanceYear}
+                          </div>
+                          <Alert>
+                            <AlertTitle>Analysis</AlertTitle>
+                            <AlertDescription>
+                              {settings.currentContribution < fundingStrategy.annualContribution
+                                ? `Increasing annual contribution by ${formatCurrency(fundingStrategy.annualContribution - settings.currentContribution)} is recommended to maintain adequate reserves.`
+                                : `Your current contribution exceeds the minimum recommended amount by ${formatCurrency(settings.currentContribution - fundingStrategy.annualContribution)}.`}
+                            </AlertDescription>
+                          </Alert>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Reserve Fund Cashflow Projection</CardTitle>
+                  <CardDescription>
+                    Year-by-year breakdown of the reserve fund performance
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Tabs defaultValue="recommended">
+                    <TabsList className="mb-4">
+                      <TabsTrigger value="recommended">Recommended Funding</TabsTrigger>
+                      {settings.currentContribution && currentContributionPerformance && (
+                        <TabsTrigger value="current">Current Funding</TabsTrigger>
+                      )}
+                    </TabsList>
+                    
+                    <TabsContent value="recommended">
+                      <ScrollArea className="h-[400px]">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Year</TableHead>
+                              <TableHead>Begin Balance</TableHead>
+                              <TableHead>Contribution</TableHead>
+                              <TableHead>Interest Earned</TableHead>
+                              <TableHead>Capital Expense</TableHead>
+                              <TableHead>End Balance</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {fundingStrategy.cashflow.map((entry, index) => (
+                              <TableRow key={index} className={entry.endBalance < 0 ? 'bg-red-100 dark:bg-red-900/20' : ''}>
+                                <TableCell>{currentYear + entry.year}</TableCell>
+                                <TableCell>{formatCurrency(entry.beginBalance)}</TableCell>
+                                <TableCell>{formatCurrency(entry.contribution)}</TableCell>
+                                <TableCell>{formatCurrency(entry.interest)}</TableCell>
+                                <TableCell>
+                                  {entry.capitalCost > 0 ? (
+                                    <span className="text-destructive font-medium">-{formatCurrency(entry.capitalCost)}</span>
+                                  ) : (
+                                    <span className="text-muted-foreground">-</span>
+                                  )}
+                                </TableCell>
+                                <TableCell className={`font-medium ${entry.endBalance < 0 ? 'text-destructive font-bold' : ''}`}>
+                                  {entry.endBalance < 0 ? 
+                                    `(${formatCurrency(Math.abs(entry.endBalance))})` : 
+                                    formatCurrency(entry.endBalance)}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </ScrollArea>
+                    </TabsContent>
+                    
+                    {settings.currentContribution && currentContributionPerformance && (
+                      <TabsContent value="current">
+                        <ScrollArea className="h-[400px]">
+                          <Table>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead>Year</TableHead>
+                                <TableHead>Begin Balance</TableHead>
+                                <TableHead>Contribution</TableHead>
+                                <TableHead>Interest Earned</TableHead>
+                                <TableHead>Capital Expense</TableHead>
+                                <TableHead>End Balance</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {currentContributionPerformance.cashflow.map((entry, index) => (
+                                <TableRow key={index} className={entry.endBalance < 0 ? 'bg-red-100 dark:bg-red-900/20' : ''}>
+                                  <TableCell>{currentYear + entry.year}</TableCell>
+                                  <TableCell>{formatCurrency(entry.beginBalance)}</TableCell>
+                                  <TableCell>{formatCurrency(entry.contribution)}</TableCell>
+                                  <TableCell>{formatCurrency(entry.interest)}</TableCell>
+                                  <TableCell>
+                                    {entry.capitalCost > 0 ? (
+                                      <span className="text-destructive font-medium">-{formatCurrency(entry.capitalCost)}</span>
+                                    ) : (
+                                      <span className="text-muted-foreground">-</span>
+                                    )}
+                                  </TableCell>
+                                  <TableCell className={`font-medium ${entry.endBalance < 0 ? 'text-destructive font-bold' : ''}`}>
+                                    {entry.endBalance < 0 ? 
+                                      `(${formatCurrency(Math.abs(entry.endBalance))})` : 
+                                      formatCurrency(entry.endBalance)}
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </ScrollArea>
+                      </TabsContent>
+                    )}
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </>
+          ) : (
+            <Alert>
+              <Info className="h-4 w-4 mr-2" />
+              <AlertTitle>No cashflow data available</AlertTitle>
+              <AlertDescription>
+                Calculate funding strategies first to view cashflow projections.
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}

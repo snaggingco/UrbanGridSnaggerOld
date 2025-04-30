@@ -1,0 +1,600 @@
+Ratio Name	Type	Distribution	Residential Tower	Retail Section	Office Block	
+Residential Tower
+Residential Tower Ratio
+sellable area	15,000 sqm	
+15,000
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Sellable Area ratio for Retail Section
+sellable area	5,000 sqm	
+0
+0.00%
+5,000
+100.00%
+0
+0.00%
+Actions
+Office Block
+Sellable Area ratio for Office Block
+sellable area	8,000 sqm	
+0
+0.00%
+0
+0.00%
+8,000
+100.00%
+Actions
+Commercial Areas
+Retail & Office Combined
+sellable area	13,000 sqm	
+0
+0.00%
+5,000
+38.46%
+8,000
+61.54%
+Actions
+Residential Tower
+Sellable Area ratio for Residential Tower
+sellable area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Sellable Area ratio for Retail Section
+sellable area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Sellable Area ratio for Office Block
+sellable area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Sellable Area ratio for Residential Tower, Retail Section
+sellable area	147.6 sqm	
+73.8
+50.00%
+73.8
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Sellable Area ratio for Residential Tower, Office Block
+sellable area	132 sqm	
+66
+50.00%
+0
+0.00%
+66
+50.00%
+Actions
+Retail & Office
+Sellable Area ratio for Retail Section, Office Block
+sellable area	81.4 sqm	
+0
+0.00%
+40.7
+50.00%
+40.7
+50.00%
+Actions
+All Entities
+Sellable Area ratio for all entities
+sellable area	160.2 sqm	
+53.4
+33.33%
+53.4
+33.33%
+53.4
+33.33%
+Actions
+Residential Tower
+Applicable Area ratio for Residential Tower
+applicable area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Applicable Area ratio for Retail Section
+applicable area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Applicable Area ratio for Office Block
+applicable area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Applicable Area ratio for Residential Tower, Retail Section
+applicable area	149.4 sqm	
+74.7
+50.00%
+74.7
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Applicable Area ratio for Residential Tower, Office Block
+applicable area	130.8 sqm	
+65.4
+50.00%
+0
+0.00%
+65.4
+50.00%
+Actions
+Retail & Office
+Applicable Area ratio for Retail Section, Office Block
+applicable area	78 sqm	
+0
+0.00%
+39
+50.00%
+39
+50.00%
+Actions
+All Entities
+Applicable Area ratio for all entities
+applicable area	160.5 sqm	
+53.5
+33.33%
+53.5
+33.33%
+53.5
+33.33%
+Actions
+Residential Tower
+Parking Bay Area ratio for Residential Tower
+parking bay_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Parking Bay Area ratio for Retail Section
+parking bay_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Parking Bay Area ratio for Office Block
+parking bay_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Parking Bay Area ratio for Residential Tower, Retail Section
+parking bay_area	100 sqm	
+50
+50.00%
+50
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Parking Bay Area ratio for Residential Tower, Office Block
+parking bay_area	200 sqm	
+100
+50.00%
+0
+0.00%
+100
+50.00%
+Actions
+Retail & Office
+Parking Bay Area ratio for Retail Section, Office Block
+parking bay_area	200 sqm	
+0
+0.00%
+100
+50.00%
+100
+50.00%
+Actions
+All Entities
+Parking Bay Area ratio for all entities
+parking bay_area	150 sqm	
+50
+33.33%
+50
+33.33%
+50
+33.33%
+Actions
+Residential Tower
+Dedicated Common Area ratio for Residential Tower
+dedicated common_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Dedicated Common Area ratio for Retail Section
+dedicated common_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Dedicated Common Area ratio for Office Block
+dedicated common_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Dedicated Common Area ratio for Residential Tower, Retail Section
+dedicated common_area	100 sqm	
+50
+50.00%
+50
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Dedicated Common Area ratio for Residential Tower, Office Block
+dedicated common_area	200 sqm	
+100
+50.00%
+0
+0.00%
+100
+50.00%
+Actions
+Retail & Office
+Dedicated Common Area ratio for Retail Section, Office Block
+dedicated common_area	200 sqm	
+0
+0.00%
+100
+50.00%
+100
+50.00%
+Actions
+All Entities
+Dedicated Common Area ratio for all entities
+dedicated common_area	150 sqm	
+50
+33.33%
+50
+33.33%
+50
+33.33%
+Actions
+Residential Tower
+Total Component Area ratio for Residential Tower
+total component_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Total Component Area ratio for Retail Section
+total component_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Total Component Area ratio for Office Block
+total component_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Total Component Area ratio for Residential Tower, Retail Section
+total component_area	140 sqm	
+70
+50.00%
+70
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Total Component Area ratio for Residential Tower, Office Block
+total component_area	136.6 sqm	
+68.3
+50.00%
+0
+0.00%
+68.3
+50.00%
+Actions
+Retail & Office
+Total Component Area ratio for Retail Section, Office Block
+total component_area	96.2 sqm	
+0
+0.00%
+48.1
+50.00%
+48.1
+50.00%
+Actions
+All Entities
+Total Component Area ratio for all entities
+total component_area	158.4 sqm	
+52.8
+33.33%
+52.8
+33.33%
+52.8
+33.33%
+Actions
+Residential Tower
+Principal Common Area ratio for Residential Tower
+principal common_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Principal Common Area ratio for Retail Section
+principal common_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Principal Common Area ratio for Office Block
+principal common_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Principal Common Area ratio for Residential Tower, Retail Section
+principal common_area	147.6 sqm	
+73.8
+50.00%
+73.8
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Principal Common Area ratio for Residential Tower, Office Block
+principal common_area	132 sqm	
+66
+50.00%
+0
+0.00%
+66
+50.00%
+Actions
+Retail & Office
+Principal Common Area ratio for Retail Section, Office Block
+principal common_area	81.4 sqm	
+0
+0.00%
+40.7
+50.00%
+40.7
+50.00%
+Actions
+All Entities
+Principal Common Area ratio for all entities
+principal common_area	160.2 sqm	
+53.4
+33.33%
+53.4
+33.33%
+53.4
+33.33%
+Actions
+Residential Tower
+Common Element Area ratio for Residential Tower
+common element_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Common Element Area ratio for Retail Section
+common element_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Common Element Area ratio for Office Block
+common element_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Common Element Area ratio for Residential Tower, Retail Section
+common element_area	116.6 sqm	
+58.3
+50.00%
+58.3
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Common Element Area ratio for Residential Tower, Office Block
+common element_area	155.6 sqm	
+77.8
+50.00%
+0
+0.00%
+77.8
+50.00%
+Actions
+Retail & Office
+Common Element Area ratio for Retail Section, Office Block
+common element_area	142.8 sqm	
+0
+0.00%
+71.4
+50.00%
+71.4
+50.00%
+Actions
+All Entities
+Common Element Area ratio for all entities
+common element_area	150 sqm	
+50
+33.33%
+50
+33.33%
+50
+33.33%
+Actions
+Residential Tower
+Total Common Area ratio for Residential Tower
+total common_area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+Retail Section
+Total Common Area ratio for Retail Section
+total common_area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+Office Block
+Total Common Area ratio for Office Block
+total common_area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+Residential & Retail
+Total Common Area ratio for Residential Tower, Retail Section
+total common_area	115.6 sqm	
+57.8
+50.00%
+57.8
+50.00%
+0
+0.00%
+Actions
+Residential & Office
+Total Common Area ratio for Residential Tower, Office Block
+total common_area	159 sqm	
+79.5
+50.00%
+0
+0.00%
+79.5
+50.00%
+Actions
+Retail & Office
+Total Common Area ratio for Retail Section, Office Block
+total common_area	148 sqm	
+0
+0.00%
+74
+50.00%
+74
+50.00%
+Actions
+All Entities
+Total Common Area ratio for all entities
+total common_area	150.9 sqm	
+50.3
+33.33%
+50.3
+33.33%
+50.3
+33.33%

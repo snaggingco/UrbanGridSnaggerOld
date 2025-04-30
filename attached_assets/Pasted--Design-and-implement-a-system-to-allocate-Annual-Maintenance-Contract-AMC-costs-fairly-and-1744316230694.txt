@@ -1,0 +1,142 @@
+
+
+Design and implement a system to **allocate Annual Maintenance Contract (AMC) costs** fairly and transparently among various **entities in a mixed-use real estate project** (e.g., Residential, Retail, Office, Hotel), as per **RERA Audit guidelines**. This is done **without initial access to AMC budget values**, focusing first on **operationally justified allocation ratios** based on usage, benefit, and shared infrastructure logic.
+
+> The system must support **RERA Budget Line Items**, not NRM3 or any other QS standard.  
+> The goal is to determine how AMC contracts benefit each entity and **split costs accordingly**, especially in complex **mixed-use environments**.
+
+---
+
+## 🏗️ **System Modules and Requirements**
+
+### 1. 🧱 **Mixed-Use Entity Structure and Area Definitions**
+
+Each **Entity** (e.g., Residential, Retail, Office, Hotel) has its own spatial footprint:
+
+- **Suit Area**
+- **Balcony Area**
+- **Sellable Area** = Suit + Balcony
+- **Applicable Area** = Suit + 25% of Balcony (used in specific cases)
+- **Dedicated Common Area**: Private corridors, lobbies, amenities dedicated to a specific entity
+- **Parking Bay Area**: Dedicated parking slots per entity
+
+In addition, there are **Shared Areas** in the project:
+
+- **Principal Common Areas**: Shared by *all* entities (e.g., central lobbies, security, fire systems)
+- **Common Element Areas**: Shared by a *subset* of entities (e.g., Retail + Office sharing a podium garden)
+
+These shared areas must be allocated to the relevant entities based on the **sellable area proportion** among the benefiting entities.
+
+---
+
+### 🧮 **Derived Area: Total Component Area**
+
+For each entity, compute:
+
+```
+Total Component Area =
+  Sellable Area
++ Dedicated Common Area
++ Share of Principal Common Area
++ Share of Common Element Common Area
++ Parking Bay Area
+```
+
+This area value is used for AMC allocation where area-based logic is relevant.
+
+---
+
+### 2. ⚙️ **AMC Contract Setup and Allocation Process**
+
+Each **AMC Contract** (e.g., Lift, HVAC, Generator, Fire Alarm, Cleaning) is defined by:
+
+- Its **coverage area** or benefiting zones
+- Its **functionality and beneficiaries**
+- One or more **Unit of Measurement (UOM) types** (detailed below)
+- **Exclusion logic**, if certain entities don’t benefit from it
+- **Custom weights** for hybrid allocations
+
+> 🔁 This system **does not begin with budget values**. It computes **allocation percentages** operationally, and only applies budget numbers later once entered by the building manager.
+
+---
+
+### 📏 **Unit of Measurement (UOM) System**
+
+AMC contracts are allocated using one or more of the following UOMs:
+
+| UOM Type               | Example Use Case                         | Units           |
+|------------------------|------------------------------------------|------------------|
+| **Area-Based**         | Cleaning, façade wash, fire alarms       | sq.ft / sq.m     |
+| **Headcount-Based**    | Security guards, concierge staff         | Personnel Count  |
+| **Asset-Based**        | Elevators, pumps, gensets                | No. of units     |
+| **Load-Based**         | HVAC, electrical infrastructure          | kW, TR           |
+| **Consumption-Based**  | Diesel, electricity, water               | Litres, kWh      |
+| **Time-Based**         | Monitoring, inspections, facility care   | Man-hours        |
+| **Parking-Based**      | Parking gate, lighting, flooring         | No. of bays      |
+| **Hybrid/Custom**      | Mixed logic (e.g., 60% area, 40% usage)  | User-defined     |
+
+The user selects and assigns UOM values per entity for each AMC, and the system computes **allocation percentages accordingly**.
+
+---
+
+### 🔄 **Operational Allocation Engine**
+
+#### Workflow:
+
+1. **User defines each AMC contract**, selecting:
+   - Benefiting entities
+   - UOM(s) and their values
+   - Custom hybrid logic (e.g., weighted combinations)
+   - Any exclusions
+
+2. **System computes allocation % per entity** based purely on UOM logic and shared area logic.
+
+3. When the **budget is later provided**, system multiplies the budget by each entity’s allocation percentage to compute **cost share**.
+
+4. Allocation results are **automatically updated** if:
+   - UOM values are changed
+   - Entities or area values are revised
+   - Budget values are updated
+
+---
+
+### 🗃️ **Integration with RERA Budget Line Items**
+
+Each AMC contract must be linked to a **RERA budget line item** (as per RERA’s official template). Once allocations are computed:
+
+- The **building manager** enters the total cost for each line item
+- The system **splits that cost** across entities using the computed allocation percentages
+
+> 🧾 This enables traceable, RERA-compliant cost apportionment in mixed-use projects.
+
+---
+
+### 📊 **Reporting & Auditing Features**
+
+- **Entity-Wise Cost Share Reports**
+- **AMC Allocation Summary per Budget Item**
+- **Breakdown by UOM and Area Logic**
+- **Simulation Tools**: Preview entity costs for any budget scenario
+- **Audit Trail**: Logs of UOM values, exclusion logic, changes over time
+- **Export to Excel/PDF** for RERA submission
+- **Multilingual Support** for regional authorities
+
+---
+
+### 🔧 **Advanced Capabilities (Optional)**
+
+- **Rule Builder**: UI to define allocation formulas (e.g., "Lift AMC: 80% by floors served, 20% by area")
+- **Template Library**: Save & reuse allocation patterns (e.g., "Retail podium logic", "Shared HVAC zone logic")
+- **Scenario Manager**: Compare multiple allocation models for the same contract
+- **Versioning**: View previous allocations and what changed
+
+---
+
+### ✅ **Key Design Notes**
+
+- Designed **for mixed-use real estate developments**
+- Primary purpose: **split AMC costs across diverse entities fairly**
+- Operates fully in compliance with **RERA Budget Line Item framework**
+- Supports **budget-agnostic allocation logic**, with actual cost input at a later stage
+- Does **not follow NRM3 or global QS frameworks**
+

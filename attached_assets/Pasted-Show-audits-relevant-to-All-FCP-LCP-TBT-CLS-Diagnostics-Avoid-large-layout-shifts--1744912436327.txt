@@ -1,0 +1,208 @@
+Show audits relevant to:
+
+All
+
+FCP
+
+LCP
+
+TBT
+
+CLS
+Diagnostics
+Avoid large layout shifts 1 layout shift found
+These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to windowing. Learn how to improve CLSCLS
+Element
+Layout shift score
+Snagging By UrbanGrid Professional property inspection services in Dubai. Inte…
+<footer class="bg-gray-50 border-t">
+0.499
+Largest Contentful Paint element 13,730 ms
+This is the largest contentful element painted within the viewport. Learn more about the Largest Contentful Paint elementLCP
+Element
+UAE's Trusted Snagging Company for Property Inspections
+<h1 class="text-5xl md:text-7xl font-normal text-gray-900 mb-8">
+Phase
+% of LCP
+Timing
+TTFB
+4%
+600 ms
+Load Delay
+0%
+0 ms
+Load Time
+0%
+0 ms
+Render Delay
+96%
+13,130 ms
+Enable text compression Potential savings of 766 KiB
+Text-based resources should be served with compression (gzip, deflate or brotli) to minimize total network bytes. Learn more about text compression.LCPFCP
+URL
+Transfer Size
+Potential Savings
+urbangrid.ae 1st party
+1,096.3 KiB	765.6 KiB
+/assets/index-RsYW7w39.js(urbangrid.ae)
+252.4 KiB
+172.1 KiB
+/assets/App-BopEO1bh.js(urbangrid.ae)
+190.6 KiB
+130.5 KiB
+/assets/index-D5hy_C-6.css(urbangrid.ae)
+118.3 KiB
+99.8 KiB
+/assets/proxy-C2LJsUYv.js(urbangrid.ae)
+108.8 KiB
+73.2 KiB
+/assets/schema-C04UXLns.js(urbangrid.ae)
+62.5 KiB
+46.5 KiB
+/assets/index-DL7ZAkGC.js(urbangrid.ae)
+60.6 KiB
+45.8 KiB
+/assets/Home-CBFh5Wca.js(urbangrid.ae)
+52.8 KiB
+37.8 KiB
+/assets/style-CxaYGy55.js(urbangrid.ae)
+55.0 KiB
+36.4 KiB
+/assets/blogData-AtNkxYkd.js(urbangrid.ae)
+42.7 KiB
+30.3 KiB
+/assets/style-Bbgo5x5y.css(urbangrid.ae)
+44.0 KiB
+19.8 KiB
+/assets/index.esm-BaC8pQ3W.js(urbangrid.ae)
+23.9 KiB
+14.9 KiB
+/assets/select-B2wOe-qo.js(urbangrid.ae)
+20.5 KiB
+13.4 KiB
+https://urbangrid.ae
+17.9 KiB
+13.3 KiB
+/assets/UnifiedFo….js(urbangrid.ae)
+13.2 KiB
+10.8 KiB
+/assets/Helmet-DLJknb41.js(urbangrid.ae)
+16.1 KiB
+10.2 KiB
+/assets/SEO-BxhZnBX5.js(urbangrid.ae)
+6.4 KiB
+4.3 KiB
+/assets/accordion-BG7M73Ki.js(urbangrid.ae)
+4.4 KiB
+2.7 KiB
+/assets/QuickResp….js(urbangrid.ae)
+3.6 KiB
+2.1 KiB
+/assets/useMutation-rukW-Jsx.js(urbangrid.ae)
+2.8 KiB
+1.6 KiB
+Avoid an excessive DOM size 1,091 elements
+A large DOM will increase memory usage, cause longer style calculations, and produce costly layout reflows. Learn how to avoid an excessive DOM size.TBT
+Statistic
+Element
+Value
+Total DOM Elements
+1,091
+Maximum DOM Depth
+div.flag-dropdown > div.selected-flag > div.flag > div.arrow
+<div class="arrow">
+17
+Maximum Child Elements
+UAE's Trusted Snagging Company for Property Inspections Top-rated property sna…
+<main class="flex-1 ">
+13
+Reduce unused JavaScript Potential savings of 357 KiB
+Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. Learn how to reduce unused JavaScript.LCPFCP
+URL
+Transfer Size
+Potential Savings
+urbangrid.ae 1st party
+660.3 KiB	302.4 KiB
+/assets/App-BopEO1bh.js(urbangrid.ae)
+190.6 KiB
+94.1 KiB
+/assets/index-RsYW7w39.js(urbangrid.ae)
+245.4 KiB
+73.3 KiB
+/assets/proxy-C2LJsUYv.js(urbangrid.ae)
+108.8 KiB
+62.7 KiB
+/assets/index-DL7ZAkGC.js(urbangrid.ae)
+60.6 KiB
+48.6 KiB
+/assets/style-CxaYGy55.js(urbangrid.ae)
+55.0 KiB
+23.7 KiB
+Google Tag Manager tag-manager 
+103.0 KiB	54.5 KiB
+/gtm.js?id=GTM-KHFS29FM(www.googletagmanager.com)
+103.0 KiB
+54.5 KiB
+Properly size images Potential savings of 1,052 KiB
+Serve images that are appropriately-sized to save cellular data and improve load time. Learn how to size images.LCPFCP
+URL
+Resource Size
+Potential Savings
+unsplash.com
+754.8 KiB	705.7 KiB
+Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging Compan…
+<img src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1" alt="Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging C…" class="rounded-lg shadow-xl">
+/photo-151…-ef7db81be3e1(images.unsplash.com)
+754.8 KiB
+705.7 KiB
+urbangrid.ae 1st party
+357.9 KiB	346.4 KiB
+InterNACHI Certified Professional Inspector
+<img src="/images/internachi.webp" alt="InterNACHI Certified Professional Inspector" class="h-auto w-auto object-contain" loading="eager" decoding="async" style="max-width: 100%; max-height: 180px;">
+/images/internachi.webp(urbangrid.ae)
+211.7 KiB
+204.6 KiB
+InterNACHI Member Badge
+<img src="/images/internachi2.webp" alt="InterNACHI Member Badge" class="h-auto w-auto object-contain" loading="eager" decoding="async" style="max-width: 100%; max-height: 180px;">
+/images/internachi2.webp(urbangrid.ae)
+146.3 KiB
+141.8 KiB
+Reduce unused CSS Potential savings of 118 KiB
+Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. Learn how to reduce unused CSS.LCPFCP
+URL
+Transfer Size
+Potential Savings
+urbangrid.ae 1st party
+162.2 KiB	117.7 KiB
+/assets/index-D5hy_C-6.css(urbangrid.ae)
+118.3 KiB
+103.2 KiB
+/assets/style-Bbgo5x5y.css(urbangrid.ae)
+44.0 KiB
+14.5 KiB
+Image elements do not have explicit width and height
+Serve images in next-gen formats Potential savings of 320 KiB
+Image formats like WebP and AVIF often provide better compression than PNG or JPEG, which means faster downloads and less data consumption. Learn more about modern image formats.LCPFCP
+URL
+Resource Size
+Potential Savings
+unsplash.com
+754.8 KiB	320.1 KiB
+Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging Compan…
+<img src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1" alt="Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging C…" class="rounded-lg shadow-xl">
+/photo-151…-ef7db81be3e1(images.unsplash.com)
+754.8 KiB
+320.1 KiB
+Defer offscreen images Potential savings of 755 KiB
+Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive. Learn how to defer offscreen images.LCPFCP
+URL
+Resource Size
+Potential Savings
+unsplash.com
+754.8 KiB	754.8 KiB
+Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging Compan…
+<img src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1" alt="Dubai Property Snagging and Inspection Team by UrbanGrid - Best Snagging C…" class="rounded-lg shadow-xl">
+/photo-151…-ef7db81be3e1(images.unsplash.com)
+754.8 KiB
+754.8 KiB
+Avoid serving legacy JavaScript to modern browsers Potential savings of 0 KiB

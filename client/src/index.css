@@ -1,0 +1,44 @@
+/* Import custom scrollbar styles */
+@import './styles/scrollbar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* This accounts for the fixed header */
+  }
+  
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* RTL Support for Arabic */
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .rtl .ltr-only {
+    display: none;
+  }
+  
+  .rtl .rtl-flip {
+    transform: scaleX(-1);
+  }
+  
+  /* Adjust padding and margins for RTL */
+  .rtl .rtl-swap-padding {
+    @apply pl-0 pr-4;
+  }
+  
+  .rtl .rtl-swap-margin {
+    @apply ml-0 mr-4;
+  }
+}

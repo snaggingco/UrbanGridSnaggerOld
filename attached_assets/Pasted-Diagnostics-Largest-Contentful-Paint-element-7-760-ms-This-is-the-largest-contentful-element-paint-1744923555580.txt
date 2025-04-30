@@ -1,0 +1,321 @@
+Diagnostics
+Largest Contentful Paint element 7,760 ms
+This is the largest contentful element painted within the viewport. Learn more about the Largest Contentful Paint elementLCP
+Element
+Top-rated property snagging services in Dubai, Abu Dhabi and across UAE for han…
+<p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+Phase
+% of LCP
+Timing
+TTFB
+8%
+600 ms
+Load Delay
+0%
+0 ms
+Load Time
+0%
+0 ms
+Render Delay
+92%
+7,160 ms
+Reduce unused JavaScript Potential savings of 128 KiB
+Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. Learn how to reduce unused JavaScript.LCPFCP
+URL
+Transfer Size
+Potential Savings
+snagging.me 1st party
+175.1 KiB	73.6 KiB
+/assets/App-DdCi5vgX.js(snagging.me)
+58.9 KiB
+29.0 KiB
+/assets/index-CUAfs5PH.js(snagging.me)
+79.5 KiB
+23.4 KiB
+/assets/proxy-q5Zx8iIq.js(snagging.me)
+36.8 KiB
+21.2 KiB
+Google Tag Manager tag-manager 
+102.8 KiB	54.4 KiB
+/gtm.js?id=GTM-KHFS29FM(www.googletagmanager.com)
+102.8 KiB
+54.4 KiB
+Avoid an excessive DOM size 1,112 elements
+A large DOM will increase memory usage, cause longer style calculations, and produce costly layout reflows. Learn how to avoid an excessive DOM size.TBT
+Statistic
+Element
+Value
+Total DOM Elements
+1,112
+Maximum DOM Depth
+div.flag-dropdown > div.selected-flag > div.flag > div.arrow
+<div class="arrow">
+17
+Maximum Child Elements
+UAE's Trusted Snagging Company for Property Inspections Top-rated property sna…
+<main class="flex-1 ">
+13
+Reduce unused CSS Potential savings of 16 KiB
+Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. Learn how to reduce unused CSS.LCPFCP
+URL
+Transfer Size
+Potential Savings
+snagging.me 1st party
+18.2 KiB	15.8 KiB
+/assets/index-BST3iEnl.css(snagging.me)
+18.2 KiB
+15.8 KiB
+Serve static assets with an efficient cache policy 56 resources found
+A long cache lifetime can speed up repeat visits to your page. Learn more about efficient cache policies.
+URL
+Cache TTL
+Transfer Size
+snagging.me 1st party
+1,350 KiB
+/assets/index-CUAfs5PH.js(snagging.me)
+1d
+82 KiB
+/assets/App-DdCi5vgX.js(snagging.me)
+1d
+59 KiB
+/assets/proxy-q5Zx8iIq.js(snagging.me)
+1d
+37 KiB
+/assets/style-Bbgo5x5y.css(snagging.me)
+1d
+24 KiB
+/assets/style-iGi-G-En.js(snagging.me)
+1d
+20 KiB
+/assets/index-BST3iEnl.css(snagging.me)
+1d
+19 KiB
+/assets/Home-COy7NXfP.js(snagging.me)
+1d
+17 KiB
+/assets/schema-l6zcTLCx.js(snagging.me)
+1d
+17 KiB
+/assets/index-DNA_sYJN.js(snagging.me)
+1d
+15 KiB
+/assets/blogData-AtNkxYkd.js(snagging.me)
+1d
+13 KiB
+/assets/index.esm-Dkl4c9E4.js(snagging.me)
+1d
+10 KiB
+/assets/select-B6m4FEib.js(snagging.me)
+1d
+8 KiB
+/assets/Helmet-CaMU9GIs.js(snagging.me)
+1d
+6 KiB
+/assets/UnifiedForm-DbwmzVqc.js(snagging.me)
+1d
+3 KiB
+/assets/SEO-CbfVqadt.js(snagging.me)
+1d
+3 KiB
+/assets/accordion-B4iaYYEZ.js(snagging.me)
+1d
+2 KiB
+/assets/QuickResp….js(snagging.me)
+1d
+2 KiB
+/assets/checkbox-2p5XMGzN.js(snagging.me)
+1d
+2 KiB
+/assets/useMutati….js(snagging.me)
+1d
+2 KiB
+/assets/index-DLvUocHD.css(snagging.me)
+1d
+2 KiB
+/assets/dialog-BlfVa9pX.js(snagging.me)
+1d
+1 KiB
+/assets/form-De813H6E.js(snagging.me)
+1d
+1 KiB
+/assets/OptimizedImage-CAkne-hq.js(snagging.me)
+1d
+1 KiB
+/assets/index-otyiTKQK.js(snagging.me)
+1d
+1 KiB
+/assets/badge-CPCe7aOH.js(snagging.me)
+1d
+1 KiB
+/assets/sparkles-B7jm9uec.js(snagging.me)
+1d
+1 KiB
+/assets/label-C3ZResS2.js(snagging.me)
+1d
+1 KiB
+/assets/card-ByiqM6ga.js(snagging.me)
+1d
+1 KiB
+/assets/input-Khpde35C.js(snagging.me)
+1d
+1 KiB
+/assets/construction-0tj_0asu.js(snagging.me)
+1d
+1 KiB
+/assets/building-….js(snagging.me)
+1d
+1 KiB
+/assets/layers-CFu1irc5.js(snagging.me)
+1d
+1 KiB
+/assets/textarea-DP02hnLA.js(snagging.me)
+1d
+1 KiB
+/assets/shield-Bv4t5q_f.js(snagging.me)
+1d
+1 KiB
+/assets/users-D9H7BlG7.js(snagging.me)
+1d
+1 KiB
+/assets/clipboard-B3RygOO8.js(snagging.me)
+1d
+1 KiB
+/assets/zap-D__qaziV.js(snagging.me)
+1d
+1 KiB
+/assets/file-check-CKVvRMqZ.js(snagging.me)
+1d
+1 KiB
+/assets/star-CDtki3Vk.js(snagging.me)
+1d
+1 KiB
+/assets/clock-qcXD-Ls4.js(snagging.me)
+1d
+1 KiB
+/assets/message-s….js(snagging.me)
+1d
+1 KiB
+/assets/arrow-rig….js(snagging.me)
+1d
+1 KiB
+/assets/chevron-up-Del_gpUy.js(snagging.me)
+1d
+1 KiB
+/assets/animations-BWrAmA-r.js(snagging.me)
+1d
+1 KiB
+/assets/utils-km2FGkQ4.js(snagging.me)
+1d
+1 KiB
+/images/internachi.webp(snagging.me)
+30d
+212 KiB
+/images/internachi.webp?w=360(snagging.me)
+30d
+212 KiB
+/internachi.webp(snagging.me)
+30d
+157 KiB
+/images/internachi2.webp(snagging.me)
+30d
+147 KiB
+/images/internachi2.webp?w=360(snagging.me)
+30d
+147 KiB
+/internachi2.webp(snagging.me)
+30d
+104 KiB
+/favicon-32x32.png(snagging.me)
+30d
+2 KiB
+/images/dubai-skyline.svg(snagging.me)
+30d
+1 KiB
+/images/dubai-skyline.svg?w=1200(snagging.me)
+30d
+1 KiB
+…assets/snagging-urbangrid-logo.svg(snagging.me)
+30d
+1 KiB
+/images/property-hero.svg?w=1600(snagging.me)
+30d
+1 KiB
+Avoid serving legacy JavaScript to modern browsers Potential savings of 0 KiB
+Polyfills and transforms enable legacy browsers to use new JavaScript features. However, many aren't necessary for modern browsers. For your bundled JavaScript, adopt a modern script deployment strategy using module/nomodule feature detection to reduce the amount of code shipped to modern browsers, while retaining support for legacy browsers. Learn how to serve modern JavaScriptLCPFCP
+URL
+Potential Savings
+snagging.me 1st party
+0.1 KiB
+/assets/Helmet-CaMU9GIs.js(snagging.me)
+0.1 KiB
+/assets/Helmet-CaMU9GIs.js:5:2135(snagging.me)
+@babel/plugin-transform-classes
+/assets/style-iGi-G-En.js(snagging.me)
+0.1 KiB
+/assets/style-iGi-G-En.js:5:20160(snagging.me)
+@babel/plugin-transform-classes
+Avoid long main-thread tasks 2 long tasks found
+Lists the longest tasks on the main thread, useful for identifying worst contributors to input delay. Learn how to avoid long main-thread tasksTBT
+URL
+Start Time
+Duration
+snagging.me 1st party
+135 ms
+/assets/index-CUAfs5PH.js(snagging.me)
+5,174 ms
+135 ms
+Unattributable
+54 ms
+Unattributable
+782 ms
+54 ms
+Avoid chaining critical requests 43 chains found
+The Critical Request Chains below show you what resources are loaded with a high priority. Consider reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load. Learn how to avoid chaining critical requests.
+Maximum critical path latency: 1,229.302 ms
+Initial Navigation
+https://snagging.me
+/assets/index-CUAfs5PH.js(snagging.me)
+/assets/App-DdCi5vgX.js(snagging.me)
+/assets/SEO-CbfVqadt.js(snagging.me) - 195.64 ms, 2.71 KiB
+/assets/Helmet-CaMU9GIs.js(snagging.me) - 254.239 ms, 6.49 KiB
+/assets/index-otyiTKQK.js(snagging.me) - 230.874 ms, 1.01 KiB
+/assets/Home-COy7NXfP.js(snagging.me) - 163.312 ms, 17.11 KiB
+/assets/badge-CPCe7aOH.js(snagging.me) - 155.767 ms, 0.92 KiB
+/assets/animations-BWrAmA-r.js(snagging.me) - 154.332 ms, 0.63 KiB
+/assets/OptimizedImage-CAkne-hq.js(snagging.me) - 236.393 ms, 1.21 KiB
+/assets/proxy-q5Zx8iIq.js(snagging.me) - 179.584 ms, 37.34 KiB
+/assets/clock-qcXD-Ls4.js(snagging.me) - 234.655 ms, 0.76 KiB
+/assets/arrow-rig….js(snagging.me) - 201.468 ms, 0.75 KiB
+/assets/QuickResp….js(snagging.me) - 257.073 ms, 1.91 KiB
+/assets/index.esm-Dkl4c9E4.js(snagging.me) - 310.479 ms, 9.81 KiB
+/assets/index-DNA_sYJN.js(snagging.me) - 256.044 ms, 15.49 KiB
+/assets/schema-l6zcTLCx.js(snagging.me) - 188.76 ms, 16.61 KiB
+/assets/useMutati….js(snagging.me) - 191.815 ms, 1.71 KiB
+/assets/utils-km2FGkQ4.js(snagging.me) - 264.359 ms, 0.58 KiB
+/assets/style-iGi-G-En.js(snagging.me) - 223.398 ms, 19.51 KiB
+/assets/style-Bbgo5x5y.css(snagging.me) - 291.942 ms, 24.09 KiB
+/assets/form-De813H6E.js(snagging.me) - 238.126 ms, 1.24 KiB
+/assets/label-C3ZResS2.js(snagging.me) - 258.866 ms, 0.88 KiB
+/assets/input-Khpde35C.js(snagging.me) - 195.885 ms, 0.85 KiB
+/assets/select-B6m4FEib.js(snagging.me) - 163.142 ms, 7.82 KiB
+/assets/chevron-up-Del_gpUy.js(snagging.me) - 168.715 ms, 0.73 KiB
+/assets/card-ByiqM6ga.js(snagging.me) - 170.437 ms, 0.87 KiB
+/assets/shield-Bv4t5q_f.js(snagging.me) - 263.532 ms, 0.81 KiB
+/assets/building-….js(snagging.me) - 177.394 ms, 0.83 KiB
+/assets/sparkles-B7jm9uec.js(snagging.me) - 269.22 ms, 0.89 KiB
+/assets/file-check-CKVvRMqZ.js(snagging.me) - 147.443 ms, 0.79 KiB
+/assets/star-CDtki3Vk.js(snagging.me) - 238.352 ms, 0.78 KiB
+/assets/clipboard-B3RygOO8.js(snagging.me) - 263.903 ms, 0.80 KiB
+/assets/message-s….js(snagging.me) - 240.233 ms, 0.75 KiB
+/assets/blogData-AtNkxYkd.js(snagging.me) - 262.837 ms, 13.06 KiB
+/assets/UnifiedForm-DbwmzVqc.js(snagging.me) - 250.027 ms, 2.78 KiB
+/assets/textarea-DP02hnLA.js(snagging.me) - 194.876 ms, 0.82 KiB
+/assets/checkbox-2p5XMGzN.js(snagging.me) - 225.184 ms, 1.84 KiB
+/assets/dialog-BlfVa9pX.js(snagging.me) - 178.275 ms, 1.35 KiB
+/assets/construction-0tj_0asu.js(snagging.me) - 225.923 ms, 0.84 KiB
+/assets/zap-D__qaziV.js(snagging.me) - 185.437 ms, 0.80 KiB
+/assets/layers-CFu1irc5.js(snagging.me) - 229.163 ms, 0.82 KiB
+/assets/users-D9H7BlG7.js(snagging.me) - 223.76 ms, 0.81 KiB
+/assets/accordion-B4iaYYEZ.js(snagging.me) - 223.381 ms, 2.26 KiB
+/assets/index-BST3iEnl.css(snagging.me) - 183.911 ms, 18.74 KiB
+/assets/index-DLvUocHD.css(snagging.me) - 169.563 ms, 1.50 KiB

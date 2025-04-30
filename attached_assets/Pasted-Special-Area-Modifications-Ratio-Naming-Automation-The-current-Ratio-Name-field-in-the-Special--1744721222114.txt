@@ -1,0 +1,49 @@
+Special Area Modifications – Ratio Naming Automation
+
+The current "Ratio Name" field in the Special Area Modifications section lacks clarity and is not self-explanatory.
+
+Implement automated generation of ratio names based on the context and inputs provided, ensuring they are descriptive and meaningful.
+
+Ratio Management – Unified Interface & Computation Logic
+
+Combine all ratios from Ratio Combinations and Special Area Modifications into a single, editable tabular view within the Ratio Management tab.
+
+For each ratio, provide:
+
+Inline editing capability
+
+A button or icon to view the underlying mathematical computation logic, explaining how the ratio was derived.
+
+Cost Allocation Tab – UI and Workflow Enhancement
+The current UI contains repetitive fields and cards, making it cluttered and less user-friendly. Redesign the interface with the following structured approach:
+
+Display Budget Items:
+Show all budget line items selected by the user in the 'Budget Item Selection' tab in a clean tabular format.
+
+Include a short, editable description for each budget line item.
+
+Each row should be clickable to enter the allocation workflow.
+
+Allocation Workflow for Budget Items:
+
+Allow the user to enter input values and select a unit of measurement (e.g., area, labor, time, load).
+
+Note: Each budget line item can only have one type of unit.
+
+Support multiple inputs per budget line item.
+
+Let the user select a ratio from a dropdown list. The options should be sourced from the ratios available in the Ratio Management tab.
+
+For each input:
+
+Multiply the input value with the selected ratio
+
+Allocate the proportion to the relevant entities accordingly.
+
+Aggregate the total allocations per entity across all inputs to generate the final distribution for the budget line item.
+
+Allocation Summary Tab Integration:
+
+Ensure that the calculated allocations are reflected in the Allocation Summary tab.
+
+Update the report structure to include the refined allocation details based on the new logic.

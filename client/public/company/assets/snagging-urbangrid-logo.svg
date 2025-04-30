@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="286" height="65" viewBox="0 0 220 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Favicon hexagon instead of UG text -->
+  <g transform="translate(10,10) scale(0.9)">
+    <path d="M20 5L30 10.8L30 22.5L20 28.3L10 22.5L10 10.8L20 5Z" fill="#7CEB65" />
+    <path d="M20 30L8 23V9L20 2L32 9V23L20 30ZM11 21.1L20 26.3L29 21.1V10.9L20 5.7L11 10.9V21.1Z" fill="#27272A" />
+  </g>
+
+  <!-- Text elements -->
+  <text x="45" y="25" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#000">
+    Snagging By
+  </text>
+  
+  <text x="45" y="40" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    <tspan fill="#7CEB65">Urban</tspan><tspan fill="#000">Grid</tspan>
+  </text>
+</svg>

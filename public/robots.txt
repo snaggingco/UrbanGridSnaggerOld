@@ -1,0 +1,22 @@
+# Robots.txt for snagging.me and urbangrid.ae
+
+User-agent: *
+Allow: /
+Allow: /property-inspection
+Allow: /property-inspection-dubai
+Allow: /snagging-services
+Allow: /snagging-dubai
+Allow: /property-handover
+Allow: /rera-audits
+Allow: /book-service
+Allow: /blog
+Allow: /location
+Allow: /downloads
+
+# Disallow admin and internal sections
+Disallow: /admin/
+Disallow: /inspection/
+Disallow: /login
+
+# Allow search engines to access sitemap
+Sitemap: https://www.snagging.me/sitemap.xml

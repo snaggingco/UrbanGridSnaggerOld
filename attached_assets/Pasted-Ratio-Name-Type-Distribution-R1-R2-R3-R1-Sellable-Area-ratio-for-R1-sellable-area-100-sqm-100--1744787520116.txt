@@ -1,0 +1,560 @@
+Ratio Name	Type	Distribution	R1	R2	R3	
+R1
+Sellable Area ratio for R1
+sellable area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Sellable Area ratio for R2
+sellable area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Sellable Area ratio for R3
+sellable area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Sellable Area ratio for R1, R2
+sellable area	33.4 sqm	
+16.7
+50.00%
+16.7
+50.00%
+0
+0.00%
+Actions
+R1 & R3
+Sellable Area ratio for R1, R3
+sellable area	39.2 sqm	
+19.6
+50.00%
+0
+0.00%
+19.6
+50.00%
+Actions
+R2 & R3
+Sellable Area ratio for R2, R3
+sellable area	110 sqm	
+0
+0.00%
+55
+50.00%
+55
+50.00%
+Actions
+All Entities
+Sellable Area ratio for all entities
+sellable area	29.7 sqm	
+9.9
+33.33%
+9.9
+33.33%
+9.9
+33.33%
+Actions
+R1
+Applicable Area ratio for R1
+applicable area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Applicable Area ratio for R2
+applicable area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Applicable Area ratio for R3
+applicable area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Applicable Area ratio for R1, R2
+applicable area	33.4 sqm	
+16.7
+50.00%
+16.7
+50.00%
+0
+0.00%
+Actions
+R1 & R3
+Applicable Area ratio for R1, R3
+applicable area	39.2 sqm	
+19.6
+50.00%
+0
+0.00%
+19.6
+50.00%
+Actions
+R2 & R3
+Applicable Area ratio for R2, R3
+applicable area	110 sqm	
+0
+0.00%
+55
+50.00%
+55
+50.00%
+Actions
+All Entities
+Applicable Area ratio for all entities
+applicable area	29.7 sqm	
+9.9
+33.33%
+9.9
+33.33%
+9.9
+33.33%
+Actions
+R1
+Parking Bay Area ratio for R1
+parking bay area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Parking Bay Area ratio for R2
+parking bay area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Parking Bay Area ratio for R3
+parking bay area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Parking Bay Area ratio for R1, R2
+parking bay area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1 & R3
+Parking Bay Area ratio for R1, R3
+parking bay area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2 & R3
+Parking Bay Area ratio for R2, R3
+parking bay area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+All Entities
+Parking Bay Area ratio for all entities
+parking bay area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1
+Dedicated Common Area ratio for R1
+dedicated common area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Dedicated Common Area ratio for R2
+dedicated common area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Dedicated Common Area ratio for R3
+dedicated common area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Dedicated Common Area ratio for R1, R2
+dedicated common area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1 & R3
+Dedicated Common Area ratio for R1, R3
+dedicated common area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2 & R3
+Dedicated Common Area ratio for R2, R3
+dedicated common area	130.2 sqm	
+0
+0.00%
+65.1
+50.00%
+65.1
+50.00%
+Actions
+All Entities
+Dedicated Common Area ratio for all entities
+dedicated common area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1
+Total Component Area ratio for R1
+total component area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Total Component Area ratio for R2
+total component area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Total Component Area ratio for R3
+total component area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Total Component Area ratio for R1, R2
+total component area	21 sqm	
+10.5
+50.00%
+10.5
+50.00%
+0
+0.00%
+Actions
+R1 & R3
+Total Component Area ratio for R1, R3
+total component area	24.4 sqm	
+12.2
+50.00%
+0
+0.00%
+12.2
+50.00%
+Actions
+R2 & R3
+Total Component Area ratio for R2, R3
+total component area	108.2 sqm	
+0
+0.00%
+54.1
+50.00%
+54.1
+50.00%
+Actions
+All Entities
+Total Component Area ratio for all entities
+total component area	18 sqm	
+6
+33.33%
+6
+33.33%
+6
+33.33%
+Actions
+R1
+Principal Common Area ratio for R1
+principal common area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Principal Common Area ratio for R2
+principal common area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Principal Common Area ratio for R3
+principal common area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Principal Common Area ratio for R1, R2
+principal common area	33.4 sqm	
+16.7
+50.00%
+16.7
+50.00%
+0
+0.00%
+Actions
+R1 & R3
+Principal Common Area ratio for R1, R3
+principal common area	39.2 sqm	
+19.6
+50.00%
+0
+0.00%
+19.6
+50.00%
+Actions
+R2 & R3
+Principal Common Area ratio for R2, R3
+principal common area	110 sqm	
+0
+0.00%
+55
+50.00%
+55
+50.00%
+Actions
+All Entities
+Principal Common Area ratio for all entities
+principal common area	29.7 sqm	
+9.9
+33.33%
+9.9
+33.33%
+9.9
+33.33%
+Actions
+R1
+Common Element Area ratio for R1
+common element area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Common Element Area ratio for R2
+common element area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Common Element Area ratio for R3
+common element area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Common Element Area ratio for R1, R2
+common element area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1 & R3
+Common Element Area ratio for R1, R3
+common element area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2 & R3
+Common Element Area ratio for R2, R3
+common element area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+All Entities
+Common Element Area ratio for all entities
+common element area	0 sqm	
+0
+0.00%
+0
+0.00%
+0
+0.00%
+Actions
+R1
+Total Common Area ratio for R1
+total common area	100 sqm	
+100
+100.00%
+0
+0.00%
+0
+0.00%
+Actions
+R2
+Total Common Area ratio for R2
+total common area	100 sqm	
+0
+0.00%
+100
+100.00%
+0
+0.00%
+Actions
+R3
+Total Common Area ratio for R3
+total common area	100 sqm	
+0
+0.00%
+0
+0.00%
+100
+100.00%
+Actions
+R1 & R2
+Total Common Area ratio for R1, R2
+total common area	11.6 sqm	
+5.8
+50.00%
+5.8
+50.00%
+0
+0.00%
+Actions
+R1 & R3
+Total Common Area ratio for R1, R3
+total common area	18 sqm	
+9
+50.00%
+0
+0.00%
+9
+50.00%
+Actions
+R2 & R3
+Total Common Area ratio for R2, R3
+total common area	123.2 sqm	
+0
+0.00%
+61.6
+50.00%
+61.6
+50.00%
+Actions
+All Entities
+Total Common Area ratio for all entities
+total common area	10.8 sqm	
+3.6
+33.33%
+3.6
+33.33%
+3.6
+33.33%

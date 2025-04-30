@@ -1,0 +1,8 @@
+{
+  "variant": "professional",
+  "primary": "#4CAF50",
+  "secondary": "#0C4D9C",
+  "accent": "#E0E0E0",
+  "appearance": "light",
+  "radius": 0.5
+}

@@ -1,0 +1,185 @@
+// This section fixes the create dialog UI at line ~1110
+// Replace this section:
+/*
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <Label className="font-medium">
+                          {getEntityName(mod.entityId)}
+                        </Label>
+                        <p className="text-xs text-slate-600">
+                          Area: {mod.originalValue.toFixed(2)} {unitType}
+                        </p>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="flex items-center gap-2">
+                          <Switch
+                            checked={mod.action === 'include'}
+                            onCheckedChange={(checked) => {
+                              updateEntityModification(mod.entityId, checked ? 'include' : 'exclude')
+                            }}
+                          />
+                          <Label className="text-xs">
+                            {mod.action === 'include' ? 'Included' : 'Excluded'}
+                          </Label>
+                        </div>
+                      </div>
+                    </div>
+*/
+
+// With this new code:
+/*
+                    <div className="w-full mb-2">
+                      <div className="flex justify-between items-baseline">
+                        <Label className="font-medium">
+                          {getEntityName(mod.entityId)}
+                        </Label>
+                        <Badge className="text-xs">Required</Badge>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1 flex flex-col gap-1">
+                        <div>Base Area: {mod.originalValue.toFixed(2)} {unitType}</div>
+                        
+                        {/* Show subtracted areas */}
+                        {mod.excludedSpecialAreas && mod.excludedSpecialAreas.length > 0 && (
+                          <div className="flex items-center text-red-600">
+                            <MinusIcon className="h-3 w-3 mr-1" />
+                            <span>
+                              Subtracted: {
+                                specialAreas
+                                  .filter(a => mod.excludedSpecialAreas?.includes(a.id))
+                                  .map(a => `${a.name} (${a.area} ${unitType})`)
+                                  .join(', ')
+                              }
+                            </span>
+                          </div>
+                        )}
+                        
+                        {/* Show added areas */}
+                        {mod.addedSpecialAreas && mod.addedSpecialAreas.length > 0 && (
+                          <div className="flex items-center text-green-600">
+                            <PlusIcon className="h-3 w-3 mr-1" />
+                            <span>
+                              Added: {
+                                specialAreas
+                                  .filter(a => mod.addedSpecialAreas?.includes(a.id))
+                                  .map(a => `${a.name} (${a.area} ${unitType})`)
+                                  .join(', ')
+                              }
+                            </span>
+                          </div>
+                        )}
+                        
+                        {/* Show modified value */}
+                        <div className="flex items-center font-medium mt-1 text-blue-700">
+                          <span>Final Area: {mod.modifiedValue.toFixed(2)} {unitType}</span>
+                        </div>
+                      </div>
+                    </div>
+*/
+
+
+// This section updates the help text at line ~1095
+// Replace this section:
+/*
+              <div className="p-3 border rounded-md bg-slate-50 mb-2">
+                <p className="text-sm">
+                  Customize your derived ratio with a simplified approach:
+                </p>
+                <ul className="text-sm list-disc pl-5 mt-1 space-y-1">
+                  <li>Select whether to include or exclude each entity</li>
+                  <li>Special areas can be added to or removed from entities as needed</li>
+                  <li>Changes will be calculated automatically - no manual entry required</li>
+                </ul>
+              </div>
+*/
+
+// With this new code:
+/*
+              <div className="p-3 border rounded-md bg-slate-50 mb-2">
+                <p className="text-sm">
+                  Customize your derived ratio with a simplified approach:
+                </p>
+                <ul className="text-sm list-disc pl-5 mt-1 space-y-1">
+                  <li>All entities are automatically included in the calculation</li>
+                  <li>Special areas can be added to or subtracted from entities as needed</li>
+                  <li>You can add or subtract the same special area from different entities</li>
+                  <li>Changes will be calculated automatically - no manual entry required</li>
+                </ul>
+              </div>
+*/
+
+
+// This section fixes the edit dialog UI at line ~1400
+// Replace this section:
+/*
+                      <div>
+                        <Label className="font-medium">
+                          {getEntityName(mod.entityId)}
+                        </Label>
+                        <p className="text-xs text-slate-600">
+                          Area: {mod.originalValue.toFixed(2)} {unitType}
+                        </p>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="flex items-center gap-2">
+                          <Switch
+                            checked={mod.action === 'include'}
+                            onCheckedChange={(checked) => {
+                              updateEntityModification(mod.entityId, checked ? 'include' : 'exclude')
+                            }}
+                          />
+                          <Label className="text-xs">
+                            {mod.action === 'include' ? 'Included' : 'Excluded'}
+                          </Label>
+                        </div>
+                      </div>
+*/
+
+// With this new code:
+/*
+                      <div className="w-full">
+                        <div className="flex justify-between items-baseline">
+                          <Label className="font-medium">
+                            {getEntityName(mod.entityId)}
+                          </Label>
+                          <Badge className="text-xs">Required</Badge>
+                        </div>
+                        <div className="text-xs text-slate-600 mt-1 flex flex-col gap-1">
+                          <div>Base Area: {mod.originalValue.toFixed(2)} {unitType}</div>
+                          
+                          {/* Show subtracted areas */}
+                          {mod.excludedSpecialAreas && mod.excludedSpecialAreas.length > 0 && (
+                            <div className="flex items-center text-red-600">
+                              <MinusIcon className="h-3 w-3 mr-1" />
+                              <span>
+                                Subtracted: {
+                                  specialAreas
+                                    .filter(a => mod.excludedSpecialAreas?.includes(a.id))
+                                    .map(a => `${a.name} (${a.area} ${unitType})`)
+                                    .join(', ')
+                                }
+                              </span>
+                            </div>
+                          )}
+                          
+                          {/* Show added areas */}
+                          {mod.addedSpecialAreas && mod.addedSpecialAreas.length > 0 && (
+                            <div className="flex items-center text-green-600">
+                              <PlusIcon className="h-3 w-3 mr-1" />
+                              <span>
+                                Added: {
+                                  specialAreas
+                                    .filter(a => mod.addedSpecialAreas?.includes(a.id))
+                                    .map(a => `${a.name} (${a.area} ${unitType})`)
+                                    .join(', ')
+                                }
+                              </span>
+                            </div>
+                          )}
+                          
+                          {/* Show modified value */}
+                          <div className="flex items-center font-medium mt-1 text-blue-700">
+                            <span>Final Area: {mod.modifiedValue.toFixed(2)} {unitType}</span>
+                          </div>
+                        </div>
+                      </div>
+*/

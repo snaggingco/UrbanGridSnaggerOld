@@ -1,0 +1,60 @@
+Proposed Improved Workflow
+Here's a more structured and logical workflow for the cost allocation setup:
+
+Step 1: Budget Item Selection
+Clear selection of budget line items from the standardized RERA budget list
+Visual categorization of budget items into relevant groups (Services, Maintenance, etc.)
+Display the budget item code and description prominently
+Step 2: Define Allocation Method
+Present allocation methods as a clear, sequential choice with detailed explanations
+Each method should have a distinct visual representation and clear use case
+Present methods in order of complexity (simple to advanced)
+Step 3: Input Configuration
+For each allocation method, provide specific input controls:
+
+Single Ratio Based:
+
+Select a ratio from pre-defined ratios (from previous ratio management step)
+Show immediate preview of distribution based on selected ratio
+Display percentage and calculated distribution for each entity
+Manual Input Based:
+
+List all entities with editable input fields
+Allow selection of unit type for inputs
+Calculate the percentage distribution automatically
+Show total allocated amount vs. budget amount
+Multi-Ratio Based:
+
+Add multiple ratios with weight percentages
+Show proportional impact of each ratio on the distribution
+Allow adjustment of weightage for each ratio
+Preview composite distribution across entities
+Multi-Input with Ratio:
+
+Allow multiple input types, each with:
+Value field
+Extensive unit type selection (expanded list)
+Selectable ratio for distribution
+Display per-input distribution and aggregate impact
+Allow easy addition/removal of inputs
+Step 4: Unit of Measurement Selection
+For each input, provide an expanded unit list including:
+
+Currency units (AED, USD, EUR)
+Area measurements (sqm, sqft)
+Time units (hours, days, months)
+Staff units (headcount, FTE)
+Volume measurements (cubic meters, liters)
+Quantity units (pieces, items, units)
+Percentage (%)
+Frequency (times per day/week/month)
+Custom units with description
+Step 5: Review and Confirmation
+Summary view of all allocation decisions
+Visual representation of input distribution (charts)
+Verification of total allocation against budget value (if applicable)
+Ability to save configuration or make adjustments
+Step 6: Documentation
+Generate allocation breakdown in report format
+Export options for distribution data
+Audit trail of allocation decisions

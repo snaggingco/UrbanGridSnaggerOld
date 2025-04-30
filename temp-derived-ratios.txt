@@ -1,0 +1,173 @@
+      const demoDerivedRatios = [
+        {
+          id: 101,
+          name: 'Residential Tower',
+          description: 'Residential Tower Ratio',
+          ratioType: 'sellable_area',
+          isCore: false,
+          unitOfMeasurement: unitType,
+          sourceRatioId: 1, // Sellable Area
+          sourceRatioName: 'Sellable Area',
+          // Include entity distribution values
+          entityValues: {
+            '1': 15500, // Only Residential Tower - Using string keys for consistent type
+            '2': 0,     // No Retail
+            '3': 0      // No Office
+          },
+          entityModifications: [
+            {
+              entityId: 1,
+              action: 'include',
+              originalValue: 15500,
+              modifiedValue: 15500,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 2,
+              action: 'exclude',
+              originalValue: 5500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 3,
+              action: 'exclude',
+              originalValue: 8500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            }
+          ]
+        },
+        {
+          id: 103,
+          name: 'Retail Section',
+          description: 'Sellable Area ratio for Retail Section',
+          ratioType: 'sellable_area',
+          isCore: false,
+          unitOfMeasurement: unitType,
+          sourceRatioId: 1, // Sellable Area
+          sourceRatioName: 'Sellable Area',
+          calculatedRatioValue: 5500,
+          // Include entity distribution values
+          entityValues: {
+            '1': 0,     // No Residential - Using string keys for consistent type
+            '2': 5500,  // Only Retail
+            '3': 0      // No Office
+          },
+          entityModifications: [
+            {
+              entityId: 1,
+              action: 'exclude',
+              originalValue: 15500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 2,
+              action: 'include',
+              originalValue: 5500,
+              modifiedValue: 5500,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 3,
+              action: 'exclude',
+              originalValue: 8500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            }
+          ]
+        },
+        {
+          id: 104,
+          name: 'Office Block',
+          description: 'Sellable Area ratio for Office Block',
+          ratioType: 'sellable_area',
+          isCore: false,
+          unitOfMeasurement: unitType,
+          sourceRatioId: 1, // Sellable Area
+          sourceRatioName: 'Sellable Area',
+          calculatedRatioValue: 8500,
+          // Include entity distribution values
+          entityValues: {
+            '1': 0,     // No Residential - Using string keys for consistent type
+            '2': 0,     // No Retail
+            '3': 8500   // Only Office
+          },
+          entityModifications: [
+            {
+              entityId: 1,
+              action: 'exclude',
+              originalValue: 15500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 2,
+              action: 'exclude',
+              originalValue: 5500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 3,
+              action: 'include',
+              originalValue: 8500,
+              modifiedValue: 8500,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            }
+          ]
+        },
+        {
+          id: 102,
+          name: 'Commercial Areas',
+          description: 'Retail & Office Combined',
+          ratioType: 'sellable_area',
+          isCore: false,
+          unitOfMeasurement: unitType,
+          sourceRatioId: 1, // Sellable Area
+          sourceRatioName: 'Sellable Area',
+          calculatedRatioValue: 14000,
+          // Include entity distribution values
+          entityValues: {
+            '1': 0,     // No Residential - Using string keys for consistent type
+            '2': 5500,  // Retail
+            '3': 8500   // Office
+          },
+          entityModifications: [
+            {
+              entityId: 1,
+              action: 'exclude',
+              originalValue: 15500,
+              modifiedValue: 0,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 2,
+              action: 'include',
+              originalValue: 5500,
+              modifiedValue: 5500,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            },
+            {
+              entityId: 3,
+              action: 'include',
+              originalValue: 8500,
+              modifiedValue: 8500,
+              excludedSpecialAreas: [],
+              addedSpecialAreas: []
+            }
+          ]
+        }
+      ];

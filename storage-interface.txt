@@ -1,0 +1,301 @@
+42:export interface IStorage {
+43-  // Inquiries and bookings
+44-  createInquiry(inquiry: InsertInquiry): Promise<Inquiry>;
+45-  createBooking(booking: InsertBooking): Promise<Booking>;
+46-  sendInquiryEmail(inquiry: Inquiry): Promise<void>;
+47-  sendBookingEmail(booking: Booking): Promise<void>;
+48-  
+49-  // Lead management
+50-  getAllInquiries(): Promise<Inquiry[]>;
+51-  getInquiryById(id: number): Promise<Inquiry | null>;
+52-  updateInquiry(id: number, inquiry: Partial<InsertInquiry>): Promise<Inquiry>;
+53-  getAllBookings(): Promise<Booking[]>;
+54-  getBookingById(id: number): Promise<Booking | null>;
+55-  updateBooking(id: number, booking: Partial<InsertBooking>): Promise<Booking>;
+56-  getBookingsByInquiryId(inquiryId: number): Promise<Booking[]>;
+57-  convertInquiryToBooking(inquiryId: number, booking: InsertBooking): Promise<Booking>;
+58-  
+59-  // User authentication
+60-  createUser(user: InsertUser): Promise<User>;
+61-  login(credentials: LoginCredentials): Promise<{ user: User; token: string } | null>;
+62-  getUserById(id: number): Promise<User | null>;
+63-  validateToken(token: string): Promise<User | null>;
+64-  
+65-  // Inspection projects
+66-  createProject(project: InsertProject): Promise<Project>;
+67-  updateProject(id: number, project: Partial<InsertProject>): Promise<Project>;
+68-  getProjectById(id: number): Promise<Project | null>;
+69-  getProjectsByUserId(userId: number): Promise<Project[]>;
+70-  getAllProjects(): Promise<Project[]>;
+71-  
+72-  // Locations management
+73-  createLocation(location: InsertLocation): Promise<Location>;
+74-  updateLocation(id: number, location: Partial<InsertLocation>): Promise<Location>;
+75-  deleteLocation(id: number): Promise<void>;
+76-  getLocationById(id: number): Promise<Location | null>;
+77-  getLocationsByProjectId(projectId: number): Promise<Location[]>;
+78-  getLocationsByParentId(parentId: number | null, projectId: number): Promise<Location[]>;
+79-  
+80-  // Defects management
+81-  createDefect(defect: InsertDefect): Promise<Defect>;
+82-  updateDefect(id: number, defect: Partial<InsertDefect>): Promise<Defect>;
+83-  getDefectById(id: number): Promise<Defect | null>;
+84-  getDefectsByProjectId(projectId: number): Promise<Defect[]>;
+85-  
+86-  // Images
+87-  uploadImage(image: InsertImage): Promise<Image>;
+88-  updateImage(id: number, image: Partial<InsertImage>): Promise<Image>;
+89-  getImageById(id: number): Promise<Image | null>;
+90-  getImagesByProjectId(projectId: number): Promise<Image[]>;
+91-  getImagesByDefectId(defectId: number): Promise<Image[]>;
+92-  
+93-  // Reports
+94-  generateReport(projectId: number): Promise<Report>;
+95-  getReportByProjectId(projectId: number): Promise<Report | null>;
+96-  updateReport(id: number, report: Partial<InsertReport>): Promise<Report>;
+97-  getReportSettings(): Promise<any>;
+98-  saveReportSettings(settings: any): Promise<any>;
+99-  
+100-  // RERA NRM3 Classifications
+101-  createNrm3Classification(classification: InsertNrm3Classification): Promise<Nrm3Classification>;
+102-  updateNrm3Classification(id: number, classification: Partial<InsertNrm3Classification>): Promise<Nrm3Classification>;
+103-  getNrm3ClassificationById(id: number): Promise<Nrm3Classification | null>;
+104-  getNrm3ClassificationsByProjectId(projectId: number): Promise<Nrm3Classification[]>;
+105-  getNrm3ClassificationsByLocationId(locationId: number): Promise<Nrm3Classification[]>;
+106-  
+107-  // RERA Condition Assessments
+108-  createConditionAssessment(assessment: InsertConditionAssessment): Promise<ConditionAssessment>;
+109-  updateConditionAssessment(id: number, assessment: Partial<InsertConditionAssessment>): Promise<ConditionAssessment>;
+110-  getConditionAssessmentById(id: number): Promise<ConditionAssessment | null>;
+111-  getConditionAssessmentsByProjectId(projectId: number): Promise<ConditionAssessment[]>;
+112-  getConditionAssessmentsByLocationId(locationId: number): Promise<ConditionAssessment[]>;
+113-  getConditionAssessmentsByClassificationId(classificationId: number): Promise<ConditionAssessment[]>;
+114-  
+115-  // RERA Lifecycle Costs
+116-  createLifecycleCost(cost: InsertLifecycleCost): Promise<LifecycleCost>;
+117-  updateLifecycleCost(id: number, cost: Partial<InsertLifecycleCost>): Promise<LifecycleCost>;
+118-  deleteLifecycleCost(id: number): Promise<void>;
+119-  getLifecycleCostById(id: number): Promise<LifecycleCost | null>;
+120-  getLifecycleCostsByProjectId(projectId: number): Promise<LifecycleCost[]>;
+121-  getLifecycleCostsByLocationId(locationId: number): Promise<LifecycleCost[]>;
+122-  getLifecycleCostsByClassificationId(classificationId: number): Promise<LifecycleCost[]>;
+123-  getLifecycleCostsByAssessmentId(assessmentId: number): Promise<LifecycleCost[]>;
+124-  
+125-  // RERA Reserve Fund Settings
+126-  createReserveFundSettings(settings: InsertReserveFundSettings): Promise<ReserveFundSettings>;
+127-  updateReserveFundSettings(id: number, settings: Partial<InsertReserveFundSettings>): Promise<ReserveFundSettings>;
+128-  getReserveFundSettingsById(id: number): Promise<ReserveFundSettings | null>;
+129-  getReserveFundSettingsByProjectId(projectId: number): Promise<ReserveFundSettings | null>;
+130-  
+131-  // AMC Cost Allocation System
+132-  // RERA Budget Items - Service Charge Line Items as per RERA Audit Guidelines
+133-  importReraBudgetItems(items: InsertReraBudgetItem[]): Promise<ReraBudgetItem[]>;
+134-  getReraBudgetItems(): Promise<ReraBudgetItem[]>;
+135-  getReraBudgetItemCount(): Promise<number>;
+136-  getReraBudgetItemById(id: number): Promise<ReraBudgetItem | null>;
+137-  getReraBudgetItemByCode(code: string): Promise<ReraBudgetItem | null>;
+138-  getReraBudgetItemsByCategory(category: string): Promise<ReraBudgetItem[]>;
+139-  
+140-  // AMC Contract Management
+141-  createAmcContract(contract: InsertAmcContract & { userId: number }): Promise<AmcContract>;
+142-  updateAmcContract(id: number, contract: Partial<InsertAmcContract>): Promise<AmcContract>;
+143-  deleteAmcContract(id: number): Promise<void>;
+144-  getAmcContractById(id: number): Promise<AmcContract | null>;
+145-  getAmcContractsByProjectId(projectId: number): Promise<AmcContract[]>;
+146-  getAllAmcContracts(): Promise<AmcContract[]>;
+147-  
+148-  // Project Entity Management
+149-  createProjectEntity(entity: InsertProjectEntity): Promise<ProjectEntity>;
+150-  updateProjectEntity(id: number, entity: Partial<InsertProjectEntity>): Promise<ProjectEntity>;
+151-  deleteProjectEntity(id: number): Promise<void>;
+152-  getProjectEntityById(id: number): Promise<ProjectEntity | null>;
+153-  getProjectEntitiesByProjectId(projectId: number): Promise<ProjectEntity[]>;
+154-  
+155-  // Shared Area Management
+156-  createSharedArea(area: InsertSharedArea): Promise<SharedArea>;
+157-  updateSharedArea(id: number, area: Partial<InsertSharedArea>): Promise<SharedArea>;
+158-  deleteSharedArea(id: number): Promise<void>;
+159-  getSharedAreaById(id: number): Promise<SharedArea | null>;
+160-  getSharedAreasByProjectId(projectId: number): Promise<SharedArea[]>;
+161-  
+162-  // Shared Area Beneficiaries
+163-  createSharedAreaBeneficiary(beneficiary: InsertSharedAreaBeneficiary): Promise<SharedAreaBeneficiary>;
+164-  updateSharedAreaBeneficiary(id: number, beneficiary: Partial<InsertSharedAreaBeneficiary>): Promise<SharedAreaBeneficiary>;
+165-  deleteSharedAreaBeneficiary(id: number): Promise<void>;
+166-  getSharedAreaBeneficiaryById(id: number): Promise<SharedAreaBeneficiary | null>;
+167-  getSharedAreaBeneficiariesByAreaId(areaId: number): Promise<SharedAreaBeneficiary[]>;
+168-  
+169-  // UOM Values
+170-  createAmcEntityUomValue(value: InsertAmcEntityUomValue): Promise<AmcEntityUomValue>;
+171-  updateAmcEntityUomValue(id: number, value: Partial<InsertAmcEntityUomValue>): Promise<AmcEntityUomValue>;
+172-  deleteAmcEntityUomValue(id: number): Promise<void>;
+173-  getAmcEntityUomValueById(id: number): Promise<AmcEntityUomValue | null>;
+174-  getAmcEntityUomValuesByContractId(contractId: number): Promise<AmcEntityUomValue[]>;
+175-  getAmcEntityUomValuesByEntityId(entityId: number): Promise<AmcEntityUomValue[]>;
+176-  
+177-  // AMC Allocations
+178-  createAmcAllocation(allocation: InsertAmcAllocation): Promise<AmcAllocation>;
+179-  updateAmcAllocation(id: number, allocation: Partial<InsertAmcAllocation>): Promise<AmcAllocation>;
+180-  deleteAmcAllocation(id: number): Promise<void>;
+181-  getAmcAllocationById(id: number): Promise<AmcAllocation | null>;
+182-  getAmcAllocationsByContractId(contractId: number): Promise<AmcAllocation[]>;
+183-  getAmcAllocationsByEntityId(entityId: number): Promise<AmcAllocation[]>;
+184-  calculateAmcAllocations(contractId: number): Promise<AmcAllocation[]>;
+185-  
+186-  // Project Entities
+187-  createProjectEntity(entity: InsertProjectEntity): Promise<ProjectEntity>;
+188-  updateProjectEntity(id: number, entity: Partial<InsertProjectEntity>): Promise<ProjectEntity>;
+189-  deleteProjectEntity(id: number): Promise<void>;
+190-  getProjectEntityById(id: number): Promise<ProjectEntity | null>;
+191-  getProjectEntitiesByProjectId(projectId: number): Promise<ProjectEntity[]>;
+192-  getProjectEntitiesByType(projectId: number, type: string): Promise<ProjectEntity[]>;
+193-  
+194-  // Shared Areas
+195-  createSharedArea(area: InsertSharedArea): Promise<SharedArea>;
+196-  updateSharedArea(id: number, area: Partial<InsertSharedArea>): Promise<SharedArea>;
+197-  deleteSharedArea(id: number): Promise<void>;
+198-  getSharedAreaById(id: number): Promise<SharedArea | null>;
+199-  getSharedAreasByProjectId(projectId: number): Promise<SharedArea[]>;
+200-  getSharedAreasByType(projectId: number, type: string): Promise<SharedArea[]>;
+201-  
+202-  // Shared Area Beneficiaries
+203-  createSharedAreaBeneficiary(beneficiary: InsertSharedAreaBeneficiary): Promise<SharedAreaBeneficiary>;
+204-  updateSharedAreaBeneficiary(id: number, beneficiary: Partial<InsertSharedAreaBeneficiary>): Promise<SharedAreaBeneficiary>;
+205-  deleteSharedAreaBeneficiary(id: number): Promise<void>;
+206-  getSharedAreaBeneficiaryById(id: number): Promise<SharedAreaBeneficiary | null>;
+207-  getSharedAreaBeneficiariesBySharedAreaId(sharedAreaId: number): Promise<SharedAreaBeneficiary[]>;
+208-  getSharedAreaBeneficiariesByAreaId(sharedAreaId: number): Promise<SharedAreaBeneficiary[]>;
+209-  getSharedAreaBeneficiariesByEntityId(entityId: number): Promise<SharedAreaBeneficiary[]>;
+210-  
+211-  // AMC Contracts 
+212-  createAmcContract(contract: InsertAmcContract & { userId: number }): Promise<AmcContract>;
+213-  updateAmcContract(id: number, contract: Partial<InsertAmcContract>): Promise<AmcContract>;
+214-  deleteAmcContract(id: number): Promise<void>;
+215-  getAmcContractById(id: number): Promise<AmcContract | null>;
+216-  getAmcContractsByProjectId(projectId: number): Promise<AmcContract[]>;
+217-  getAmcContractsByBudgetItemId(budgetItemId: number): Promise<AmcContract[]>;
+218-  getAllAmcContracts(): Promise<AmcContract[]>;
+219-  
+220-  // AMC Entity UOM Values
+221-  createAmcEntityUomValue(uomValue: InsertAmcEntityUomValue): Promise<AmcEntityUomValue>;
+222-  updateAmcEntityUomValue(id: number, uomValue: Partial<InsertAmcEntityUomValue>): Promise<AmcEntityUomValue>;
+223-  deleteAmcEntityUomValue(id: number): Promise<void>;
+224-  getAmcEntityUomValueById(id: number): Promise<AmcEntityUomValue | null>;
+225-  getAmcEntityUomValuesByContractId(contractId: number): Promise<AmcEntityUomValue[]>;
+226-  getAmcEntityUomValuesByEntityId(entityId: number): Promise<AmcEntityUomValue[]>;
+227-  getAmcEntityUomValuesByUomType(contractId: number, uomType: string): Promise<AmcEntityUomValue[]>;
+228-  
+229-  // Entity Allocation Ratios
+230-  createEntityAllocationRatio(ratio: InsertEntityAllocationRatio): Promise<EntityAllocationRatio>;
+231-  updateEntityAllocationRatio(id: number, ratio: Partial<InsertEntityAllocationRatio>): Promise<EntityAllocationRatio>;
+232-  deleteEntityAllocationRatio(id: number): Promise<void>;
+233-  getEntityAllocationRatioById(id: number): Promise<EntityAllocationRatio | null>;
+234-  getEntityAllocationRatiosByProjectId(projectId: number): Promise<EntityAllocationRatio[]>;
+235-  getEntityAllocationRatiosByUomType(projectId: number, uomType: string): Promise<EntityAllocationRatio[]>;
+236-  getCoreEntityAllocationRatios(projectId: number): Promise<EntityAllocationRatio[]>;
+237-  
+238-  // Entity Ratio Values
+239-  createEntityRatioValue(ratioValue: InsertEntityRatioValue): Promise<EntityRatioValue>;
+240-  updateEntityRatioValue(id: number, ratioValue: Partial<InsertEntityRatioValue>): Promise<EntityRatioValue>;
+241-  deleteEntityRatioValue(id: number): Promise<void>;
+242-  getEntityRatioValueById(id: number): Promise<EntityRatioValue | null>;
+243-  getEntityRatioValuesByRatioId(ratioId: number): Promise<EntityRatioValue[]>;
+244-  getEntityRatioValuesByEntityId(entityId: number): Promise<EntityRatioValue[]>;
+245-  
+246-  // Shared Area Inclusions
+247-  createSharedAreaInclusion(inclusion: InsertSharedAreaInclusion): Promise<SharedAreaInclusion>;
+248-  updateSharedAreaInclusion(id: number, inclusion: Partial<InsertSharedAreaInclusion>): Promise<SharedAreaInclusion>;
+249-  deleteSharedAreaInclusion(id: number): Promise<void>;
+250-  getSharedAreaInclusionById(id: number): Promise<SharedAreaInclusion | null>;
+251-  getSharedAreaInclusionsBySharedAreaId(sharedAreaId: number): Promise<SharedAreaInclusion[]>;
+252-  getSharedAreaInclusionsByEntityId(entityId: number): Promise<SharedAreaInclusion[]>;
+253-  getSharedAreaInclusionsByRatioId(ratioId: number): Promise<SharedAreaInclusion[]>;
+254-  
+255-  // Auto generate core ratios
+256-  generateCoreRatios(projectId: number): Promise<EntityAllocationRatio[]>;
+257-  calculateEntityRatios(ratioId: number): Promise<EntityRatioValue[]>;
+258-  convertUnitOfMeasurement(projectId: number, fromUnit: string, toUnit: string): Promise<boolean>;
+259-  
+260-  // AMC Allocations
+261-  createAmcAllocation(allocation: InsertAmcAllocation): Promise<AmcAllocation>;
+262-  updateAmcAllocation(id: number, allocation: Partial<InsertAmcAllocation>): Promise<AmcAllocation>;
+263-  deleteAmcAllocation(id: number): Promise<void>;
+264-  getAmcAllocationById(id: number): Promise<AmcAllocation | null>;
+265-  getAmcAllocationsByContractId(contractId: number): Promise<AmcAllocation[]>;
+266-  getAmcAllocationsByEntityId(entityId: number): Promise<AmcAllocation[]>;
+267-  calculateAmcAllocations(contractId: number): Promise<AmcAllocation[]>;
+268-  
+269-  // IP Tracking
+270-  trackVisitor(visitor: InsertVisitor): Promise<Visitor>;
+271-  findExistingVisitor(ipAddress: string, visitedPage: string): Promise<Visitor | null>;
+272-  updateVisitor(id: number, visitor: Partial<InsertVisitor>): Promise<Visitor>;
+273-  incrementVisitorClicks(id: number): Promise<Visitor>;
+274-  getAllVisitors(): Promise<Visitor[]>;
+275-  getVisitorById(id: number): Promise<Visitor | null>;
+276-  getVisitorsByIp(ipAddress: string): Promise<Visitor[]>;
+277-  flagSuspiciousVisitor(id: number, reason: string): Promise<Visitor>;
+278-  getSuspiciousVisitors(): Promise<Visitor[]>;
+279-  getVisitorStats(): Promise<{
+280-    totalVisitors: number;
+281-    uniqueIps: number;
+282-    suspiciousCount: number;
+283-    visitorsByDate: Record<string, number>;
+284-    topPages: Array<{page: string, visits: number}>;
+285-    topReferrers: Array<{referrer: string, visits: number}>;
+286-  }>;
+287-
+288-  // SEO Intelligence
+289-  // SEO Competitor Analysis
+290-  createSeoCompetitorAnalysis(analysis: InsertSeoCompetitorAnalysis): Promise<SeoCompetitorAnalysis>;
+291-  updateSeoCompetitorAnalysis(id: number, analysis: Partial<InsertSeoCompetitorAnalysis>): Promise<SeoCompetitorAnalysis>;
+292-  updateSeoAnalysisResults(id: number, results: any): Promise<SeoCompetitorAnalysis>;
+293-  getSeoCompetitorAnalysisById(id: number): Promise<SeoCompetitorAnalysis | null>;
+294-  getAllSeoCompetitorAnalyses(): Promise<SeoCompetitorAnalysis[]>;
+295-  
+296-  // SEO Recommendations
+297-  createSeoRecommendation(recommendation: InsertSeoRecommendation): Promise<SeoRecommendation>;
+298-  updateSeoRecommendation(id: number, recommendation: Partial<InsertSeoRecommendation>): Promise<SeoRecommendation>;
+299-  getSeoRecommendationById(id: number): Promise<SeoRecommendation | null>;
+300-  getSeoRecommendationsByAnalysisId(analysisId: number): Promise<SeoRecommendation[]>;
+301-  markRecommendationAsCompleted(id: number): Promise<SeoRecommendation>;
+302-  
+303-  // Ad Simulations
+304-  createAdSimulation(simulation: InsertAdSimulation): Promise<AdSimulation>;
+305-  updateAdSimulation(id: number, simulation: Partial<InsertAdSimulation>): Promise<AdSimulation>;
+306-  updateAdSimulationResults(id: number, adsDetected: any, adsClicked: any, searchResults: any): Promise<AdSimulation>;
+307-  getAdSimulationById(id: number): Promise<AdSimulation | null>;
+308-  getAdSimulationsByKeyword(keyword: string): Promise<AdSimulation[]>;
+309-  getAllAdSimulations(): Promise<AdSimulation[]>;
+310-}
+311-
+312-export class MemStorage implements IStorage {
+313-  private inquiries: Map<number, Inquiry>;
+314-  private bookings: Map<number, Booking>;
+315-  private users: Map<number, User>;
+316-  private projects: Map<number, Project>;
+317-  private defects: Map<number, Defect>;
+318-  private images: Map<number, Image>;
+319-  private locations: Map<number, Location>;
+320-  private reports: Map<number, Report>;
+321-  private visitors: Map<number, Visitor>;
+322-  // RERA-specific data stores
+323-  private nrm3Classifications: Map<number, Nrm3Classification>;
+324-  private conditionAssessments: Map<number, ConditionAssessment>;
+325-  private lifecycleCosts: Map<number, LifecycleCost>;
+326-  private reserveFundSettings: Map<number, ReserveFundSettings>;
+327-  // AMC Cost Allocation System maps
+328-  private reraBudgetItems: Map<number, ReraBudgetItem>;
+329-  private projectEntities: Map<number, ProjectEntity>;
+330-  private sharedAreas: Map<number, SharedArea>;
+331-  private sharedAreaBeneficiaries: Map<number, SharedAreaBeneficiary>;
+332-  private amcContracts: Map<number, AmcContract>;
+333-  private amcEntityUomValues: Map<number, AmcEntityUomValue>;
+334-  private amcAllocations: Map<number, AmcAllocation>;
+335-  private entityAllocationRatios: Map<number, EntityAllocationRatio>;
+336-  private entityRatioValues: Map<number, EntityRatioValue>;
+337-  private sharedAreaInclusions: Map<number, SharedAreaInclusion>;
+338-  // SEO Intelligence maps
+339-  private seoCompetitorAnalyses: Map<number, SeoCompetitorAnalysis>;
+340-  private seoRecommendations: Map<number, SeoRecommendation>;
+341-  private adSimulations: Map<number, AdSimulation>;
+342-  

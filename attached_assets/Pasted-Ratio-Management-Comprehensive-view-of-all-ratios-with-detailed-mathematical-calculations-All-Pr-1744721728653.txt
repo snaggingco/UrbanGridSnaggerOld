@@ -1,0 +1,1115 @@
+Ratio Management
+Comprehensive view of all ratios with detailed mathematical calculations
+
+All Project Ratios
+177 ratios available
+Sellable Area
+Total sellable area for each entity
+
+
+View Calculation
+Toggle
+Applicable Area
+Suit area + 0.25x balcony area
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Total parking bay area
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated common areas for entities
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for all entities
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for all entities
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for all entities
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for all entities
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for all entities
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Sellable Area
+Residential Tower Ratio
+
+Includes: Residential Tower
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section
+
+Includes: Retail Section(5,000.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Office Block
+
+Includes: Office Block(8,000.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Retail & Office Combined
+
+Includes: Retail Section, Office Block(13,000.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Areas Excluding Pool from Residential Tower
+
+Includes: Residential Tower, Retail Section, Office Block
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Retail Section
+
+Includes: Residential Tower(75.00 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Office Block
+
+Includes: Residential Tower(65.20 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section, Office Block
+
+Includes: Retail Section(38.50 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for all entities
+
+Includes: Residential Tower(53.60 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Retail Section
+
+Includes: Residential Tower(75.00 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Office Block
+
+Includes: Residential Tower(65.20 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section, Office Block
+
+Includes: Retail Section(38.50 sqm)
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for all entities
+
+Includes: Residential Tower(53.60 sqm)
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for all entities
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Retail Section
+
+Includes: Residential Tower(75.00 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Office Block
+
+Includes: Residential Tower(65.20 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section, Office Block
+
+Includes: Retail Section(38.50 sqm)
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for all entities
+
+Includes: Residential Tower(53.60 sqm)
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Retail Section
+
+Includes: Residential Tower(75.00 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Office Block
+
+Includes: Residential Tower(65.20 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section, Office Block
+
+Includes: Retail Section(38.50 sqm)
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for all entities
+
+Includes: Residential Tower(53.60 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower
+
+Includes: Residential Tower(100.00 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section
+
+Includes: Retail Section(100.00 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Office Block
+
+Includes: Office Block(100.00 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Retail Section
+
+Includes: Residential Tower(75.00 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Office Block
+
+Includes: Residential Tower(65.20 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section, Office Block
+
+Includes: Retail Section(38.50 sqm)
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for all entities
+
+Includes: Residential Tower(53.60 sqm)
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Sellable Area
+Sellable Area ratio for all entities
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Applicable Area
+Applicable Area ratio for all entities
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Parking Bay Area
+Parking Bay Area ratio for all entities
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Dedicated Common Area
+Dedicated Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Total Component Area
+Total Component Area ratio for all entities
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Principal Common Area
+Principal Common Area ratio for all entities
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Common Element Area
+Common Element Area ratio for all entities
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Retail Section
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Residential Tower, Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for Retail Section, Office Block
+
+
+View Calculation
+Toggle
+Total Common Area
+Total Common Area ratio for all entities
+
+
+View Calculation

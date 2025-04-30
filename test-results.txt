@@ -1,0 +1,92 @@
+=== TESTING AMC COST ALLOCATION SYSTEM ===
+Project: Twin Towers Development
+Entities: Residential Tower A, Residential Tower B, Commercial Offices, Retail Space
+
+Generated 5 core ratios
+Generated 7 derived ratios
+
+=== SCENARIO 1: Security Services Allocation ===
+Allocating security costs based on Total Component Area
+Distributing 400000 using ratio: Total Component Area
+Total ratio value: 64300
+Entity Residential Tower A: ratio value = 21500.00, percentage = 33.44%, allocated = 133748.06
+Entity Residential Tower B: ratio value = 21500.00, percentage = 33.44%, allocated = 133748.06
+Entity Commercial Offices: ratio value = 14584.00, percentage = 22.68%, allocated = 90724.73
+Entity Retail Space: ratio value = 6716.00, percentage = 10.44%, allocated = 41779.15 (adjusted for rounding)
+Total allocated: 400000.00, Target: 400000
+Allocation matches input: Yes
+
+=== SCENARIO 2: HVAC Maintenance Allocation ===
+Allocating HVAC costs based on Sellable Area
+Distributing 250000 using ratio: Sellable Area
+Total ratio value: 37500
+Entity Residential Tower A: ratio value = 12500.00, percentage = 33.33%, allocated = 83333.33
+Entity Residential Tower B: ratio value = 12500.00, percentage = 33.33%, allocated = 83333.33
+Entity Commercial Offices: ratio value = 8500.00, percentage = 22.67%, allocated = 56666.67
+Entity Retail Space: ratio value = 4000.00, percentage = 10.67%, allocated = 26666.67 (adjusted for rounding)
+Total allocated: 250000.00, Target: 250000
+Allocation matches input: Yes
+
+=== SCENARIO 3: Management Fees Allocation ===
+Allocating management fees based on Entity Count (equal distribution)
+Distributing 180000 using ratio: Entity Count
+Total ratio value: 4
+Entity Residential Tower A: ratio value = 1.00, percentage = 25.00%, allocated = 45000.00
+Entity Residential Tower B: ratio value = 1.00, percentage = 25.00%, allocated = 45000.00
+Entity Commercial Offices: ratio value = 1.00, percentage = 25.00%, allocated = 45000.00
+Entity Retail Space: ratio value = 1.00, percentage = 25.00%, allocated = 45000.00 (adjusted for rounding)
+Total allocated: 180000.00, Target: 180000
+Allocation matches input: Yes
+
+=== SCENARIO 4: Cleaning Services Allocation ===
+Allocating cleaning costs based on total common elements ratio
+Distributing 300000 using ratio: Total Common Elements Ratio
+Total ratio value: 13300
+Entity Residential Tower A: ratio value = 4500.00, percentage = 33.83%, allocated = 101503.76
+Entity Residential Tower B: ratio value = 4500.00, percentage = 33.83%, allocated = 101503.76
+Entity Commercial Offices: ratio value = 3084.00, percentage = 23.19%, allocated = 69563.91
+Entity Retail Space: ratio value = 1216.00, percentage = 9.14%, allocated = 27428.57 (adjusted for rounding)
+Total allocated: 300000.00, Target: 300000
+Allocation matches input: Yes
+
+=== SCENARIO 5: Multiple Allocation Inputs ===
+Breaking down electrical maintenance (150000 AED) into multiple components:
+
+Input: Common Areas Electrical (80000 AED), Distribution: Total Common Elements Ratio
+Distributing 80000 using ratio: Total Common Elements Ratio
+Total ratio value: 13300
+Entity Residential Tower A: ratio value = 4500.00, percentage = 33.83%, allocated = 27067.67
+Entity Residential Tower B: ratio value = 4500.00, percentage = 33.83%, allocated = 27067.67
+Entity Commercial Offices: ratio value = 3084.00, percentage = 23.19%, allocated = 18550.38
+Entity Retail Space: ratio value = 1216.00, percentage = 9.14%, allocated = 7314.28 (adjusted for rounding)
+Total allocated: 80000.00, Target: 80000
+Allocation matches input: Yes
+
+Input: Distribution Boards (50000 AED), Distribution: Suit Area
+Distributing 50000 using ratio: Suit Area
+Total ratio value: 45000
+Entity Residential Tower A: ratio value = 15000.00, percentage = 33.33%, allocated = 16666.67
+Entity Residential Tower B: ratio value = 15000.00, percentage = 33.33%, allocated = 16666.67
+Entity Commercial Offices: ratio value = 10000.00, percentage = 22.22%, allocated = 11111.11
+Entity Retail Space: ratio value = 5000.00, percentage = 11.11%, allocated = 5555.55 (adjusted for rounding)
+Total allocated: 50000.00, Target: 50000
+Allocation matches input: Yes
+
+Input: Emergency Systems (20000 AED), Distribution: Entity Count
+Distributing 20000 using ratio: Entity Count
+Total ratio value: 4
+Entity Residential Tower A: ratio value = 1.00, percentage = 25.00%, allocated = 5000.00
+Entity Residential Tower B: ratio value = 1.00, percentage = 25.00%, allocated = 5000.00
+Entity Commercial Offices: ratio value = 1.00, percentage = 25.00%, allocated = 5000.00
+Entity Retail Space: ratio value = 1.00, percentage = 25.00%, allocated = 5000.00 (adjusted for rounding)
+Total allocated: 20000.00, Target: 20000
+Allocation matches input: Yes
+
+Entity totals for all electrical inputs:
+Entity Residential Tower A: 48734.34 AED (32.49% of total budget)
+Entity Residential Tower B: 48734.34 AED (32.49% of total budget)
+Entity Commercial Offices: 34661.49 AED (23.11% of total budget)
+Entity Retail Space: 17869.83 AED (11.91% of total budget)
+
+Total allocated: 150000.00, Target: 150000
+Allocation matches budget: Yes

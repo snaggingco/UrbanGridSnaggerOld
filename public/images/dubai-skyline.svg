@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" rx="8" fill="#f8f9fa"/>
+  <rect width="600" height="200" y="200" fill="#e9ecef"/>
+  
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0" y1="0" x2="0" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a8dadc" />
+      <stop offset="100%" stop-color="#f1faee" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="200" fill="url(#skyGradient)"/>
+  
+  <!-- Sun -->
+  <circle cx="100" cy="100" r="30" fill="#ffba08" opacity="0.8"/>
+  
+  <!-- Burj Khalifa -->
+  <path d="M300 60V340H320V60H300Z" fill="#264653"/>
+  <path d="M290 100V340H330V100H290Z" fill="#2a9d8f"/>
+  <path d="M280 140V340H340V140H280Z" fill="#264653"/>
+  <path d="M270 180V340H350V180H270Z" fill="#2a9d8f"/>
+  <path d="M260 230V340H360V230H260Z" fill="#264653"/>
+  <path d="M250 280V340H370V280H250Z" fill="#2a9d8f"/>
+  <path d="M320 50V30L310 0L300 30V50H320Z" fill="#264653"/>
+  
+  <!-- Dubai Frame -->
+  <rect x="100" y="120" width="80" height="220" stroke="#ffb703" stroke-width="16" fill="none"/>
+  
+  <!-- Emirates Towers -->
+  <polygon points="420,150 440,120 460,150 460,340 420,340" fill="#2a9d8f"/>
+  <polygon points="480,180 500,140 520,180 520,340 480,340" fill="#264653"/>
+  
+  <!-- Burj Al Arab -->
+  <path d="M50 340V160C50 160 70 150 90 160C110 170 90 200 90 200V340H50Z" fill="#219ebc"/>
+  <path d="M70 200V340H90V200C90 200 80 180 70 200Z" fill="#023047"/>
+  <path d="M60 180C60 180 70 150 80 180H60Z" fill="#219ebc"/>
+  
+  <!-- Princess Tower -->
+  <rect x="540" y="130" width="30" height="210" fill="#264653"/>
+  <polygon points="530,130 555,110 580,130 580,140 530,140" fill="#2a9d8f"/>
+  
+  <!-- JW Marriott Marquis -->
+  <rect x="400" y="160" width="20" height="180" fill="#2a9d8f"/>
+  <rect x="430" y="160" width="20" height="180" fill="#2a9d8f"/>
+  <rect x="400" y="150" width="50" height="20" fill="#264653"/>
+  <rect x="410" y="130" width="30" height="20" fill="#264653"/>
+  
+  <!-- Foreground Buildings -->
+  <rect x="10" y="250" width="40" height="90" fill="#457b9d"/>
+  <rect x="150" y="220" width="60" height="120" fill="#457b9d"/>
+  <rect x="220" y="260" width="40" height="80" fill="#457b9d"/>
+  <rect x="370" y="240" width="30" height="100" fill="#457b9d"/>
+  <rect x="480" y="220" width="50" height="120" fill="#457b9d"/>
+  <rect x="550" y="270" width="40" height="70" fill="#457b9d"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="340" width="600" height="60" fill="#9d7e45"/>
+  
+  <!-- Water Reflection -->
+  <rect x="0" y="340" width="600" height="10" fill="#219ebc" opacity="0.5"/>
+  
+  <!-- URBAN GRID Text -->
+  <text x="300" y="380" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#264653">DUBAI SKYLINE - URBAN GRID INSPECTIONS</text>
+</svg>

@@ -1,0 +1,71 @@
+Based on your detailed description and the attached image, here's a refined **example prompt** you can use internally for development or externally as part of your documentation/specs:
+
+---
+
+### 🔧 **Example Prompt – Allocation Workflow for Budget Line Item: Security Services**
+
+**Scenario:**  
+A user has selected the budget line item **"Security Services"** for allocation. The building has three entities: **Residence, Retail, and Office**. There are a total of **10 security staff members**, and the user needs to allocate them based on their functional deployment and corresponding ratio logic.
+
+---
+
+### 🧭 **Workflow Steps:**
+
+1. **Enter Inputs with Unit of Measurement:**
+   - Input 1: `2` Staffs → Assigned **exclusively to Residence**
+   - Input 2: `2` Staffs → Assigned **exclusively to Retail**
+   - Input 3: `2` Staffs → Assigned **exclusively to Office**
+   - Input 4: `2` Staffs → Assigned to **common areas excluding parking**
+   - Input 5: `2` Staffs → Assigned to **parking bay areas**
+
+2. **Define Ratios for Allocation:**
+   - Inputs 1–3 are allocated **100%** to their respective entities.
+   - Input 4 is allocated using a predefined ratio:  
+     **Total Common Area Ratio (Excl. Parking)** =  
+     - Residence: 30%  
+     - Retail: 30%  
+     - Office: 40%
+   - Input 5 is allocated using another predefined ratio:  
+     **Parking Bay Ratio** =  
+     - Residence: 40%  
+     - Retail: 40%  
+     - Office: 20%
+
+---
+
+### 🧮 **Calculation Output (based on input image):**
+
+| Entity     | Input 1 | Input 2 | Input 3 | Input 4 (30/30/40) | Input 5 (40/40/20) | **Total Input Share** | **% Share** |
+|------------|---------|---------|---------|--------------------|--------------------|------------------------|-------------|
+| Residence  | 2       | 0       | 0       | 0.6                | 0.8                | **3.4**                | **34.00%**  |
+| Retail     | 0       | 2       | 0       | 0.6                | 0.8                | **3.4**                | **34.00%**  |
+| Office     | 0       | 0       | 2       | 0.8                | 0.4                | **3.2**                | **32.00%**  |
+| **Total**  |         |         |         |                    |                    | **10**                 | 100%        |
+
+---
+
+### 💡 **System Behavior Requirements:**
+
+- Upon selecting a budget line item (e.g., **Security Services**), the system should:
+  - Prompt the user to **enter each input** and select a **unit of measurement** (`Staffs` in this case).
+  - Allow the user to **assign allocation logic** to each input by:
+    - Choosing a predefined ratio (from Ratio Management or Special Area Modifications).
+    - Or assigning it 100% to a single entity.
+  - The UI must support **multiple inputs per budget line item** and clearly show:
+    - Input number
+    - Assigned ratio
+    - Resulting split across entities
+  - **Calculate and display** total input share and percentage for each entity in real-time.
+
+---
+
+### 📤 **Final Output Integration:**
+
+- The computed shares (e.g., 34%, 34%, 32%) will be:
+  - **Saved to the backend**
+  - **Displayed in the Allocation Summary tab**
+  - **Included in the allocation reports** with clear breakdown per budget line item and input.
+
+---
+
+Let me know if you’d like this formatted as a JSON schema, API spec, or UI wireframe example next!

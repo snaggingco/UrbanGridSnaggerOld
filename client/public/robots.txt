@@ -1,0 +1,48 @@
+# www.snagging.me robots.txt file
+# Enhanced for better SEO and crawler control
+# Last updated: 2025-04-17
+
+User-agent: *
+# Protected areas - do not crawl
+Disallow: /inspection/
+Disallow: /admin/
+Disallow: /login
+Disallow: /404
+Disallow: /inspection
+Disallow: /api/
+Disallow: */print$
+Disallow: */pdf$
+Disallow: /*?*fbclid=
+Disallow: /*?*utm_source=
+Disallow: */submit$
+
+# Allow access to media and resources
+Allow: /images/
+Allow: /company/assets/
+Allow: /resources/
+Allow: /sitemap.xml
+Allow: /manifest.json
+
+# Crawl delay for better server performance
+Crawl-delay: 5
+
+# Main sitemap
+Sitemap: https://www.snagging.me/sitemap.xml
+
+# Specific bots settings
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /company/assets/
+
+User-agent: Bingbot
+Crawl-delay: 3
+
+# Recommended crawler prioritization for better indexing
+User-agent: AdsBot-Google
+Disallow: /
+
+User-agent: Rogerbot
+Crawl-delay: 10

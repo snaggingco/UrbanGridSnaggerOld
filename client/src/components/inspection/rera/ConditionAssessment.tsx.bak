@@ -1,0 +1,1603 @@
+import React, { useState, useEffect, lazy, Suspense } from "react";
+// Import Reserve Fund Components
+const ReserveFundAnalysis = lazy(() => import('./ReserveFundAnalysis'));
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { 
+  Building, 
+  ChevronDown, 
+  ChevronRight, 
+  AlertTriangle, 
+  Plus, 
+  Trash2, 
+  Check, 
+  Edit, 
+  Loader2,
+  ImagePlus,
+  InfoIcon,
+  X,
+  Gauge,
+  Eye,
+  Camera,
+  FileText,
+  Clock,
+  FolderTree
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useToast } from "@/hooks/use-toast";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { 
+  loadNRM3ClassificationData, 
+  NRM3Category,
+  NRM3SubCategory,
+  NRM3Asset 
+} from "@/lib/nrm3-classification";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+
+interface ConditionAssessmentProps {
+  projectId: number;
+  auditType?: "condition_survey" | "reserve_fund_study";
+  categoryFilter?: string | null;
+}
+
+// Condition Rating Options
+const conditionRatings = [
+  { value: "A", label: "A - Good", description: "Asset performs as intended with no deterioration" },
+  { value: "B", label: "B - Satisfactory", description: "Asset performs as intended with minor deterioration" },
+  { value: "C", label: "C - Poor", description: "Asset shows significant deterioration affecting performance" },
+  { value: "D", label: "D - Bad", description: "Asset has failed or at high risk of imminent failure" }
+];
+
+// Priority Rating Options
+const priorityRatings = [
+  { value: "1", label: "1 - Urgent", description: "Remedial action required immediately or within 1 year" },
+  { value: "2", label: "2 - Essential", description: "Remedial action required within 1-2 years" },
+  { value: "3", label: "3 - Desirable", description: "Remedial action required within 3-5 years" },
+  { value: "4", label: "4 - Long-term", description: "No immediate action required, monitor only" }
+];
+
+// Unit Measurement Options
+const unitOptions = [
+  { value: "m", label: "Meters (m)" },
+  { value: "m2", label: "Square Meters (m²)" },
+  { value: "m3", label: "Cubic Meters (m³)" },
+  { value: "nr", label: "Number (nr)" },
+  { value: "item", label: "Item" },
+  { value: "set", label: "Set" },
+  { value: "lot", label: "Lot" }
+];
+
+// Typical lifespan years by NRM group (first digit)
+const typicalLifespans: Record<string, number> = {
+  "0": 30, // Facilitating works
+  "1": 60, // Substructure
+  "2": 50, // Superstructure
+  "3": 15, // Internal finishes
+  "4": 10, // Fittings, furnishings and equipment
+  "5": 25, // Services
+  "6": 20, // Prefabricated buildings and building units
+  "7": 20, // Work to existing buildings
+  "8": 15, // External works
+};
+
+// Helper function to find an NRM3 asset by its code in the NRM3 data structure
+function findNrmAssetByCode(nrm3Data: NRM3Category[], assetCode: string): NRM3Asset | null {
+  for (const category of nrm3Data) {
+    for (const subCategory of category.subCategories) {
+      for (const asset of subCategory.assets) {
+        if (asset.code === assetCode) {
+          return asset;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+// AssetRegistryTable Component
+function AssetRegistryTable({ 
+  classifications, 
+  assessments, 
+  locations, 
+  projectId,
+  conditionRatings,
+  priorityRatings,
+  onEditAssessment,
+  resetForm,
+  setSelectedNrmGroup,
+  setSelectedNrmSubElement,
+  setSelectedNrmAsset,
+  setSelectedLocation,
+  setQuantity,
+  setUnit,
+  setEditMode,
+  setCreateDialogOpen,
+  auditType,
+  nrm3Data
+}) {
+  const { toast } = useToast();
+  const [ratingStates, setRatingStates] = useState({});
+
+  // Initialize rating states based on existing assessments
+  useEffect(() => {
+    if (classifications && assessments) {
+      const initialStates = {};
+      
+      classifications.forEach(classification => {
+        const assessment = assessments.find(a => a.classificationId === classification.id);
+        initialStates[classification.id] = {
+          conditionRating: assessment?.conditionRating || "",
+          priorityRating: assessment?.priorityRating || "",
+          isSubmitting: false
+        };
+      });
+      
+      setRatingStates(initialStates);
+    }
+  }, [classifications, assessments]);
+
+  // Update a specific rating state
+  const updateRatingState = (classificationId, field, value) => {
+    setRatingStates(prev => ({
+      ...prev,
+      [classificationId]: {
+        ...prev[classificationId],
+        [field]: value
+      }
+    }));
+  };
+
+  // Handle quick assessment
+  const handleQuickAssessment = async (classification) => {
+    const classificationId = classification.id;
+    const state = ratingStates[classificationId] || { conditionRating: "", priorityRating: "", isSubmitting: false };
+    const assessment = assessments?.find(a => a.classificationId === classificationId);
+    const isAssessed = !!assessment;
+    
+    if (!state.conditionRating || !state.priorityRating) {
+      toast({
+        title: "Missing information",
+        description: "Please select both condition and priority ratings.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Set submitting state
+    setRatingStates(prev => ({
+      ...prev,
+      [classificationId]: {
+        ...prev[classificationId],
+        isSubmitting: true
+      }
+    }));
+    
+    try {
+      if (isAssessed) {
+        // Update existing assessment
+        await apiRequest(`/api/rera/projects/${projectId}/condition-assessments/${assessment.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            conditionRating: state.conditionRating,
+            priorityRating: state.priorityRating,
+          }),
+        });
+      } else {
+        // Create new assessment
+        const assessmentResponse = await apiRequest(`/api/rera/projects/${projectId}/condition-assessments`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            projectId,
+            classificationId,
+            locationId: classification.locationId,
+            conditionRating: state.conditionRating,
+            priorityRating: state.priorityRating,
+          }),
+        });
+        
+        // We no longer auto-create lifecycle cost entries since we now directly use the condition assessment data
+        // in the Reserve Fund Analysis to calculate lifecycle costs
+      }
+      
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "condition-assessments"] });
+      
+      toast({
+        title: isAssessed ? "Assessment updated" : "Assessment created",
+        description: `The condition assessment has been ${isAssessed ? 'updated' : 'created'} successfully.`,
+      });
+    } catch (error) {
+      console.error("Error with assessment:", error);
+      toast({
+        title: "Error",
+        description: `Failed to ${isAssessed ? 'update' : 'create'} assessment. Please try again.`,
+        variant: "destructive",
+      });
+    } finally {
+      setRatingStates(prev => ({
+        ...prev,
+        [classificationId]: {
+          ...prev[classificationId],
+          isSubmitting: false
+        }
+      }));
+    }
+  };
+
+  // Sort classifications to show unassessed items first
+  const sortedClassifications = [...classifications].sort((a, b) => {
+    const aAssessed = assessments?.some(assessment => assessment.classificationId === a.id);
+    const bAssessed = assessments?.some(assessment => assessment.classificationId === b.id);
+    
+    if (aAssessed === bAssessed) return 0;
+    return aAssessed ? 1 : -1;
+  });
+
+  return (
+    <div className="overflow-x-auto">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Asset Name</TableHead>
+            <TableHead>NRM Code</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Quantity</TableHead>
+            <TableHead>Condition Rating</TableHead>
+            <TableHead>Priority Rating</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sortedClassifications.map(classification => {
+            const location = locations?.find(l => l.id === classification.locationId);
+            const assessment = assessments?.find(a => a.classificationId === classification.id);
+            const isAssessed = !!assessment;
+            const state = ratingStates[classification.id] || { conditionRating: "", priorityRating: "", isSubmitting: false };
+            
+            return (
+              <TableRow key={classification.id} className={!isAssessed ? "bg-muted/25" : ""}>
+                <TableCell className="font-medium">
+                  {classification.description}
+                </TableCell>
+                <TableCell>
+                  <code className="px-1 py-0.5 bg-muted rounded text-xs">
+                    {classification.nrmElement}
+                  </code>
+                </TableCell>
+                <TableCell>
+                  {location?.name || "General"}
+                </TableCell>
+                <TableCell>
+                  {classification.quantity || 1} {classification.unit || "item"}
+                </TableCell>
+                <TableCell>
+                  <Select 
+                    value={state.conditionRating} 
+                    onValueChange={value => updateRatingState(classification.id, 'conditionRating', value)}
+                    disabled={state.isSubmitting}
+                  >
+                    <SelectTrigger id={`condition-${classification.id}`} className="w-[120px]">
+                      <SelectValue placeholder="Condition" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {conditionRatings.map(rating => (
+                        <SelectItem key={rating.value} value={rating.value}>
+                          {rating.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </TableCell>
+                <TableCell>
+                  <Select 
+                    value={state.priorityRating} 
+                    onValueChange={value => updateRatingState(classification.id, 'priorityRating', value)}
+                    disabled={state.isSubmitting}
+                  >
+                    <SelectTrigger id={`priority-${classification.id}`} className="w-[120px]">
+                      <SelectValue placeholder="Priority" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {priorityRatings.map(rating => (
+                        <SelectItem key={rating.value} value={rating.value}>
+                          {rating.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </TableCell>
+                <TableCell>
+                  {isAssessed ? (
+                    <Badge className="bg-green-500">Assessed</Badge>
+                  ) : (
+                    <Badge variant="outline" className="border-amber-500 text-amber-500">Pending</Badge>
+                  )}
+                </TableCell>
+                <TableCell className="text-right">
+                  <div className="flex items-center justify-end space-x-2">
+                    <Button 
+                      size="sm" 
+                      onClick={() => handleQuickAssessment(classification)}
+                      disabled={state.isSubmitting}
+                    >
+                      {state.isSubmitting ? (
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                      ) : isAssessed ? (
+                        <>Update</>
+                      ) : (
+                        <>Save</>
+                      )}
+                    </Button>
+                    
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      onClick={() => {
+                        if (isAssessed) {
+                          onEditAssessment(assessment);
+                        } else {
+                          resetForm();
+                          setSelectedNrmGroup(classification.nrmGroup);
+                          setSelectedNrmSubElement(classification.nrmSubGroup);
+                          setSelectedNrmAsset(classification.nrmElement);
+                          setSelectedLocation(classification.locationId?.toString() || "");
+                          setQuantity(classification.quantity || "1");
+                          setUnit(classification.unit || "item");
+                          setEditMode(false);
+                          setCreateDialogOpen(true);
+                        }
+                      }}
+                    >
+                      Advanced
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}
+
+export default function ConditionAssessment({ projectId, auditType = "condition_survey" }: ConditionAssessmentProps) {
+  const { toast } = useToast();
+  const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [nrm3Data, setNrm3Data] = useState<NRM3Category[]>([]);
+  const [isLoadingNrm3, setIsLoadingNrm3] = useState(false);
+  const [selectedNrmGroup, setSelectedNrmGroup] = useState<string>("");
+  const [selectedNrmSubElement, setSelectedNrmSubElement] = useState<string>("");
+  const [selectedNrmAsset, setSelectedNrmAsset] = useState<string>("");
+  const [selectedLocation, setSelectedLocation] = useState<string>("");
+  const [quantity, setQuantity] = useState<string>("");
+  const [unit, setUnit] = useState<string>("item");
+  const [conditionRating, setConditionRating] = useState<string>("");
+  const [priorityRating, setPriorityRating] = useState<string>("");
+  const [observations, setObservations] = useState<string>("");
+  const [recommendations, setRecommendations] = useState<string>("");
+  const [isCreating, setIsCreating] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedAssessmentId, setSelectedAssessmentId] = useState<number | null>(null);
+  const [expandedClassifications, setExpandedClassifications] = useState<Record<number, boolean>>({});
+  const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
+  const [fileInputRef, setFileInputRef] = useState<HTMLInputElement | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [uploadingPhotos, setUploadingPhotos] = useState(false);
+  const [currentPhotoAssessmentId, setCurrentPhotoAssessmentId] = useState<number | null>(null);
+
+  // Load NRM3 classification data
+  useEffect(() => {
+    async function fetchNrm3Data() {
+      setIsLoadingNrm3(true);
+      try {
+        const data = await loadNRM3ClassificationData();
+        setNrm3Data(data);
+      } catch (error) {
+        console.error("Failed to load NRM3 data:", error);
+        toast({
+          title: "Error",
+          description: "Failed to load NRM3 classification data.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoadingNrm3(false);
+      }
+    }
+    fetchNrm3Data();
+  }, [toast]);
+
+  // Fetch project details
+  const { data: project } = useQuery({
+    queryKey: ["/api/rera/projects", projectId],
+    queryFn: async () => {
+      try {
+        return await apiRequest(`/api/rera/projects/${projectId}`);
+      } catch (error) {
+        console.error("Error fetching project details:", error);
+        return null;
+      }
+    }
+  });
+
+  // Fetch locations for this project
+  const { data: locations, isLoading: isLocationsLoading } = useQuery({
+    queryKey: ["/api/rera/projects", projectId, "locations"],
+    queryFn: async () => {
+      try {
+        return await apiRequest(`/api/rera/projects/${projectId}/locations`);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+        return [];
+      }
+    }
+  });
+
+  // Fetch NRM3 classifications for this project
+  const { data: classifications = [], isLoading: isClassificationsLoading, error: classificationsError } = useQuery({
+    queryKey: ["/api/rera/projects", projectId, "classifications"],
+    queryFn: async () => {
+      try {
+        return await apiRequest(`/api/rera/projects/${projectId}/classifications`);
+      } catch (error) {
+        console.error("Error fetching classifications:", error);
+        return [];
+      }
+    }
+  });
+
+  // Fetch condition assessments for this project
+  const { data: assessments = [], isLoading: isAssessmentsLoading, error: assessmentsError } = useQuery({
+    queryKey: ["/api/rera/projects", projectId, "condition-assessments"],
+    queryFn: async () => {
+      try {
+        return await apiRequest(`/api/rera/projects/${projectId}/condition-assessments`);
+      } catch (error) {
+        console.error("Error fetching condition assessments:", error);
+        return [];
+      }
+    }
+  });
+  
+  // We no longer need to fetch lifecycle costs as they're calculated on-the-fly in the Reserve Fund Analysis component
+  
+  // Fetch reserve fund settings
+  const { data: reserveFundSettings } = useQuery({
+    queryKey: ["/api/rera/projects", projectId, "reserve-fund-settings"],
+    queryFn: async () => {
+      try {
+        return await apiRequest(`/api/rera/projects/${projectId}/reserve-fund-settings`);
+      } catch (error) {
+        console.error("Error fetching reserve fund settings:", error);
+        return null;
+      }
+    },
+    enabled: auditType === "reserve_fund_study"
+  });
+
+  // Create classification mutation
+  const createClassificationMutation = useMutation({
+    mutationFn: async (data: any) => {
+      return apiRequest(`/api/rera/projects/${projectId}/classifications`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    },
+    onSuccess: (data) => {
+      // Pass the new classification ID to the assessment creation
+      createAssessmentMutation.mutate({
+        projectId,
+        classificationId: data.id,
+        locationId: selectedLocation,
+        conditionRating,
+        priorityRating,
+        observations,
+        recommendations
+      });
+    },
+    onError: (error) => {
+      console.error("Error creating classification:", error);
+      setIsCreating(false);
+      toast({
+        title: "Error",
+        description: "Failed to create classification. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Create assessment mutation
+  const createAssessmentMutation = useMutation({
+    mutationFn: async (data: any) => {
+      return apiRequest(`/api/rera/projects/${projectId}/condition-assessments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "classifications"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "condition-assessments"] });
+      resetForm();
+      setCreateDialogOpen(false);
+      setIsCreating(false);
+      toast({
+        title: "Assessment created",
+        description: "The condition assessment has been created successfully.",
+      });
+    },
+    onError: (error) => {
+      console.error("Error creating assessment:", error);
+      setIsCreating(false);
+      toast({
+        title: "Error",
+        description: "Failed to create assessment. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Update assessment mutation
+  const updateAssessmentMutation = useMutation({
+    mutationFn: async ({ id, data }: { id: number; data: any }) => {
+      return apiRequest(`/api/rera/projects/${projectId}/condition-assessments/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "condition-assessments"] });
+      resetForm();
+      setCreateDialogOpen(false);
+      setIsCreating(false);
+      setEditMode(false);
+      toast({
+        title: "Assessment updated",
+        description: "The condition assessment has been updated successfully.",
+      });
+    },
+    onError: (error) => {
+      console.error("Error updating assessment:", error);
+      setIsCreating(false);
+      toast({
+        title: "Error",
+        description: "Failed to update assessment. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Delete assessment mutation
+  const deleteAssessmentMutation = useMutation({
+    mutationFn: async (id: number) => {
+      return apiRequest(`/api/rera/projects/${projectId}/condition-assessments/${id}`, {
+        method: "DELETE",
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "condition-assessments"] });
+      toast({
+        title: "Assessment deleted",
+        description: "The condition assessment has been deleted successfully.",
+      });
+    },
+    onError: (error) => {
+      console.error("Error deleting assessment:", error);
+      toast({
+        title: "Error",
+        description: "Failed to delete assessment. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Upload photos mutation
+  const uploadPhotosMutation = useMutation({
+    mutationFn: async ({ id, files }: { id: number; files: File[] }) => {
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append("photos", file);
+      });
+
+      return apiRequest(`/api/rera/projects/${projectId}/condition-assessments/${id}/photos`, {
+        method: "POST",
+        body: formData,
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/rera/projects", projectId, "condition-assessments"] });
+      setUploadDialogOpen(false);
+      setSelectedFiles([]);
+      setUploadingPhotos(false);
+      setCurrentPhotoAssessmentId(null);
+      toast({
+        title: "Photos uploaded",
+        description: "The photos have been uploaded successfully.",
+      });
+    },
+    onError: (error) => {
+      console.error("Error uploading photos:", error);
+      setUploadingPhotos(false);
+      toast({
+        title: "Error",
+        description: "Failed to upload photos. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Handle creating a new assessment
+  const handleCreateAssessment = () => {
+    if (!selectedNrmAsset || !selectedLocation || !conditionRating || !priorityRating) {
+      toast({
+        title: "Missing information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsCreating(true);
+
+    // First check if a classification with these values already exists
+    const existingClassification = classifications.find((c: any) => 
+      c.nrmGroup === selectedNrmGroup && 
+      c.nrmSubGroup === selectedNrmSubElement && 
+      c.nrmElement === selectedNrmAsset &&
+      c.locationId?.toString() === selectedLocation
+    );
+
+    if (existingClassification) {
+      // If we have an existing classification, create an assessment for it directly
+      createAssessmentMutation.mutate({
+        projectId,
+        classificationId: existingClassification.id,
+        locationId: selectedLocation,
+        conditionRating,
+        priorityRating,
+        observations,
+        recommendations
+      });
+    } else {
+      // Need to create a new classification
+      const group = nrm3Data.find(g => g.code === selectedNrmGroup);
+      const subElement = group?.subCategories.find(s => s.code === selectedNrmSubElement);
+      const asset = subElement?.assets.find(a => a.code === selectedNrmAsset);
+
+      if (!group || !subElement || !asset) {
+        toast({
+          title: "Error",
+          description: "Invalid NRM3 selection.",
+          variant: "destructive",
+        });
+        setIsCreating(false);
+        return;
+      }
+
+      // Create a new classification and then an assessment
+      createClassificationMutation.mutate({
+        projectId,
+        locationId: selectedLocation,
+        nrmGroup: selectedNrmGroup,
+        nrmSubGroup: selectedNrmSubElement,
+        nrmElement: selectedNrmAsset,
+        description: asset.name,
+        quantity,
+        unit
+      });
+    }
+  };
+
+  // Handle updating an assessment
+  const handleUpdateAssessment = () => {
+    if (!selectedAssessmentId || !conditionRating || !priorityRating) {
+      toast({
+        title: "Error",
+        description: "Missing required information.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsCreating(true);
+
+    updateAssessmentMutation.mutate({
+      id: selectedAssessmentId,
+      data: {
+        conditionRating,
+        priorityRating,
+        observations,
+        recommendations,
+      },
+    });
+  };
+
+  // Handle deleting an assessment
+  const handleDeleteAssessment = (id: number) => {
+    if (confirm("Are you sure you want to delete this assessment?")) {
+      deleteAssessmentMutation.mutate(id);
+    }
+  };
+
+  // Handle uploading photos
+  const handleUploadPhotos = () => {
+    if (!currentPhotoAssessmentId || selectedFiles.length === 0) {
+      toast({
+        title: "Error",
+        description: "Please select at least one photo to upload.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setUploadingPhotos(true);
+    uploadPhotosMutation.mutate({
+      id: currentPhotoAssessmentId,
+      files: selectedFiles,
+    });
+  };
+
+  // Reset form
+  const resetForm = () => {
+    setSelectedNrmGroup("");
+    setSelectedNrmSubElement("");
+    setSelectedNrmAsset("");
+    setSelectedLocation("");
+    setQuantity("");
+    setUnit("item");
+    setConditionRating("");
+    setPriorityRating("");
+    setObservations("");
+    setRecommendations("");
+    setSelectedAssessmentId(null);
+  };
+
+  // Edit assessment
+  const editAssessment = (assessment: any) => {
+    setSelectedAssessmentId(assessment.id);
+    setConditionRating(assessment.conditionRating);
+    setPriorityRating(assessment.priorityRating);
+    setObservations(assessment.observations || "");
+    setRecommendations(assessment.recommendations || "");
+    
+    // If we have the classification info, set those fields too
+    if (assessment.classification) {
+      setSelectedNrmGroup(assessment.classification.nrmGroup);
+      setSelectedNrmSubElement(assessment.classification.nrmSubGroup);
+      setSelectedNrmAsset(assessment.classification.nrmElement);
+      setQuantity(assessment.classification.quantity || "");
+      setUnit(assessment.classification.unit || "item");
+      setSelectedLocation(assessment.locationId?.toString() || "");
+    }
+    
+    setEditMode(true);
+    setCreateDialogOpen(true);
+  };
+
+  // File input change handler
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setSelectedFiles(Array.from(e.target.files));
+    }
+  };
+
+  // Condition rating calculation
+  const calculateOverallCondition = () => {
+    if (!assessments || !Array.isArray(assessments) || assessments.length === 0) {
+      return { score: 0, label: "No data", color: "bg-muted" };
+    }
+    
+    const ratingMap: Record<string, number> = { 'A': 4, 'B': 3, 'C': 2, 'D': 1 };
+    const validAssessments = assessments.filter(item => item.conditionRating && ratingMap[item.conditionRating]);
+    
+    if (validAssessments.length === 0) {
+      return { score: 0, label: "No data", color: "bg-muted" };
+    }
+    
+    const sum = validAssessments.reduce((acc, item) => acc + ratingMap[item.conditionRating], 0);
+    const avg = sum / validAssessments.length;
+    
+    if (avg >= 3.5) return { score: avg, label: "Good", color: "bg-green-500" };
+    if (avg >= 2.5) return { score: avg, label: "Satisfactory", color: "bg-yellow-500" };
+    if (avg >= 1.5) return { score: avg, label: "Poor", color: "bg-orange-500" };
+    return { score: avg, label: "Bad", color: "bg-red-500" };
+  };
+
+  // Priority calculation
+  const calculatePriorityDistribution = () => {
+    if (!assessments || !Array.isArray(assessments) || assessments.length === 0) {
+      return { 
+        urgent: 0, 
+        essential: 0, 
+        desirable: 0, 
+        longTerm: 0,
+        urgentPercent: 0,
+        essentialPercent: 0,
+        desirablePercent: 0,
+        longTermPercent: 0
+      };
+    }
+    
+    const urgent = assessments.filter(a => a.priorityRating === '1').length;
+    const essential = assessments.filter(a => a.priorityRating === '2').length;
+    const desirable = assessments.filter(a => a.priorityRating === '3').length;
+    const longTerm = assessments.filter(a => a.priorityRating === '4').length;
+    
+    return {
+      urgent,
+      essential,
+      desirable,
+      longTerm,
+      urgentPercent: assessments.length > 0 ? Math.round((urgent / assessments.length) * 100) : 0,
+      essentialPercent: assessments.length > 0 ? Math.round((essential / assessments.length) * 100) : 0,
+      desirablePercent: assessments.length > 0 ? Math.round((desirable / assessments.length) * 100) : 0,
+      longTermPercent: assessments.length > 0 ? Math.round((longTerm / assessments.length) * 100) : 0
+    };
+  };
+
+  const condition = calculateOverallCondition();
+  const priority = calculatePriorityDistribution();
+  const assessmentCount = assessments && Array.isArray(assessments) ? assessments.length : 0;
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight">Condition Assessment</h2>
+          <p className="text-muted-foreground">
+            Assess and record the condition of building assets using the NRM3 framework
+          </p>
+        </div>
+        <Button onClick={() => { resetForm(); setEditMode(false); setCreateDialogOpen(true); }}>
+          <Plus className="mr-2 h-4 w-4" /> Add Assessment
+        </Button>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Overall Condition</CardTitle>
+            <Gauge className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{condition.label}</div>
+            <div className="mt-2">
+              <Progress 
+                value={Math.round((condition.score / 4) * 100)} 
+                className={`h-2 ${condition.color}`} 
+              />
+              <p className="mt-2 text-xs text-muted-foreground">
+                Score: {condition.score.toFixed(1)} / 4.0
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Urgent Actions</CardTitle>
+            <AlertTriangle className="h-4 w-4 text-red-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{priority.urgent}</div>
+            <div className="mt-2">
+              <Progress value={priority.urgentPercent} className="h-2 bg-red-500" />
+              <p className="mt-2 text-xs text-muted-foreground">
+                {priority.urgentPercent}% of total assessments
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Essential Actions</CardTitle>
+            <Clock className="h-4 w-4 text-orange-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{priority.essential}</div>
+            <div className="mt-2">
+              <Progress value={priority.essentialPercent} className="h-2 bg-orange-500" />
+              <p className="mt-2 text-xs text-muted-foreground">
+                {priority.essentialPercent}% of total assessments
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Assessments</CardTitle>
+            <FileText className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{assessmentCount}</div>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Assets assessed for this project
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Main content */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Asset Condition Registry</CardTitle>
+          <CardDescription>Select condition and priority ratings directly for each asset</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {isAssessmentsLoading || isClassificationsLoading ? (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="h-6 w-6 animate-spin text-primary mr-2" />
+              <span>Loading assessments...</span>
+            </div>
+          ) : assessmentsError || classificationsError ? (
+            <Alert variant="destructive">
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                Failed to load assessments. Please refresh and try again.
+              </AlertDescription>
+            </Alert>
+          ) : (
+            <div className="space-y-6">
+              {/* Show list of already assessed assets */}
+              {assessments && assessments.length > 0 && (
+                <div className="overflow-x-auto">
+                  <h3 className="text-lg font-medium mb-2">Assessed Assets</h3>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-[300px]">Asset</TableHead>
+                        <TableHead>NRM Code</TableHead>
+                        <TableHead>Condition</TableHead>
+                        <TableHead>Priority</TableHead>
+                        <TableHead>Location</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {assessments.map((assessment: any) => {
+                        // Find the associated classification
+                        const classification = classifications?.find((c: any) => c.id === assessment.classificationId);
+                        const location = locations?.find((l: any) => l.id === assessment.locationId);
+                        
+                        return (
+                          <TableRow key={assessment.id}>
+                            <TableCell className="font-medium">
+                              {classification?.description || "Unknown Asset"}
+                            </TableCell>
+                            <TableCell>
+                              <code className="px-1 py-0.5 bg-muted rounded text-xs">
+                                {classification?.nrmElement || "-"}
+                              </code>
+                            </TableCell>
+                            <TableCell>
+                              <Badge 
+                                className={`
+                                  ${assessment.conditionRating === 'A' && 'bg-green-500'} 
+                                  ${assessment.conditionRating === 'B' && 'bg-yellow-500'}
+                                  ${assessment.conditionRating === 'C' && 'bg-orange-500'}
+                                  ${assessment.conditionRating === 'D' && 'bg-red-500'}
+                                `}
+                              >
+                                {assessment.conditionRating}
+                              </Badge>
+                            </TableCell>
+                            <TableCell>
+                              <Badge 
+                                variant="outline" 
+                                className={`
+                                  ${assessment.priorityRating === '1' && 'border-red-500 text-red-500'} 
+                                  ${assessment.priorityRating === '2' && 'border-orange-500 text-orange-500'}
+                                  ${assessment.priorityRating === '3' && 'border-yellow-500 text-yellow-500'}
+                                  ${assessment.priorityRating === '4' && 'border-green-500 text-green-500'}
+                                `}
+                              >
+                                {assessment.priorityRating}
+                              </Badge>
+                            </TableCell>
+                            <TableCell>{location?.name || "General"}</TableCell>
+                            <TableCell className="text-right">
+                              <div className="flex justify-end space-x-2">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="icon"
+                                        onClick={() => {
+                                          setCurrentPhotoAssessmentId(assessment.id);
+                                          setUploadDialogOpen(true);
+                                        }}
+                                      >
+                                        <Camera className="h-4 w-4" />
+                                      </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>Upload Photos</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                                
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="icon"
+                                        onClick={() => editAssessment(assessment)}
+                                      >
+                                        <Edit className="h-4 w-4" />
+                                      </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>Edit Assessment</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                                
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="icon"
+                                        className="text-destructive hover:text-destructive/90 hover:bg-destructive/10"
+                                        onClick={() => handleDeleteAssessment(assessment.id)}
+                                      >
+                                        <Trash2 className="h-4 w-4" />
+                                      </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>Delete Assessment</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </div>
+              )}
+              
+              {/* Simplified Asset Registry - Direct Assessment */}
+              {classifications && classifications.length > 0 && (
+                <div className="space-y-4 mt-8">
+                  <h3 className="text-lg font-medium">Asset Registry</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    All assets from NRM3 Framework. Select condition and priority ratings directly to assess each asset.
+                  </p>
+                  
+                  <AssetRegistryTable 
+                    classifications={classifications} 
+                    assessments={assessments} 
+                    locations={locations}
+                    projectId={projectId}
+                    conditionRatings={conditionRatings}
+                    priorityRatings={priorityRatings}
+                    onEditAssessment={editAssessment}
+                    resetForm={resetForm}
+                    setSelectedNrmGroup={setSelectedNrmGroup}
+                    setSelectedNrmSubElement={setSelectedNrmSubElement}
+                    setSelectedNrmAsset={setSelectedNrmAsset}
+                    setSelectedLocation={setSelectedLocation}
+                    setQuantity={setQuantity}
+                    setUnit={setUnit}
+                    setEditMode={setEditMode}
+                    setCreateDialogOpen={setCreateDialogOpen}
+                    auditType={project?.reraAuditType}
+                    nrm3Data={nrm3Data}
+                  />
+                </div>
+              )}
+              
+              {/* Show guidance message when no data is available */}
+              {(!classifications || classifications.length === 0) && (
+                <div className="text-center py-8">
+                  <AlertTriangle className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
+                  <h3 className="text-lg font-medium">No Assets Available for Assessment</h3>
+                  <p className="text-sm text-muted-foreground mt-1 mb-4">
+                    First add some assets in the NRM3 Framework tab
+                  </p>
+                  <Button onClick={() => window.history.back()}>
+                    <FolderTree className="mr-2 h-4 w-4" /> Go to NRM3 Framework
+                  </Button>
+                </div>
+              )}
+              
+              {/* Reserve Fund Analysis - Only shown for reserve fund study projects */}
+              {auditType === "reserve_fund_study" && (
+                <div className="mt-8 border rounded-lg p-6 bg-card">
+                  <h3 className="text-xl font-semibold mb-4">Reserve Fund Analysis</h3>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Calculate the funding requirements for long-term capital expenditures based on asset conditions
+                  </p>
+                  
+                  <Suspense fallback={<div className="flex items-center justify-center p-8"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}>
+                    <ReserveFundAnalysis 
+                      projectId={projectId} 
+                      classifications={classifications} 
+                      assessments={assessments}
+                    />
+                  </Suspense>
+                </div>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Create/Edit Assessment Dialog */}
+      <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle>{editMode ? "Edit Assessment" : "Add Condition Assessment"}</DialogTitle>
+            <DialogDescription>
+              {editMode 
+                ? "Update the condition assessment for this asset" 
+                : "Assess the condition of a building asset according to NRM3 framework"}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+            {/* Left Column - Asset Selection */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">Asset Information</h3>
+              <Separator />
+              
+              {/* Existing Classifications Section - Only show if classifications exist */}
+              {!editMode && classifications && classifications.length > 0 && (
+                <div className="space-y-2 mb-6">
+                  <Label htmlFor="existingClassification">Use Existing Classification</Label>
+                  <Select
+                    onValueChange={(value) => {
+                      const classification = classifications.find((c: any) => c.id === parseInt(value));
+                      if (classification) {
+                        setSelectedNrmGroup(classification.nrmGroup);
+                        setSelectedNrmSubElement(classification.nrmSubGroup);
+                        setSelectedNrmAsset(classification.nrmElement);
+                        setSelectedLocation(classification.locationId?.toString() || "");
+                        setQuantity(classification.quantity || "1");
+                        setUnit(classification.unit || "item");
+                      }
+                    }}
+                  >
+                    <SelectTrigger id="existingClassification">
+                      <SelectValue placeholder="Select existing asset" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {classifications.map((classification: any) => (
+                        <SelectItem key={classification.id} value={classification.id.toString()}>
+                          {classification.description} ({classification.nrmElement})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Select an existing asset classification or create a new one below
+                  </div>
+                </div>
+              )}
+              
+              {/* NRM Group selection */}
+              <div className="space-y-2">
+                <Label htmlFor="nrmGroup">
+                  NRM Group 
+                  {!editMode && <span className="text-destructive ml-1">*</span>}
+                </Label>
+                <Select 
+                  value={selectedNrmGroup} 
+                  onValueChange={(value) => {
+                    setSelectedNrmGroup(value);
+                    setSelectedNrmSubElement("");
+                    setSelectedNrmAsset("");
+                  }}
+                  disabled={editMode}
+                >
+                  <SelectTrigger id="nrmGroup">
+                    <SelectValue placeholder="Select NRM group" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {nrm3Data.map(group => (
+                      <SelectItem key={group.code} value={group.code}>
+                        {group.code}. {group.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Sub-Element selection - only enabled if a group is selected */}
+              <div className="space-y-2">
+                <Label htmlFor="nrmSubElement">
+                  Sub-Element
+                  {!editMode && <span className="text-destructive ml-1">*</span>}
+                </Label>
+                <Select 
+                  value={selectedNrmSubElement} 
+                  onValueChange={(value) => {
+                    setSelectedNrmSubElement(value);
+                    setSelectedNrmAsset("");
+                  }}
+                  disabled={!selectedNrmGroup || editMode}
+                >
+                  <SelectTrigger id="nrmSubElement">
+                    <SelectValue placeholder="Select sub-element" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {selectedNrmGroup && nrm3Data
+                      .find(group => group.code === selectedNrmGroup)
+                      ?.subCategories.map(subElement => (
+                        <SelectItem key={subElement.code} value={subElement.code}>
+                          {subElement.code}. {subElement.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Asset selection - only enabled if a sub-element is selected */}
+              <div className="space-y-2">
+                <Label htmlFor="nrmAsset">
+                  Asset
+                  {!editMode && <span className="text-destructive ml-1">*</span>}
+                </Label>
+                <Select 
+                  value={selectedNrmAsset} 
+                  onValueChange={setSelectedNrmAsset}
+                  disabled={!selectedNrmSubElement || editMode}
+                >
+                  <SelectTrigger id="nrmAsset">
+                    <SelectValue placeholder="Select asset" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {selectedNrmGroup && selectedNrmSubElement && nrm3Data
+                      .find(group => group.code === selectedNrmGroup)
+                      ?.subCategories.find(sub => sub.code === selectedNrmSubElement)
+                      ?.assets.map(asset => (
+                        <SelectItem key={asset.code} value={asset.code}>
+                          {asset.code}. {asset.name}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Location selection */}
+              <div className="space-y-2">
+                <Label htmlFor="location">
+                  Location
+                  {!editMode && <span className="text-destructive ml-1">*</span>}
+                </Label>
+                <Select 
+                  value={selectedLocation} 
+                  onValueChange={setSelectedLocation}
+                  disabled={editMode}
+                >
+                  <SelectTrigger id="location">
+                    <SelectValue placeholder="Select location" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="general">General / Whole Building</SelectItem>
+                    {locations && Array.isArray(locations) && locations.map((location: any) => (
+                      <SelectItem key={location.id} value={location.id.toString()}>
+                        {location.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Quantity and Unit */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="quantity">Quantity</Label>
+                  <Input
+                    id="quantity"
+                    placeholder="e.g., 5"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    disabled={editMode}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="unit">Unit</Label>
+                  <Select 
+                    value={unit} 
+                    onValueChange={setUnit}
+                    disabled={editMode}
+                  >
+                    <SelectTrigger id="unit">
+                      <SelectValue placeholder="Select unit" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {unitOptions.map(option => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Condition Assessment */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">Condition Assessment</h3>
+              <Separator />
+              
+              {/* Condition Rating */}
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Label htmlFor="conditionRating">
+                    Condition Rating
+                    <span className="text-destructive ml-1">*</span>
+                  </Label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                      </TooltipTrigger>
+                      <TooltipContent className="w-80">
+                        <ul className="text-xs space-y-1">
+                          {conditionRatings.map(rating => (
+                            <li key={rating.value}>
+                              <strong>{rating.label}</strong>: {rating.description}
+                            </li>
+                          ))}
+                        </ul>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <Select 
+                  value={conditionRating} 
+                  onValueChange={setConditionRating}
+                >
+                  <SelectTrigger id="conditionRating">
+                    <SelectValue placeholder="Select condition rating" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {conditionRatings.map(rating => (
+                      <SelectItem key={rating.value} value={rating.value}>
+                        {rating.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Priority Rating */}
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Label htmlFor="priorityRating">
+                    Priority Rating
+                    <span className="text-destructive ml-1">*</span>
+                  </Label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="h-4 w-4 text-muted-foreground" />
+                      </TooltipTrigger>
+                      <TooltipContent className="w-80">
+                        <ul className="text-xs space-y-1">
+                          {priorityRatings.map(rating => (
+                            <li key={rating.value}>
+                              <strong>{rating.label}</strong>: {rating.description}
+                            </li>
+                          ))}
+                        </ul>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <Select 
+                  value={priorityRating} 
+                  onValueChange={setPriorityRating}
+                >
+                  <SelectTrigger id="priorityRating">
+                    <SelectValue placeholder="Select priority rating" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {priorityRatings.map(rating => (
+                      <SelectItem key={rating.value} value={rating.value}>
+                        {rating.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              {/* Observations */}
+              <div className="space-y-2">
+                <Label htmlFor="observations">Observations</Label>
+                <Textarea
+                  id="observations"
+                  placeholder="Describe the current condition and any issues observed..."
+                  value={observations}
+                  onChange={(e) => setObservations(e.target.value)}
+                  rows={3}
+                />
+              </div>
+              
+              {/* Recommendations */}
+              <div className="space-y-2">
+                <Label htmlFor="recommendations">Recommendations</Label>
+                <Textarea
+                  id="recommendations"
+                  placeholder="Recommended actions to address any issues..."
+                  value={recommendations}
+                  onChange={(e) => setRecommendations(e.target.value)}
+                  rows={3}
+                />
+              </div>
+            </div>
+          </div>
+          
+          <DialogFooter>
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={() => setCreateDialogOpen(false)} 
+              disabled={isCreating}
+            >
+              Cancel
+            </Button>
+            <Button 
+              onClick={editMode ? handleUpdateAssessment : handleCreateAssessment} 
+              disabled={isCreating}
+            >
+              {isCreating ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  {editMode ? "Updating..." : "Creating..."}
+                </>
+              ) : (
+                <>
+                  {editMode ? "Update Assessment" : "Create Assessment"}
+                </>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Upload Photos Dialog */}
+      <Dialog open={uploadDialogOpen} onOpenChange={setUploadDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Upload Photos</DialogTitle>
+            <DialogDescription>
+              Upload photos related to this condition assessment
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            <div className="border-2 border-dashed rounded-md p-6 text-center">
+              <Button 
+                variant="outline" 
+                className="mb-2"
+                onClick={() => fileInputRef?.click()}
+              >
+                <ImagePlus className="mr-2 h-4 w-4" /> 
+                Select Photos
+              </Button>
+              <input 
+                type="file" 
+                multiple
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
+                ref={(ref) => setFileInputRef(ref)}
+              />
+              <p className="text-sm text-muted-foreground">
+                Drag and drop or click to select photos. Maximum 5MB per image.
+              </p>
+            </div>
+            
+            {selectedFiles.length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Selected Files ({selectedFiles.length})</h4>
+                <div className="max-h-40 overflow-y-auto">
+                  {selectedFiles.map((file, index) => (
+                    <div key={index} className="flex items-center justify-between py-2 border-b">
+                      <div className="flex items-center">
+                        <ImagePlus className="h-4 w-4 mr-2 text-muted-foreground" />
+                        <span className="text-sm truncate max-w-[200px]">{file.name}</span>
+                      </div>
+                      <Badge variant="outline">
+                        {(file.size / 1024).toFixed(1)} KB
+                      </Badge>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          
+          <DialogFooter>
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={() => {
+                setUploadDialogOpen(false);
+                setSelectedFiles([]);
+              }} 
+              disabled={uploadingPhotos}
+            >
+              Cancel
+            </Button>
+            <Button 
+              onClick={handleUploadPhotos} 
+              disabled={selectedFiles.length === 0 || uploadingPhotos}
+            >
+              {uploadingPhotos ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Uploading...
+                </>
+              ) : (
+                <>
+                  Upload Photos
+                </>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}

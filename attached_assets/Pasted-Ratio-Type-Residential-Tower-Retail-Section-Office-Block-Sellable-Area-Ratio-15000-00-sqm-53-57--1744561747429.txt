@@ -1,0 +1,578 @@
+Ratio Type	Residential Tower	Retail Section	Office Block
+Sellable Area Ratio	
+15000.00 sqm
+53.57%
+5000.00 sqm
+17.86%
+8000.00 sqm
+28.57%
+Applicable Area Ratio	
+15000.00 sqm
+53.57%
+5000.00 sqm
+17.86%
+8000.00 sqm
+28.57%
+Dedicated Common Area Ratio	
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+Parking Bay Area Ratio	
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+Total Component Area Ratio	
+17517.86 sqm
+53.57%
+5839.29 sqm
+17.86%
+9342.86 sqm
+28.57%
+Principal Common Area Ratio	
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+0.00 sqm
+0.00%
+Common Element Area Ratio	
+2517.86 sqm
+53.57%
+839.29 sqm
+17.86%
+1342.86 sqm
+28.57%
+Total Common Area Ratio	
+2517.86 sqm
+53.57%
+839.29 sqm
+17.86%
+1342.86 sqm
+28.57%
+Ratio Explanations:
+
+Sellable Area Ratio: Based on the proportion of each entity's sellable area to the total sellable area.
+Applicable Area Ratio: Based on suit area and 25% of balcony area.
+Dedicated Common Area Ratio: Proportion of each entity's dedicated common area to the total dedicated common area.
+Parking Bay Area Ratio: Proportion of each entity's parking bay area to total parking bay area.
+Total Component Area Ratio: Based on the sum of sellable area, parking bay area, dedicated common area, principal common area share, and common element area share.
+Principal Common Area Ratio: Entity's share of principal common areas, distributed proportionally based on sellable area.
+Common Element Area Ratio: Entity's share of common element areas, distributed proportionally based on sellable area.
+Total Common Area Ratio: Sum of dedicated common area, proportional share from principal common areas, and proportional share from common element common areas.
+Ratio Combinations
+Manage allocation ratios between different entities
+
+Add Ratio
+Entities
+Residential Tower
+Retail Section
+Office Block
+Ratio Type Filters
+
+Show All Ratio Types
+Sellable Area
+Parking Bay Area
+Applicable Area
+Dedicated Common
+Total Component
+Principal Common
+Common Element
+Total Common
+Ratio Matrix
+Each ratio is displayed as a row, with the ratio distribution shown between entities.
+
+Ratio Name	Type	Distribution	Residential Tower	Retail Section	Office Block	Actions
+Residential Tower
+Sellable Area ratio for Residential Tower
+Sellable Area	100.0%	
+15000.00 sqm
+100.0%
+—
+—
+
+Retail Section
+Sellable Area ratio for Retail Section
+Sellable Area	100.0%	
+—
+5000.00 sqm
+100.0%
+—
+
+Office Block
+Sellable Area ratio for Office Block
+Sellable Area	100.0%	
+—
+—
+8000.00 sqm
+100.0%
+
+Residential & Retail
+Sellable Area ratio for Residential Tower, Retail Section
+Sellable Area	75.0% : 25.0%	
+15000.00 sqm
+75.0%
+5000.00 sqm
+25.0%
+—
+
+Residential & Office
+Sellable Area ratio for Residential Tower, Office Block
+Sellable Area	65.2% : 34.8%	
+15000.00 sqm
+65.2%
+—
+8000.00 sqm
+34.8%
+
+Retail & Office
+Sellable Area ratio for Retail Section, Office Block
+Sellable Area	38.5% : 61.5%	
+—
+5000.00 sqm
+38.5%
+8000.00 sqm
+61.5%
+
+All Entities
+Sellable Area ratio for all entities
+Sellable Area	53.6% : 17.9% : 28.6%	
+15000.00 sqm
+53.6%
+5000.00 sqm
+17.9%
+8000.00 sqm
+28.6%
+
+Residential Tower
+Applicable Area ratio for Residential Tower
+Applicable Area	100.0%	
+15000.00 sqm
+100.0%
+—
+—
+
+Retail Section
+Applicable Area ratio for Retail Section
+Applicable Area	100.0%	
+—
+5000.00 sqm
+100.0%
+—
+
+Office Block
+Applicable Area ratio for Office Block
+Applicable Area	100.0%	
+—
+—
+8000.00 sqm
+100.0%
+
+Residential & Retail
+Applicable Area ratio for Residential Tower, Retail Section
+Applicable Area	75.0% : 25.0%	
+15000.00 sqm
+75.0%
+5000.00 sqm
+25.0%
+—
+
+Residential & Office
+Applicable Area ratio for Residential Tower, Office Block
+Applicable Area	65.2% : 34.8%	
+15000.00 sqm
+65.2%
+—
+8000.00 sqm
+34.8%
+
+Retail & Office
+Applicable Area ratio for Retail Section, Office Block
+Applicable Area	38.5% : 61.5%	
+—
+5000.00 sqm
+38.5%
+8000.00 sqm
+61.5%
+
+All Entities
+Applicable Area ratio for all entities
+Applicable Area	53.6% : 17.9% : 28.6%	
+15000.00 sqm
+53.6%
+5000.00 sqm
+17.9%
+8000.00 sqm
+28.6%
+
+Residential Tower
+Parking Bay Area ratio for Residential Tower
+Parking Bay Area	100.0%	
+0.00 sqm
+100.0%
+—
+—
+
+Retail Section
+Parking Bay Area ratio for Retail Section
+Parking Bay Area	100.0%	
+—
+0.00 sqm
+100.0%
+—
+
+Office Block
+Parking Bay Area ratio for Office Block
+Parking Bay Area	100.0%	
+—
+—
+0.00 sqm
+100.0%
+
+Residential & Retail
+Parking Bay Area ratio for Residential Tower, Retail Section
+Parking Bay Area	N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+—
+
+Residential & Office
+Parking Bay Area ratio for Residential Tower, Office Block
+Parking Bay Area	N/A : N/A	
+0.00 sqm
+N/A
+—
+0.00 sqm
+N/A
+
+Retail & Office
+Parking Bay Area ratio for Retail Section, Office Block
+Parking Bay Area	N/A : N/A	
+—
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+All Entities
+Parking Bay Area ratio for all entities
+Parking Bay Area	N/A : N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+Residential Tower
+Dedicated Common Area ratio for Residential Tower
+Dedicated Common Area	100.0%	
+0.00 sqm
+100.0%
+—
+—
+
+Retail Section
+Dedicated Common Area ratio for Retail Section
+Dedicated Common Area	100.0%	
+—
+0.00 sqm
+100.0%
+—
+
+Office Block
+Dedicated Common Area ratio for Office Block
+Dedicated Common Area	100.0%	
+—
+—
+0.00 sqm
+100.0%
+
+Residential & Retail
+Dedicated Common Area ratio for Residential Tower, Retail Section
+Dedicated Common Area	N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+—
+
+Residential & Office
+Dedicated Common Area ratio for Residential Tower, Office Block
+Dedicated Common Area	N/A : N/A	
+0.00 sqm
+N/A
+—
+0.00 sqm
+N/A
+
+Retail & Office
+Dedicated Common Area ratio for Retail Section, Office Block
+Dedicated Common Area	N/A : N/A	
+—
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+All Entities
+Dedicated Common Area ratio for all entities
+Dedicated Common Area	N/A : N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+Residential Tower
+Total Component Area ratio for Residential Tower
+Total Component Area	100.0%	
+17517.86 sqm
+100.0%
+—
+—
+
+Retail Section
+Total Component Area ratio for Retail Section
+Total Component Area	100.0%	
+—
+5839.29 sqm
+100.0%
+—
+
+Office Block
+Total Component Area ratio for Office Block
+Total Component Area	100.0%	
+—
+—
+9342.86 sqm
+100.0%
+
+Residential & Retail
+Total Component Area ratio for Residential Tower, Retail Section
+Total Component Area	75.0% : 25.0%	
+17517.86 sqm
+75.0%
+5839.29 sqm
+25.0%
+—
+
+Residential & Office
+Total Component Area ratio for Residential Tower, Office Block
+Total Component Area	65.2% : 34.8%	
+17517.86 sqm
+65.2%
+—
+9342.86 sqm
+34.8%
+
+Retail & Office
+Total Component Area ratio for Retail Section, Office Block
+Total Component Area	38.5% : 61.5%	
+—
+5839.29 sqm
+38.5%
+9342.86 sqm
+61.5%
+
+All Entities
+Total Component Area ratio for all entities
+Total Component Area	53.6% : 17.9% : 28.6%	
+17517.86 sqm
+53.6%
+5839.29 sqm
+17.9%
+9342.86 sqm
+28.6%
+
+Residential Tower
+Principal Common Area ratio for Residential Tower
+Principal Common Area	100.0%	
+0.00 sqm
+100.0%
+—
+—
+
+Retail Section
+Principal Common Area ratio for Retail Section
+Principal Common Area	100.0%	
+—
+0.00 sqm
+100.0%
+—
+
+Office Block
+Principal Common Area ratio for Office Block
+Principal Common Area	100.0%	
+—
+—
+0.00 sqm
+100.0%
+
+Residential & Retail
+Principal Common Area ratio for Residential Tower, Retail Section
+Principal Common Area	N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+—
+
+Residential & Office
+Principal Common Area ratio for Residential Tower, Office Block
+Principal Common Area	N/A : N/A	
+0.00 sqm
+N/A
+—
+0.00 sqm
+N/A
+
+Retail & Office
+Principal Common Area ratio for Retail Section, Office Block
+Principal Common Area	N/A : N/A	
+—
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+All Entities
+Principal Common Area ratio for all entities
+Principal Common Area	N/A : N/A : N/A	
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+0.00 sqm
+N/A
+
+Residential Tower
+Common Element Area ratio for Residential Tower
+Common Element Area	100.0%	
+2517.86 sqm
+100.0%
+—
+—
+
+Retail Section
+Common Element Area ratio for Retail Section
+Common Element Area	100.0%	
+—
+839.29 sqm
+100.0%
+—
+
+Office Block
+Common Element Area ratio for Office Block
+Common Element Area	100.0%	
+—
+—
+1342.86 sqm
+100.0%
+
+Residential & Retail
+Common Element Area ratio for Residential Tower, Retail Section
+Common Element Area	75.0% : 25.0%	
+2517.86 sqm
+75.0%
+839.29 sqm
+25.0%
+—
+
+Residential & Office
+Common Element Area ratio for Residential Tower, Office Block
+Common Element Area	65.2% : 34.8%	
+2517.86 sqm
+65.2%
+—
+1342.86 sqm
+34.8%
+
+Retail & Office
+Common Element Area ratio for Retail Section, Office Block
+Common Element Area	38.5% : 61.5%	
+—
+839.29 sqm
+38.5%
+1342.86 sqm
+61.5%
+
+All Entities
+Common Element Area ratio for all entities
+Common Element Area	53.6% : 17.9% : 28.6%	
+2517.86 sqm
+53.6%
+839.29 sqm
+17.9%
+1342.86 sqm
+28.6%
+
+Residential Tower
+Total Common Area ratio for Residential Tower
+Total Common Area	100.0%	
+2517.86 sqm
+100.0%
+—
+—
+
+Retail Section
+Total Common Area ratio for Retail Section
+Total Common Area	100.0%	
+—
+839.29 sqm
+100.0%
+—
+
+Office Block
+Total Common Area ratio for Office Block
+Total Common Area	100.0%	
+—
+—
+1342.86 sqm
+100.0%
+
+Residential & Retail
+Total Common Area ratio for Residential Tower, Retail Section
+Total Common Area	75.0% : 25.0%	
+2517.86 sqm
+75.0%
+839.29 sqm
+25.0%
+—
+
+Residential & Office
+Total Common Area ratio for Residential Tower, Office Block
+Total Common Area	65.2% : 34.8%	
+2517.86 sqm
+65.2%
+—
+1342.86 sqm
+34.8%
+
+Retail & Office
+Total Common Area ratio for Retail Section, Office Block
+Total Common Area	38.5% : 61.5%	
+—
+839.29 sqm
+38.5%
+1342.86 sqm
+61.5%
+
+All Entities
+Total Common Area ratio for all entities
+Total Common Area	53.6% : 17.9% : 28.6%	
+2517.86 sqm
+53.6%
+839.29 sqm
+17.9%
+1342.86 sqm
+28.6%
+

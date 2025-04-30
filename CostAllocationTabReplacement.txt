@@ -1,0 +1,663 @@
+Replace the existing Cost Allocation tab with this code:
+
+```jsx
+<TabsContent value="allocation">
+  <Card>
+    <CardHeader>
+      <CardTitle className="flex items-center">
+        <PercentSquareIcon className="mr-2 h-5 w-5" />
+        Cost Allocation
+      </CardTitle>
+      <CardDescription>
+        Allocate budget item costs to entities using inputs and ratios
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* Left sidebar: Budget item list */}
+        <div className="md:col-span-1 border-r pr-4">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-sm font-medium">Selected Budget Items</h3>
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+              {Object.values(selectedBudgetItems).filter(item => item.isSelected).length}
+            </Badge>
+          </div>
+          
+          <div className="space-y-1 max-h-[calc(100vh-300px)] overflow-y-auto">
+            {Object.values(selectedBudgetItems)
+              .filter(item => item.isSelected)
+              .map(item => {
+                const budgetItem = (budgetItems as ReraBudgetItem[]).find(bi => bi.id === item.budgetItemId);
+                
+                // Check if the budget value has been set
+                const hasBudgetValue = !!item.budgetValue && parseFloat(item.budgetValue) > 0;
+                
+                return budgetItem ? (
+                  <div 
+                    key={budgetItem.id} 
+                    onClick={() => setSelectedBudgetItemId(budgetItem.id)}
+                    className={`
+                      px-3 py-2 rounded-md cursor-pointer transition-all
+                      ${selectedBudgetItemId === budgetItem.id ? 'bg-slate-100 border border-slate-300 shadow-sm' : 'hover:bg-slate-50 border border-transparent'}
+                    `}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-sm">{budgetItem.code}</span>
+                      {hasBudgetValue && (
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 text-xs">
+                          ${parseFloat(item.budgetValue || '0').toLocaleString()}
+                        </Badge>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-600 truncate">{budgetItem.description}</p>
+                    <div className="flex items-center mt-1 gap-1">
+                      {/* Show number of inputs if any */}
+                      {item.allocationInputs && item.allocationInputs.length > 0 && (
+                        <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 text-xs">
+                          {item.allocationInputs.length} Input{item.allocationInputs.length !== 1 ? 's' : ''}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                ) : null;
+              })
+            }
+            {Object.values(selectedBudgetItems).filter(item => item.isSelected).length === 0 && (
+              <div className="text-center py-8 bg-slate-50 rounded-lg border border-dashed">
+                <p className="text-sm text-slate-500">No budget items selected</p>
+                <Button 
+                  variant="link" 
+                  onClick={() => setActiveTab('budget-selection')}
+                  className="mt-2 text-sm"
+                >
+                  Go to Budget Selection
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
+        
+        {/* Main content: Allocation for selected budget item */}
+        <div className="md:col-span-3">
+          {selectedBudgetItemId && currentBudgetItem ? (
+            <div className="space-y-6">
+              {/* Budget Item Header with Budget Value Input */}
+              <div className="pb-4 border-b">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h2 className="text-lg font-medium">{currentBudgetItem.code}: {currentBudgetItem.description}</h2>
+                    <p className="text-sm text-slate-600">
+                      {currentBudgetItem.category} / {currentBudgetItem.subCategory || 'General'}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <div className="flex items-center">
+                      <DollarSign className="h-4 w-4 text-green-600 mr-1" />
+                      <Label htmlFor="budgetValue" className="mr-2">Budget Value:</Label>
+                      <Input
+                        id="budgetValue"
+                        type="number"
+                        placeholder="0.00"
+                        className="w-32 text-right font-medium"
+                        value={selectedBudgetItems[selectedBudgetItemId]?.budgetValue || ''}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setSelectedBudgetItems(prev => ({
+                            ...prev,
+                            [selectedBudgetItemId]: {
+                              ...prev[selectedBudgetItemId],
+                              budgetValue: value
+                            }
+                          }));
+                        }}
+                      />
+                    </div>
+                    {selectedBudgetItems[selectedBudgetItemId]?.budgetValue && (
+                      <p className="text-xs text-green-600 mt-1">
+                        ${parseFloat(selectedBudgetItems[selectedBudgetItemId]?.budgetValue || '0').toLocaleString()}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Input Values Management */}
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-sm font-medium">Input Values</h3>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      // Initialize and add a new input
+                      const newInput = {
+                        id: Date.now(),
+                        name: 'New Input',
+                        unit: 'count',
+                        value: 0,
+                        ratioId: null,
+                        ratioValues: []
+                      };
+                      
+                      // Add to current allocation
+                      const currentInputs = selectedBudgetItems[selectedBudgetItemId]?.allocationInputs || [];
+                      
+                      setSelectedBudgetItems(prev => ({
+                        ...prev,
+                        [selectedBudgetItemId]: {
+                          ...prev[selectedBudgetItemId],
+                          allocationInputs: [...currentInputs, newInput],
+                          allocationMethod: 'input_based'
+                        }
+                      }));
+                    }}
+                  >
+                    <PlusIcon className="h-4 w-4 mr-2" />
+                    Add Input
+                  </Button>
+                </div>
+                
+                {/* List of Input Values */}
+                {(!selectedBudgetItems[selectedBudgetItemId]?.allocationInputs || 
+                   selectedBudgetItems[selectedBudgetItemId]?.allocationInputs.length === 0) ? (
+                  <div className="border border-dashed rounded-md p-8 text-center">
+                    <p className="text-sm text-slate-500">No input values defined yet.</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Add inputs like headcount, electricity load, or areas to allocate costs.
+                    </p>
+                    <Button 
+                      variant="outline" 
+                      className="mt-4" 
+                      onClick={() => {
+                        // Initialize and add a new input
+                        const newInput = {
+                          id: Date.now(),
+                          name: 'New Input',
+                          unit: 'count',
+                          value: 0,
+                          ratioId: null,
+                          ratioValues: []
+                        };
+                        
+                        // Add to current allocation
+                        const currentInputs = selectedBudgetItems[selectedBudgetItemId]?.allocationInputs || [];
+                        
+                        setSelectedBudgetItems(prev => ({
+                          ...prev,
+                          [selectedBudgetItemId]: {
+                            ...prev[selectedBudgetItemId],
+                            allocationInputs: [...currentInputs, newInput],
+                            allocationMethod: 'input_based'
+                          }
+                        }));
+                      }}
+                    >
+                      <PlusIcon className="h-4 w-4 mr-2" />
+                      Add First Input
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {selectedBudgetItems[selectedBudgetItemId]?.allocationInputs.map((input, index) => (
+                      <div key={input.id || index} className="border rounded-md">
+                        <div className="bg-slate-50 p-3 flex justify-between items-center border-b">
+                          <div className="flex items-center gap-2">
+                            <Input 
+                              className="w-40 h-8 text-sm"
+                              value={input.name || ''}
+                              onChange={(e) => {
+                                // Update input name
+                                const updatedInputs = [...selectedBudgetItems[selectedBudgetItemId].allocationInputs];
+                                updatedInputs[index] = {
+                                  ...updatedInputs[index],
+                                  name: e.target.value
+                                };
+                                
+                                setSelectedBudgetItems(prev => ({
+                                  ...prev,
+                                  [selectedBudgetItemId]: {
+                                    ...prev[selectedBudgetItemId],
+                                    allocationInputs: updatedInputs
+                                  }
+                                }));
+                              }}
+                            />
+                            
+                            <Select
+                              value={input.unit || ''}
+                              onValueChange={(value) => {
+                                // Update input unit
+                                const updatedInputs = [...selectedBudgetItems[selectedBudgetItemId].allocationInputs];
+                                updatedInputs[index] = {
+                                  ...updatedInputs[index],
+                                  unit: value
+                                };
+                                
+                                setSelectedBudgetItems(prev => ({
+                                  ...prev,
+                                  [selectedBudgetItemId]: {
+                                    ...prev[selectedBudgetItemId],
+                                    allocationInputs: updatedInputs
+                                  }
+                                }));
+                              }}
+                            >
+                              <SelectTrigger className="w-24 h-8 text-sm">
+                                <SelectValue placeholder="Unit" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="count">count</SelectItem>
+                                <SelectItem value="kW">kW</SelectItem>
+                                <SelectItem value="sqm">sqm</SelectItem>
+                                <SelectItem value="tons">tons</SelectItem>
+                                <SelectItem value="staff">staff</SelectItem>
+                                <SelectItem value="hours">hours</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Button 
+                              size="sm" 
+                              variant="ghost"
+                              onClick={() => {
+                                // Remove this input
+                                const updatedInputs = selectedBudgetItems[selectedBudgetItemId].allocationInputs
+                                  .filter((_, i) => i !== index);
+                                
+                                setSelectedBudgetItems(prev => ({
+                                  ...prev,
+                                  [selectedBudgetItemId]: {
+                                    ...prev[selectedBudgetItemId],
+                                    allocationInputs: updatedInputs
+                                  }
+                                }));
+                              }}
+                            >
+                              <TrashIcon className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                              <Label className="mb-2 block">Input Value</Label>
+                              <Input 
+                                type="number" 
+                                value={input.value || ''} 
+                                onChange={(e) => {
+                                  // Update input value
+                                  const updatedInputs = [...selectedBudgetItems[selectedBudgetItemId].allocationInputs];
+                                  updatedInputs[index] = {
+                                    ...updatedInputs[index],
+                                    value: parseFloat(e.target.value)
+                                  };
+                                  
+                                  setSelectedBudgetItems(prev => ({
+                                    ...prev,
+                                    [selectedBudgetItemId]: {
+                                      ...prev[selectedBudgetItemId],
+                                      allocationInputs: updatedInputs
+                                    }
+                                  }));
+                                }}
+                                placeholder="Enter value"
+                              />
+                            </div>
+                            <div>
+                              <Label className="mb-2 block">Allocation Ratio</Label>
+                              <Select 
+                                value={input.ratioId?.toString() || ''} 
+                                onValueChange={(value) => {
+                                  // Update ratio ID
+                                  const ratioIdNumber = parseInt(value);
+                                  const ratio = [...coreRatios, ...derivedRatios].find(r => r.id === ratioIdNumber);
+                                  
+                                  // Fetch ratio values for this ratio
+                                  const getRatioValues = async () => {
+                                    try {
+                                      // For core ratios, we can calculate directly
+                                      if (ratio?.isCore) {
+                                        const ratioValues = entities.map(entity => {
+                                          let value = 0;
+                                          
+                                          if (ratio.ratioType === 'sellable_area') {
+                                            value = parseFloat(entity.sellableArea || '0');
+                                          } else if (ratio.ratioType === 'applicable_area') {
+                                            value = parseFloat(entity.applicableArea || '0');
+                                          } else if (ratio.ratioType === 'parking_bay_area') {
+                                            value = parseFloat(entity.parkingBayArea || '0');
+                                          } else if (ratio.ratioType === 'dedicated_common_area') {
+                                            value = parseFloat(entity.dedicatedCommonArea || '0');
+                                          }
+                                          
+                                          return {
+                                            entityId: entity.id,
+                                            value
+                                          };
+                                        });
+                                        
+                                        return ratioValues;
+                                      } 
+                                      // For derived ratios, fetch from API
+                                      else {
+                                        // Use the actual API endpoint for derived ratio values
+                                        const response = await fetch(`/api/allocation/ratios/${ratioIdNumber}/values`);
+                                        const data = await response.json();
+                                        
+                                        // Map the API response to the format we need
+                                        return data.map((item: any) => ({
+                                          entityId: item.entityId,
+                                          value: parseFloat(item.value || '0')
+                                        }));
+                                      }
+                                    } catch (error) {
+                                      console.error('Error fetching ratio values:', error);
+                                      return entities.map(entity => ({
+                                        entityId: entity.id,
+                                        value: 1 // Default fallback
+                                      }));
+                                    }
+                                  };
+                                  
+                                  // Update the inputs with the ratio and fetch values
+                                  getRatioValues().then(ratioValues => {
+                                    const updatedInputs = [...selectedBudgetItems[selectedBudgetItemId].allocationInputs];
+                                    updatedInputs[index] = {
+                                      ...updatedInputs[index],
+                                      ratioId: ratioIdNumber,
+                                      ratioName: ratio?.name,
+                                      ratioValues
+                                    };
+                                    
+                                    setSelectedBudgetItems(prev => ({
+                                      ...prev,
+                                      [selectedBudgetItemId]: {
+                                        ...prev[selectedBudgetItemId],
+                                        allocationInputs: updatedInputs
+                                      }
+                                    }));
+                                  });
+                                }}
+                              >
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select ratio for allocation" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectGroup>
+                                    <SelectLabel>Core Ratios</SelectLabel>
+                                    {coreRatios.map(ratio => (
+                                      <SelectItem key={`core-${ratio.id}`} value={ratio.id.toString()}>
+                                        {ratio.name}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectGroup>
+                                  <SelectGroup>
+                                    <SelectLabel>Derived Ratios</SelectLabel>
+                                    {derivedRatios.map(ratio => (
+                                      <SelectItem key={`derived-${ratio.id}`} value={ratio.id.toString()}>
+                                        {ratio.name}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectGroup>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+                          
+                          {/* Distribution to entities based on selected ratio */}
+                          {input.ratioId && input.value && (
+                            <div className="mt-4 border-t pt-4">
+                              <h4 className="text-sm font-medium mb-3">Entity Distribution</h4>
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Entity</TableHead>
+                                    <TableHead>Ratio Value</TableHead>
+                                    <TableHead>Allocation %</TableHead>
+                                    <TableHead>Allocated Value</TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {entities.map(entity => {
+                                    // Get ratio values for the selected ratio
+                                    const ratioValues = input.ratioValues || [];
+                                    const entityRatio = ratioValues.find(rv => rv.entityId === entity.id);
+                                    
+                                    // Calculate percentage and allocated value
+                                    const ratioValue = entityRatio?.value || 0;
+                                    const totalRatioValue = ratioValues.reduce((sum, rv) => sum + (rv.value || 0), 0);
+                                    const percentage = totalRatioValue > 0 ? (ratioValue / totalRatioValue) * 100 : 0;
+                                    const allocatedValue = (percentage * input.value) / 100;
+                                    
+                                    return (
+                                      <TableRow key={entity.id}>
+                                        <TableCell>{entity.name}</TableCell>
+                                        <TableCell>{ratioValue}</TableCell>
+                                        <TableCell>
+                                          <div className="flex items-center gap-2">
+                                            <div 
+                                              className="h-2 bg-primary rounded-full" 
+                                              style={{ 
+                                                width: `${Math.max(percentage, 2)}%`,
+                                                maxWidth: '100px',
+                                                opacity: percentage / 100
+                                              }} 
+                                            />
+                                            <span>{percentage.toFixed(2)}%</span>
+                                          </div>
+                                        </TableCell>
+                                        <TableCell>{allocatedValue.toFixed(2)}</TableCell>
+                                      </TableRow>
+                                    );
+                                  })}
+                                </TableBody>
+                              </Table>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Total Allocation Summary */}
+              {selectedBudgetItems[selectedBudgetItemId]?.allocationInputs && 
+               selectedBudgetItems[selectedBudgetItemId]?.allocationInputs.length > 0 && (
+                <div className="mt-8 border-t pt-6">
+                  <h3 className="text-sm font-medium mb-4">
+                    Total Allocation Summary
+                  </h3>
+                  <div className="border rounded-md overflow-hidden">
+                    <div className="bg-slate-50 p-3">
+                      <h4 className="font-medium">Entity Allocation Breakdown</h4>
+                    </div>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Entity</TableHead>
+                          <TableHead>Allocation %</TableHead>
+                          <TableHead className="text-right">Allocated Amount</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {entities.map(entity => {
+                          // Calculate total allocation for this entity across all inputs
+                          let totalValue = 0;
+                          let totalInputValue = 0;
+                          
+                          // Sum up allocation across all inputs
+                          selectedBudgetItems[selectedBudgetItemId]?.allocationInputs.forEach(input => {
+                            if (input.ratioValues && input.value) {
+                              const ratioValues = input.ratioValues;
+                              const entityRatio = ratioValues.find(rv => rv.entityId === entity.id);
+                              const ratioValue = entityRatio?.value || 0;
+                              const totalRatioValue = ratioValues.reduce((sum, rv) => sum + (rv.value || 0), 0);
+                              
+                              if (totalRatioValue > 0) {
+                                const percentage = (ratioValue / totalRatioValue) * 100;
+                                const allocatedValue = (percentage * input.value) / 100;
+                                
+                                totalValue += allocatedValue;
+                                totalInputValue += parseFloat(input.value);
+                              }
+                            }
+                          });
+                          
+                          // Calculate percentage of total budget
+                          const totalAllocation = totalInputValue > 0 ? (totalValue / totalInputValue) * 100 : 0;
+                          const budgetValue = parseFloat(selectedBudgetItems[selectedBudgetItemId]?.budgetValue || '0');
+                          const allocatedAmount = totalAllocation > 0 ? (budgetValue * totalAllocation) / 100 : 0;
+                          
+                          return (
+                            <TableRow key={entity.id}>
+                              <TableCell className="font-medium">{entity.name}</TableCell>
+                              <TableCell>
+                                <div className="flex items-center gap-2">
+                                  <div 
+                                    className="h-2 bg-primary rounded-full" 
+                                    style={{ 
+                                      width: `${Math.max(totalAllocation, 2)}%`,
+                                      maxWidth: '100px',
+                                      opacity: totalAllocation / 100
+                                    }} 
+                                  />
+                                  <span>{totalAllocation.toFixed(2)}%</span>
+                                </div>
+                              </TableCell>
+                              <TableCell className="text-right font-medium text-green-600">
+                                ${allocatedAmount.toFixed(2)}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })}
+                        
+                        {/* Calculate total of all entities */}
+                        {(() => {
+                          let totalAllocation = 0;
+                          
+                          entities.forEach(entity => {
+                            let entityTotalValue = 0;
+                            let entityTotalInputValue = 0;
+                            
+                            selectedBudgetItems[selectedBudgetItemId]?.allocationInputs.forEach(input => {
+                              if (input.ratioValues && input.value) {
+                                const ratioValues = input.ratioValues;
+                                const entityRatio = ratioValues.find(rv => rv.entityId === entity.id);
+                                const ratioValue = entityRatio?.value || 0;
+                                const totalRatioValue = ratioValues.reduce((sum, rv) => sum + (rv.value || 0), 0);
+                                
+                                if (totalRatioValue > 0) {
+                                  const percentage = (ratioValue / totalRatioValue) * 100;
+                                  const allocatedValue = (percentage * input.value) / 100;
+                                  
+                                  entityTotalValue += allocatedValue;
+                                  entityTotalInputValue += parseFloat(input.value);
+                                }
+                              }
+                            });
+                            
+                            const entityAllocation = entityTotalInputValue > 0 ? (entityTotalValue / entityTotalInputValue) * 100 : 0;
+                            totalAllocation += entityAllocation;
+                          });
+                          
+                          const budgetValue = parseFloat(selectedBudgetItems[selectedBudgetItemId]?.budgetValue || '0');
+                          
+                          return (
+                            <TableRow className="bg-slate-50">
+                              <TableCell className="font-semibold">Total</TableCell>
+                              <TableCell className="font-semibold">
+                                {totalAllocation.toFixed(2)}%
+                              </TableCell>
+                              <TableCell className="text-right font-semibold text-green-600">
+                                ${budgetValue.toFixed(2)}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })()}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-slate-50 rounded-lg border border-dashed">
+              <PercentSquareIcon className="mx-auto h-12 w-12 text-slate-400" />
+              <h3 className="mt-4 text-lg font-medium text-slate-700">No Budget Item Selected</h3>
+              <p className="mt-2 text-sm text-slate-500 max-w-md mx-auto">
+                Select a budget line item from the list to begin adding inputs and allocating costs.
+              </p>
+              {Object.values(selectedBudgetItems).filter(item => item.isSelected).length === 0 && (
+                <Button 
+                  variant="outline" 
+                  onClick={() => setActiveTab('budget-selection')}
+                  className="mt-4"
+                >
+                  Select Budget Items
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </CardContent>
+    <CardFooter className="flex justify-between border-t pt-4 mt-4">
+      <Button variant="outline" onClick={() => setActiveTab('budget-selection')}>
+        Back to Budget Selection
+      </Button>
+      <Button onClick={saveAllocations}>
+        Save Allocations
+      </Button>
+    </CardFooter>
+  </Card>
+</TabsContent>
+```
+
+Also, make sure to add the following utility functions to the component if they don't already exist:
+
+```typescript
+// Add these utility functions for the Cost Allocation tab
+
+// Calculate total entity allocation percentage across all inputs
+const calculateTotalEntityAllocation = (budgetItem: any, entityId: number) => {
+  if (!budgetItem || !budgetItem.allocationInputs || budgetItem.allocationInputs.length === 0) {
+    return 0;
+  }
+  
+  let totalValue = 0;
+  let totalInputValue = 0;
+  
+  // Sum up allocation across all inputs
+  budgetItem.allocationInputs.forEach((input: any) => {
+    if (input.ratioValues && input.value) {
+      const ratioValues = input.ratioValues;
+      const entityRatio = ratioValues.find((rv: any) => rv.entityId === entityId);
+      const ratioValue = entityRatio?.value || 0;
+      const totalRatioValue = ratioValues.reduce((sum: number, rv: any) => sum + (rv.value || 0), 0);
+      
+      if (totalRatioValue > 0) {
+        const percentage = (ratioValue / totalRatioValue) * 100;
+        const allocatedValue = (percentage * input.value) / 100;
+        
+        totalValue += allocatedValue;
+        totalInputValue += parseFloat(input.value);
+      }
+    }
+  });
+  
+  // Calculate percentage of total
+  return totalInputValue > 0 ? (totalValue / totalInputValue) * 100 : 0;
+};
+
+// Calculate total allocation percentage (should be ~100%)
+const calculateTotalAllocation = (budgetItem: any) => {
+  if (!budgetItem || !entities || entities.length === 0) {
+    return 0;
+  }
+  
+  return entities.reduce((sum, entity) => {
+    return sum + calculateTotalEntityAllocation(budgetItem, entity.id);
+  }, 0);
+};
+```

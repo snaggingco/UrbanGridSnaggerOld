@@ -1,0 +1,91 @@
+Diagnostics
+Avoid large layout shifts 1 layout shift found
+These are the largest layout shifts observed on the page. Each table item represents a single layout shift, and shows the element that shifted the most. Below each item are possible root causes that led to the layout shift. Some of these layout shifts may not be included in the CLS metric value due to windowing. Learn how to improve CLSCLS
+Element
+Layout shift score
+Snagging By UrbanGrid Professional property inspection services in Dubai. Inte…
+<footer class="bg-gray-50 border-t">
+0.499
+Largest Contentful Paint element 7,500 ms
+This is the largest contentful element painted within the viewport. Learn more about the Largest Contentful Paint elementLCP
+Element
+UAE's Trusted Snagging Company for Property Inspections
+<h1 class="text-5xl md:text-7xl font-normal text-gray-900 leading-tight">
+Phase
+% of LCP
+Timing
+TTFB
+8%
+600 ms
+Load Delay
+0%
+0 ms
+Load Time
+0%
+0 ms
+Render Delay
+92%
+6,900 ms
+Properly size images Potential savings of 346 KiB
+Serve images that are appropriately-sized to save cellular data and improve load time. Learn how to size images.LCPFCP
+URL
+Resource Size
+Potential Savings
+urbangrid.ae 1st party
+357.9 KiB	346.4 KiB
+InterNACHI Certified Professional Inspector
+<img src="/images/internachi.webp" alt="InterNACHI Certified Professional Inspector" class="h-auto w-auto object-contain" loading="eager" decoding="async" style="max-width: 100%; max-height: 180px;">
+/images/internachi.webp(urbangrid.ae)
+211.7 KiB
+204.6 KiB
+InterNACHI Member Badge
+<img src="/images/internachi2.webp" alt="InterNACHI Member Badge" class="h-auto w-auto object-contain" loading="eager" decoding="async" style="max-width: 100%; max-height: 180px;">
+/images/internachi2.webp(urbangrid.ae)
+146.3 KiB
+141.8 KiB
+Reduce unused JavaScript Potential savings of 128 KiB
+Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. Learn how to reduce unused JavaScript.LCPFCP
+URL
+Transfer Size
+Potential Savings
+urbangrid.ae 1st party
+174.9 KiB	73.9 KiB
+/assets/App-COCM5Q5E.js(urbangrid.ae)
+58.7 KiB
+29.0 KiB
+/assets/index-8C2OkMRZ.js(urbangrid.ae)
+79.5 KiB
+23.7 KiB
+/assets/proxy-BBTBR6qF.js(urbangrid.ae)
+36.8 KiB
+21.2 KiB
+Google Tag Manager tag-manager 
+103.1 KiB	54.5 KiB
+/gtm.js?id=GTM-KHFS29FM(www.googletagmanager.com)
+103.1 KiB
+54.5 KiB
+Avoid an excessive DOM size 1,101 elements
+A large DOM will increase memory usage, cause longer style calculations, and produce costly layout reflows. Learn how to avoid an excessive DOM size.TBT
+Statistic
+Element
+Value
+Total DOM Elements
+1,101
+Maximum DOM Depth
+div.flag-dropdown > div.selected-flag > div.flag > div.arrow
+<div class="arrow">
+17
+Maximum Child Elements
+UAE's Trusted Snagging Company for Property Inspections Top-rated property sna…
+<main class="flex-1 ">
+13
+Reduce unused CSS Potential savings of 16 KiB
+Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. Learn how to reduce unused CSS.LCPFCP
+URL
+Transfer Size
+Potential Savings
+urbangrid.ae 1st party
+18.1 KiB	15.8 KiB
+/assets/index-DfMVmR-j.css(urbangrid.ae)
+18.1 KiB
+15.8 KiB

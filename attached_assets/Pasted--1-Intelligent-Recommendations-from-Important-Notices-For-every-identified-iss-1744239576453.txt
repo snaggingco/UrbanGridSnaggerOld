@@ -1,0 +1,80 @@
+
+
+---
+
+### ✅ 1. Intelligent Recommendations from Important Notices
+
+> For every identified issue or flag shown in the **"Important Notices"** section:
+- Provide **customized recommendations** (e.g., “Increase contribution by 2% from year 7 to 9”).
+- Enable **one-click actionable changes** to apply that fix directly into the study.
+- Recommendations should appear inline with the notice and be context-aware (based on shortfalls, timing issues, etc.).
+
+---
+
+### 🔁 2. Editable Annual Contribution Increase (%)
+
+> Enable the **Annual Contribution Increase (%)** field to be **user-editable**:
+- Allow manual input or slider for fine-tuning escalation rates.
+- Changes should dynamically reflect in funding strategy and future cash flow.
+
+---
+
+### 🏗 3. Overall Score in Condition Survey
+
+> Once the **asset condition registry** is completed:
+- Prompt the user to **assign or calculate an overall condition score** for the project.
+- The score can be based on weighted averages or severity logic.
+- This should feed into both reporting and risk-level communication in the dashboard.
+
+---
+
+### ℹ️ 4. Hover-Based Definitions (Tooltips)
+
+> Add **clear hover tooltips** for all major outputs in:
+- **Condition Survey Summary**
+- **Reserve Fund Study Summary**
+
+Each tooltip should define:
+- What the value means
+- How it was calculated (basic logic)
+- Why it's important for decision-making
+
+Examples:
+- **“Target Reserve Balance”** → “This is the projected balance needed at the end of the study to handle future repairs beyond the current period.”
+- **“Annual Requirement”** → “The estimated yearly contribution required to meet future obligations.”
+
+---
+
+### 📅 5. Asset Replacement & Repair Schedule Tab
+
+> Introduce a new tab in the **Reserve Fund Analysis** module:
+- Display a **timeline view** or **table** of:
+  - Assets scheduled for repair or replacement
+  - Expected year of replacement
+  - Date of last major service (if available)
+  - Estimated cost and expected lifespan remaining
+- Allow filtering by asset type, replacement year, cost range, etc.
+
+---
+
+### 🧭 6. Modern Navigation Sidebar
+
+> Redesign the sidebar to be more intuitive and modern:
+- Use clear icons + labels
+- Highlight active sections dynamically
+- Option for collapsible/expandable section groups
+- Option for sticky floating mode in scrollable pages
+
+---
+
+### 🔄 Summary of Changes Requested
+
+| Area | Enhancement |
+|------|-------------|
+| Important Notices | Add actionable recommendations |
+| Contribution Logic | Make Annual Contribution Increase editable |
+| Condition Survey | Enable overall project score based on asset conditions |
+| Tooltips | Add hover definitions to summary values |
+| Reserve Fund | Add Asset Replacement Schedule tab |
+| UI/UX | Modernize sidebar for better navigation |
+
